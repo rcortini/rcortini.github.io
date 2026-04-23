@@ -3,25 +3,22 @@ title: "Fantasy Maps"
 toc: false
 ---
 
-::: {.callout-note}
-**Placeholder** — Add your map images to `assets/maps/` and replace the commented
-template below with your maps and captions.
-:::
-
-<!--
-Example layout for large captioned maps — uncomment and populate when images are ready.
-Repeat the .map-entry block for each map.
+A small showcase of fantasy map making. All maps were drawn by me with [Inkarnate](https://www.inkarnate.com)
 
 ::: {.map-entry}
-![](../../assets/maps/map01.jpg){fig-align="center" width=100%}
+![](../../assets/maps/Land_of_Yara.jpg){fig-align="center" width=100%}
 
-*Name of the world / region — a sentence or two describing the setting, campaign, or
-creative context for this map.*
+The world of Yara, my fantasy creation, is a small-ish continent surrounded by misterious impenetrable lands and oceans.
 :::
 
 ::: {.map-entry}
-![](../../assets/maps/map02.jpg){fig-align="center" width=100%}
+![](../../assets/maps/Princedom_Owens.jpg){fig-align="center" width=100%}
 
-*Caption for second map.*
+The Princedom of Owens is one of the most fertile and rich parts of the Kingdom of Lorya.
 :::
--->
+
+::: {.map-entry}
+![](../../assets/maps/Kalin.jpg){fig-align="center" width=100%}
+
+Kalin: pearl of the North. The city was built in ancient times around seven towers, and has never in history been conquered by force.
+:::
