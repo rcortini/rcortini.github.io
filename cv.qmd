@@ -7,64 +7,134 @@ toc: false
 
 ---
 
-## Ruggero Cortini
+## Ruggero Cortini, PhD
 
-*Data Scientist · Biophysicist · Consultant*
-ruggero.cortini@gmail.com
+*Data Scientist · Computational Biology & Bioinformatics · NLP for Life Sciences*
+
+ruggero.cortini@gmail.com · +34 652 02 65 67 · Barcelona, Spain
+[linkedin.com/in/ruggerocortini](https://linkedin.com/in/ruggerocortini) · [github.com/rcortini](https://github.com/rcortini)
 
 ---
 
-## Summary
+## Profile
 
-<!-- Replace with your own summary -->
-
-Data scientist and consultant with a PhD in biophysics and experience spanning academic
-research, management consulting, and applied ML engineering. Specialised in translating
-complex scientific and business problems into robust data solutions for pharma and biotech
-organisations.
+Data scientist and consultant with 5+ years of experience applying NLP, machine learning,
+and advanced analytics to life sciences and biomedical research challenges. Built and
+delivered scalable pipelines for mining scientific literature, patents, and clinical trial
+data at scale. Deep domain expertise in computational biology and biophysics (PhD from
+Imperial College London, postdoctoral research at CRG Barcelona), with hands-on experience
+analysing omics datasets (single-cell RNA-seq, ChIP-seq), molecular simulations, and
+heterogeneous biomedical data sources. Proven track record of end-to-end consulting project
+delivery for international clients, translating complex scientific data into actionable
+insights through dashboards, visualisations, and evidence-based reports. Experienced in
+client engagement, cross-functional team leadership, and mentoring.
 
 ---
 
 ## Experience
 
-### *[Current Role]* — *[Company]*
-*[Start] – present*
+### Data Scientist & Consultant — SIRIS Academic
+*Oct 2019 – Apr 2025*
+*Barcelona-based consulting firm delivering data-driven strategy for research institutions,
+public bodies, and industry partners*
 
-- *[Key responsibility or achievement]*
-- *[Key responsibility or achievement]*
-- *[Key responsibility or achievement]*
+- Led 10+ cross-functional consulting projects for international clients (Google DeepMind,
+  Sorbonne Université, Generalitat de Catalunya), developing NLP and AI-powered
+  decision-support tools; scoped projects, developed analytical strategies, and delivered
+  evidence-based recommendations.
+- Designed and deployed scalable Python pipelines for NLP analysis of biomedical and
+  scientific corpora (tens of millions of documents: publications, patents, clinical
+  trials), performing entity extraction, document classification, topic modelling, and
+  semantic search to map research strengths and emerging therapeutic areas.
+- Integrated heterogeneous data sources (publications, patents, clinical trials, project
+  databases) into coherent analytical frameworks using ETL pipelines, data normalisation,
+  and deduplication techniques, producing interactive dashboards and reports.
+- Applied ML and statistical methods (classification, clustering, topic modelling,
+  dimensionality reduction) in Python and R to validate results, assess model robustness,
+  and generate predictive insights across biomedical, environmental, and technological
+  domains.
+- Coached and mentored junior data scientists in NLP workflows, code quality, and
+  reproducible analytics.
 
-### *[Previous Role]* — *[Company]*
-*[Start] – [End]*
+### Marie Curie Post-doctoral Fellow — Centre for Genomic Regulation (CRG)
+*Jan 2016 – Sep 2019*
+*World-class research centre in genomics and molecular biology, Barcelona*
 
-- *[Key responsibility or achievement]*
-- *[Key responsibility or achievement]*
+- Developed computational models of DNA–protein interactions and chromatin dynamics,
+  combining analytical theory with large-scale molecular simulations on HPC clusters (CPUs
+  and GPUs); results published in *Nature Communications*.
+- Analysed multi-omics experimental data: single-cell RNA-seq (gene expression
+  quantification, clustering, differential expression), ChIP-seq (peak calling, genome
+  alignment), and DNA sequence data to establish correlations between chromatin structure
+  and gene regulation.
+- Built reproducible Python analysis pipelines to process hundreds of thousands of
+  simulations and experimental datasets, with strong attention to scalability, version
+  control, and documentation.
+
+### Post-doctoral Fellow — Sorbonne Université / ORNL
+*Jul 2013 – Dec 2015*
+*Paris, France; visiting researcher at Oak Ridge National Laboratory, USA*
+
+- Mathematical modelling of DNA mechanical properties using Molecular Dynamics, Monte Carlo
+  simulations, and analytical theory; performed large-scale all-atom molecular dynamics
+  simulations on HPC infrastructure at Oak Ridge National Laboratory.
 
 ---
 
 ## Education
 
-### PhD, Biophysics — *[Institution]*
-*[Year]*
-Thesis: *[Title]*
+### PhD in Physics (DNA Biophysics) — Imperial College London
+*Nov 2009 – Jul 2013*
+Theoretical and computational study of electrostatic interactions in DNA systems
 
-### *[Degree]* — *[Institution]*
-*[Year]*
+### MSc in Condensed Matter Physics — Università di Napoli "Federico II"
+*2006 – 2009* · 110/110 cum laude
+
+### BSc in Physics — Università di Napoli "Federico II"
+*2003 – 2006* · 110/110 cum laude
 
 ---
 
 ## Skills
 
-| Category | Technologies |
-|----------|-------------|
-| Languages | Python · R · SQL · Julia |
-| ML / AI | scikit-learn · PyTorch · LangChain · Hugging Face |
-| Data engineering | dbt · Airflow · Spark |
-| Cloud | AWS · GCP |
-| Tools | Git · Docker · Quarto |
+| Category | Details |
+|----------|---------|
+| **Programming** | Python (primary) · R · SQL · C/C++ · Bash |
+| **AI, NLP & ML** | LLMs (OpenAI, HuggingFace) · BERTopic · TF-IDF · spaCy · NLTK · semantic search · classification · clustering · random forests · SVMs |
+| **Life Sciences & Bioinformatics** | scRNA-seq · ChIP-seq · genome alignment · molecular simulations · omics data integration · biomedical text mining |
+| **Data Engineering & DevOps** | ETL pipelines · PostgreSQL · Mage AI · Docker · GitHub Actions · Git · HPC (SLURM, PBS) |
+| **Visualisation & Reporting** | Matplotlib · Plotly · ggplot2 · Apache Superset · Google Looker Studio |
 
 ---
 
-## Publications
+## Selected publications
 
-*[List key publications, or link to your Google Scholar / ORCID profile]*
+- Theoretical principles of transcription factor traffic on folded chromatin,
+  *Nature Communications* (2018)
+- The Physics of Epigenetics, *Reviews of Modern Physics* (2016)
+- Theory and Simulations of Toroidal and Rod-Like Structures in DNA Condensation,
+  *J. Chem. Phys.* (2015)
+
+---
+
+## Selected projects
+
+- **[sc_hiv](https://github.com/rcortini/sc_hiv)** (R, Python) — End-to-end analysis of
+  single-cell RNA-seq data from cell lines expressing HIV proteins: gene expression
+  quantification, clustering, differential expression, and correlation with HIV integration
+  locus.
+- **[VocTagger](https://github.com/rcortini/VocTagger)** (Python) — High-performance NLP
+  library for entity extraction and thematic mapping in large scientific corpora (spaCy,
+  multiprocessing); used to classify 30,000+ Horizon 2020 projects against UN SDGs.
+- **[sbs_tracers](https://github.com/rcortini/sbs_tracers)** (Python) — Scalable simulation
+  and analysis pipeline for coarse-grained models of DNA–protein interactions on HPC
+  clusters; published in *Nature Communications*.
+
+---
+
+## Additional
+
+**Languages:** Italian (native) · English, Spanish, Catalan, French (full professional proficiency)
+
+**Training:** Professional trainer at The Paper Mill (2018–2019) — workshops on scientific
+communication for PhD students at ICTA and IDIBAPS, Barcelona
