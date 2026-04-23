@@ -1,47 +1,5 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Ruggero Cortini’s personal website",
-    "section": "",
-    "text": "Ruggero\nData scientist with a background in biophysics and consulting.\nI enjoy working at the intersection of:"
-  },
-  {
-    "objectID": "index.html#current-interests",
-    "href": "index.html#current-interests",
-    "title": "Ruggero Cortini’s personal website",
-    "section": "Current interests",
-    "text": "Current interests\n\nMachine learning\nData pipelines\nAI agents\nIoT and robotics\nMusic, always\nPhotography"
-  },
-  {
-    "objectID": "index.html#selected-projects",
-    "href": "index.html#selected-projects",
-    "title": "Ruggero Cortini",
-    "section": "Selected projects",
-    "text": "Selected projects\n\nOpen Access status of publications in time — tracking how open-access publishing practices have evolved over time"
-  },
-  {
-    "objectID": "oa_time.html",
-    "href": "oa_time.html",
-    "title": "Open Access status of publications in time",
-    "section": "",
-    "text": "Open Access status of publications in time\nAs an ex-researcher and ex-consultant in the field of Higher Education and Research, I have been interested for a long time in publications practices."
-  },
-  {
-    "objectID": "assets/OA_time.html",
-    "href": "assets/OA_time.html",
-    "title": "Open Access status in time",
-    "section": "",
-    "text": "# libraries and imports\nimport sys\nimport requests\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nplt.style.use('../matplotlib.mplstyle')\n\nIn this study, we will get data from OpenAlex to extract data on how the Open Access status of publications has evolved in the past 10 years.\n\n# first, we define a handy function that will help us perform queries to the OpenAlex APIs.\ndef send_query(url, params, print_query=False):\n\n        # perform the request using the specified URL and parameters\n        r = requests.get(url, params)\n\n        if print_query:\n            print(r.request.url)\n\n        # check the status code of the request\n        if r.status_code != 200:\n\n            if r.status_code == 414:\n                raise ValueError(\"\"\"API error: {}\"\"\".format(r.reason))\n            else:\n                import ast\n                err = ast.literal_eval(r.text)\n                raise ValueError(\"\"\"API error:\\n\\tERROR  :  {error}\\n\\tMESSAGE:  {message}\"\"\".format(**err))\n        else:\n\n            # if there is no error return the JSON object for the results\n            return r.json()\n\n\n# then, we obtain the data, starting from MIN_YEAR and ending at MAX_YEAR, both included\nMIN_YEAR = 2015\nMAX_YEAR = 2025\nOA_API_URL = 'https://api.openalex.org'\noa_status_year = {}\nfor year in range(MIN_YEAR, MAX_YEAR+1):\n    # build the URL for the request\n    URL = f'{OA_API_URL}/works'\n    tmp = send_query(\n        URL,\n        params={'filter':f'type:article,publication_year:{year}', 'group_by':'oa_status'})['group_by']\n    oa_status_year[year] = pd.DataFrame(tmp).set_index('key')['count'].rename('npapers')\n\n\noa_status_year = pd.DataFrame(oa_status_year)\noa_status_year.sum()\n\n2015    7207568\n2016    7246654\n2017    6853936\n2018    6810353\n2019    7087018\n2020    7227151\n2021    6644701\n2022    6043447\n2023    6322328\n2024    6655393\n2025    7691611\ndtype: int64\n\n\n\n# prepare data\nplot_df = (oa_status_year/1e6).T\norder_status = plot_df.sum(axis=0).sort_values(ascending=False).index\nplot_df = plot_df[order_status]\n\n# init figure\nfig, ax = plt.subplots(figsize=(7,3.5))\n\n# color mapping\ncolors = {\n    'closed':'red',\n    'gold':'xkcd:gold',\n    'bronze':'xkcd:bronze',\n    'green':'green',\n    'hybrid':'xkcd:light blue',\n    'diamond':'xkcd:emerald'\n}\n\nfor col in plot_df.columns:\n    plot_df[col].plot(\n        color=colors[col],\n        linewidth=3,\n        label=col.capitalize(),\n        ax=ax\n    )\n\nax.set_xlabel('Year')\nax.set_ylabel('Number of publications (M)')\n\n# legend\nleg = ax.legend(title='', ncols=6, loc='lower left', bbox_to_anchor=(0,1), handlelength=0.3, columnspacing=0.8)\nfor legobj in leg.legend_handles:\n    legobj.set_linewidth(7.0)\n\nax.set_title('Evolution of number of publications per year by Open Access status', loc='left', pad=30, fontsize=12, fontweight='bold')\nax.grid(axis='y', linestyle='--', linewidth=0.5)\nax.text(2014.5, -1., \"Source: OpenAlex\\nData visualization by Ruggero Cortini\", color='xkcd:dark grey',fontsize=8)\n\nfig.savefig('n_year.png', dpi=600, bbox_inches='tight')"
-  },
-  {
     "objectID": "cv.html",
     "href": "cv.html",
     "title": "Curriculum Vitae",
@@ -49,18 +7,18 @@
     "text": "Download PDF"
   },
   {
-    "objectID": "cv.html#ruggero-cortini",
-    "href": "cv.html#ruggero-cortini",
+    "objectID": "cv.html#ruggero-cortini-phd",
+    "href": "cv.html#ruggero-cortini-phd",
     "title": "Curriculum Vitae",
-    "section": "Ruggero Cortini",
-    "text": "Ruggero Cortini\nData Scientist · Biophysicist · Consultant ruggero.cortini@gmail.com"
+    "section": "Ruggero Cortini, PhD",
+    "text": "Ruggero Cortini, PhD\nData Scientist · Computational Biology & Bioinformatics · NLP for Life Sciences\nruggero.cortini@gmail.com · +34 652 02 65 67 · Barcelona, Spain linkedin.com/in/ruggerocortini · github.com/rcortini"
   },
   {
-    "objectID": "cv.html#summary",
-    "href": "cv.html#summary",
+    "objectID": "cv.html#profile",
+    "href": "cv.html#profile",
     "title": "Curriculum Vitae",
-    "section": "Summary",
-    "text": "Summary\n\nData scientist and consultant with a PhD in biophysics and experience spanning academic research, management consulting, and applied ML engineering. Specialised in translating complex scientific and business problems into robust data solutions for pharma and biotech organisations."
+    "section": "Profile",
+    "text": "Profile\nData scientist and consultant with 5+ years of experience applying NLP, machine learning, and advanced analytics to life sciences and biomedical research challenges. Built and delivered scalable pipelines for mining scientific literature, patents, and clinical trial data at scale. Deep domain expertise in computational biology and biophysics (PhD from Imperial College London, postdoctoral research at CRG Barcelona), with hands-on experience analysing omics datasets (single-cell RNA-seq, ChIP-seq), molecular simulations, and heterogeneous biomedical data sources. Proven track record of end-to-end consulting project delivery for international clients, translating complex scientific data into actionable insights through dashboards, visualisations, and evidence-based reports. Experienced in client engagement, cross-functional team leadership, and mentoring."
   },
   {
     "objectID": "cv.html#experience",
@@ -84,11 +42,25 @@
     "text": "Skills\n\n\n\n\n\n\n\nCategory\nDetails\n\n\n\n\nProgramming\nPython (primary) · R · SQL · C/C++ · Bash\n\n\nAI, NLP & ML\nLLMs (OpenAI, HuggingFace) · BERTopic · TF-IDF · spaCy · NLTK · semantic search · classification · clustering · random forests · SVMs\n\n\nLife Sciences & Bioinformatics\nscRNA-seq · ChIP-seq · genome alignment · molecular simulations · omics data integration · biomedical text mining\n\n\nData Engineering & DevOps\nETL pipelines · PostgreSQL · Mage AI · Docker · GitHub Actions · Git · HPC (SLURM, PBS)\n\n\nVisualisation & Reporting\nMatplotlib · Plotly · ggplot2 · Apache Superset · Google Looker Studio"
   },
   {
-    "objectID": "cv.html#publications",
-    "href": "cv.html#publications",
+    "objectID": "cv.html#selected-publications",
+    "href": "cv.html#selected-publications",
     "title": "Curriculum Vitae",
-    "section": "Publications",
-    "text": "Publications\n[List key publications, or link to your Google Scholar / ORCID profile]"
+    "section": "Selected publications",
+    "text": "Selected publications\n\nTheoretical principles of transcription factor traffic on folded chromatin, Nature Communications (2018)\nThe Physics of Epigenetics, Reviews of Modern Physics (2016)\nTheory and Simulations of Toroidal and Rod-Like Structures in DNA Condensation, J. Chem. Phys. (2015)"
+  },
+  {
+    "objectID": "cv.html#selected-projects",
+    "href": "cv.html#selected-projects",
+    "title": "Curriculum Vitae",
+    "section": "Selected projects",
+    "text": "Selected projects\n\nsc_hiv (R, Python) — End-to-end analysis of single-cell RNA-seq data from cell lines expressing HIV proteins: gene expression quantification, clustering, differential expression, and correlation with HIV integration locus.\nVocTagger (Python) — High-performance NLP library for entity extraction and thematic mapping in large scientific corpora (spaCy, multiprocessing); used to classify 30,000+ Horizon 2020 projects against UN SDGs.\nsbs_tracers (Python) — Scalable simulation and analysis pipeline for coarse-grained models of DNA–protein interactions on HPC clusters; published in Nature Communications."
+  },
+  {
+    "objectID": "cv.html#additional",
+    "href": "cv.html#additional",
+    "title": "Curriculum Vitae",
+    "section": "Additional",
+    "text": "Additional\nLanguages: Italian (native) · English, Spanish, Catalan, French (full professional proficiency)\nTraining: Professional trainer at The Paper Mill (2018–2019) — workshops on scientific communication for PhD students at ICTA and IDIBAPS, Barcelona"
   },
   {
     "objectID": "about.html#background",
@@ -119,95 +91,11 @@
     "text": "Skills\nLanguages: Python · R · SQL · C/C++ ML / AI: scikit-learn · PyTorch · Hugging Face Data engineering: dbt · Airflow · Spark · PostgreSQL · Mage AI Cloud: AWS · GCP Tools: Git · Docker · Quarto\n\nOutside work I enjoy photography, fantasy cartography, and tabletop role-playing games."
   },
   {
-    "objectID": "projects/index.html",
-    "href": "projects/index.html",
-    "title": "Projects",
-    "section": "",
-    "text": "Population density and building age in Barcelona\n\n\n\ndata visualization\n\ngeospatial\n\nurban data\n\nPython\n\n\n\nA bivariate choropleth analysis of how building age and population density interact across Barcelona’s 1,068 census sections.\n\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\nOpen Access status of publications in time\n\n\n\ndata science\n\nbibliometrics\n\nopen access\n\n\n\nTracking how the open-access status of scientific publications has evolved over time.\n\n\n\nDec 2, 2025\n\n\n\n\n\n\n\n\n\n\nIndustrial water consumption in Catalonia\n\n\n\ndata visualization\n\ngeospatial\n\nopen data\n\nPython\n\n\n\nCombining three Catalan open data sources to show how industrial water use is concentrated in the Barcelona and Tarragona comarques.\n\n\n\nJun 1, 2025\n\n\n\n\n\n\n\n\n\n\nEuropean University Alliances Observatory\n\n\n\ndata engineering\n\nETL\n\nconsulting\n\nhigher education\n\n\n\nRedesigned a 10-pipeline Mage AI backend integrating 6 international data sources to power an interactive research analytics platform for European universities.\n\n\n\nFeb 1, 2025\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "personal/coc/index.html",
-    "href": "personal/coc/index.html",
-    "title": "Call of Cthulhu",
-    "section": "",
-    "text": "Download scenario PDF"
-  },
-  {
-    "objectID": "personal/coc/index.html#about-this-campaign",
-    "href": "personal/coc/index.html#about-this-campaign",
-    "title": "Call of Cthulhu",
-    "section": "About this campaign",
-    "text": "About this campaign\n\n[Write an introduction to your Call of Cthulhu campaign — setting, era, tone, and what makes it distinctive.]"
-  },
-  {
-    "objectID": "personal/coc/index.html#background-lore",
-    "href": "personal/coc/index.html#background-lore",
-    "title": "Call of Cthulhu",
-    "section": "Background & lore",
-    "text": "Background & lore\n[Campaign background: the Mythos threat, key NPCs, the investigators’ world.]"
-  },
-  {
-    "objectID": "personal/coc/index.html#sessions",
-    "href": "personal/coc/index.html#sessions",
-    "title": "Call of Cthulhu",
-    "section": "Sessions",
-    "text": "Sessions\n[Optional: session reports, a play log, or handouts for players.]"
-  },
-  {
-    "objectID": "index.html#what-i-do",
-    "href": "index.html#what-i-do",
-    "title": "Ruggero Cortini",
-    "section": "What I do",
-    "text": "What I do\n\nApplied ML & AI systems — end-to-end pipelines, LLM applications, agent frameworks\nData science consulting — translating pharma/biotech problems into analytical solutions\nScientific computing — biophysics-informed modelling, genomics data analysis\nIoT & robotics — embedded systems, sensor data, edge ML"
-  },
-  {
-    "objectID": "personal/maps/index.html",
-    "href": "personal/maps/index.html",
-    "title": "Fantasy Maps",
-    "section": "",
-    "text": "A small showcase of fantasy map making. All maps were drawn by me with Inkarnate\n\n\n\n\n\n\nThe world of Yara, my fantasy creation, is a small-ish continent surrounded by misterious impenetrable lands and oceans.\n\n\n\n\n\n\n\nThe Princedom of Owens is one of the most fertile and rich parts of the Kingdom of Lorya.\n\n\n\n\n\n\n\nKalin: pearl of the North. The city was built in ancient times around seven towers, and has never in history been conquered by force."
-  },
-  {
-    "objectID": "personal/photography/index.html",
-    "href": "personal/photography/index.html",
-    "title": "Photography",
-    "section": "",
-    "text": "Note\n\n\n\nNote — These pictures were taken with a Nikon D750 digital camera.\n\n\nThis gallery showcases some pictures I took in different times and different places. Enjoy!\n\n\n\n\n\n\n\n\n\nFigure 1: Easter in the small village of Sabiñán (Spain) is full of rituals and traditions. On Good Friday there is the traditional procession of the Via Crucis\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: My first daughter was born in December 2020, when COVID was in full swing. When her grandparents came to visit her for the first time, we had them look at her from behind a glass door.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: The Cócora Valley in Colombia is well known for its luxurious vegetation and its coffee plantations. A stunning sunset blessed our visit to a lovely coffee farm.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: The feminist march of March 8th 2018 in Barcelona marked a turning point in the public discourse around women’s rights. “Prou” means “Enough” in Catalan."
-  },
-  {
     "objectID": "projects/oa_time.html",
     "href": "projects/oa_time.html",
     "title": "Open Access status of publications in time",
     "section": "",
     "text": "As an ex-researcher and ex-consultant in the field of Higher Education and Research, I have been interested for a long time in publication practices. OpenAlex provides a free, open API to query bibliographic data for millions of scholarly works. I used it to track how the Open Access status of journal articles has evolved from 2015 to 2025."
-  },
-  {
-    "objectID": "STATE.html",
-    "href": "STATE.html",
-    "title": "Site Restructure — State Summary",
-    "section": "",
-    "text": "Last updated: 2026-04-23\n\n\n\n\n\n\n\n\n\n\n\nFile\nChange\n\n\n\n\n_quarto.yml\nNew navbar (Home, About, Projects, Personal dropdown, CV); removed brand theme layer\n\n\nindex.qmd\nRewritten as professional landing page with CTA buttons and “What I do” section\n\n\nabout.qmd\nStructured bio with placeholder tables for education, skills\n\n\nstyles.css\nAdded minimal CSS: navbar padding, gallery spacing, map caption styling\n\n\n\n\n\n\n\n\n\n\n\n\n\nFile\nPurpose\n\n\n\n\ncv.qmd\nStyled HTML CV with “Download PDF” button; placeholder sections\n\n\nprojects/index.qmd\nQuarto listing page — auto-generates cards from projects/*.qmd\n\n\nprojects/oa_time.qmd\nMoved from root; added YAML front matter (title, date, description, categories)\n\n\npersonal/photography/index.qmd\nLightbox gallery template (placeholder, commented-out example)\n\n\npersonal/maps/index.qmd\nLarge captioned images template (placeholder, commented-out example)\n\n\npersonal/coc/index.qmd\nText + PDF download button (placeholder content)\n\n\n\n\n\n\n\n\n\n\n\nCV content — fill in Experience and Education sections in cv.qmd\nCV PDF — export your CV as PDF, save to assets/cv.pdf\nAbout narrative — replace placeholder text in about.qmd with your own bio\nHome tagline — review and personalise the one-liner in index.qmd\noa_time.qmd content — the project card renders but the page body is mostly placeholder; add the actual analysis\n\n\n\n\n\nProjects — add more *.qmd files to projects/ (each needs title, date, description, categories in its YAML front matter to show as a card)\nPhotography — add images to assets/photography/, then uncomment and populate the gallery template in personal/photography/index.qmd\nFantasy maps — add images to assets/maps/, then uncomment and populate personal/maps/index.qmd\nCall of Cthulhu — write campaign text in personal/coc/index.qmd; add PDF to assets/coc/campaign.pdf\n\n\n\n\n\nDelete root-level oa_time.qmd once you confirm projects/oa_time.qmd renders correctly (the root file is superseded but not yet deleted)\nVerify quarto render completes without errors after the restructure\nPush docs/ to GitHub Pages\n\n\n\n\n\n\n\nTheme: cosmo — clean, Bootstrap 5 base, recruiter-readable; brand layer removed (no _brand.yml existed)\nProjects listing: auto-generated via Quarto listing, grid layout sorted by date; add front matter to any .qmd in projects/ to get a card\nPhotography: uses Quarto’s built-in lightbox: true — no extension required\nCV: styled HTML page at cv.qmd + download button pointing to assets/cv.pdf\nPersonal pages: one dropdown click deeper from nav — visible but not leading"
-  },
-  {
-    "objectID": "STATE.html#what-was-done",
-    "href": "STATE.html#what-was-done",
-    "title": "Site Restructure — State Summary",
-    "section": "",
-    "text": "File\nChange\n\n\n\n\n_quarto.yml\nNew navbar (Home, About, Projects, Personal dropdown, CV); removed brand theme layer\n\n\nindex.qmd\nRewritten as professional landing page with CTA buttons and “What I do” section\n\n\nabout.qmd\nStructured bio with placeholder tables for education, skills\n\n\nstyles.css\nAdded minimal CSS: navbar padding, gallery spacing, map caption styling\n\n\n\n\n\n\n\n\n\n\n\n\n\nFile\nPurpose\n\n\n\n\ncv.qmd\nStyled HTML CV with “Download PDF” button; placeholder sections\n\n\nprojects/index.qmd\nQuarto listing page — auto-generates cards from projects/*.qmd\n\n\nprojects/oa_time.qmd\nMoved from root; added YAML front matter (title, date, description, categories)\n\n\npersonal/photography/index.qmd\nLightbox gallery template (placeholder, commented-out example)\n\n\npersonal/maps/index.qmd\nLarge captioned images template (placeholder, commented-out example)\n\n\npersonal/coc/index.qmd\nText + PDF download button (placeholder content)"
-  },
-  {
-    "objectID": "STATE.html#whats-pending-content-you-need-to-provide",
-    "href": "STATE.html#whats-pending-content-you-need-to-provide",
-    "title": "Site Restructure — State Summary",
-    "section": "",
-    "text": "CV content — fill in Experience and Education sections in cv.qmd\nCV PDF — export your CV as PDF, save to assets/cv.pdf\nAbout narrative — replace placeholder text in about.qmd with your own bio\nHome tagline — review and personalise the one-liner in index.qmd\noa_time.qmd content — the project card renders but the page body is mostly placeholder; add the actual analysis\n\n\n\n\n\nProjects — add more *.qmd files to projects/ (each needs title, date, description, categories in its YAML front matter to show as a card)\nPhotography — add images to assets/photography/, then uncomment and populate the gallery template in personal/photography/index.qmd\nFantasy maps — add images to assets/maps/, then uncomment and populate personal/maps/index.qmd\nCall of Cthulhu — write campaign text in personal/coc/index.qmd; add PDF to assets/coc/campaign.pdf\n\n\n\n\n\nDelete root-level oa_time.qmd once you confirm projects/oa_time.qmd renders correctly (the root file is superseded but not yet deleted)\nVerify quarto render completes without errors after the restructure\nPush docs/ to GitHub Pages"
-  },
-  {
-    "objectID": "STATE.html#decisions-made-for-future-reference",
-    "href": "STATE.html#decisions-made-for-future-reference",
-    "title": "Site Restructure — State Summary",
-    "section": "",
-    "text": "Theme: cosmo — clean, Bootstrap 5 base, recruiter-readable; brand layer removed (no _brand.yml existed)\nProjects listing: auto-generated via Quarto listing, grid layout sorted by date; add front matter to any .qmd in projects/ to get a card\nPhotography: uses Quarto’s built-in lightbox: true — no extension required\nCV: styled HTML page at cv.qmd + download button pointing to assets/cv.pdf\nPersonal pages: one dropdown click deeper from nav — visible but not leading"
   },
   {
     "objectID": "projects/oa_time.html#result",
@@ -224,53 +112,25 @@
     "text": "Analysis\nThe full analysis — data retrieval from the OpenAlex API, processing, and visualisation — is in the notebook that can be downloaded here."
   },
   {
-    "objectID": "projects/barcelona_edificacions.html",
-    "href": "projects/barcelona_edificacions.html",
-    "title": "Population density and building age in Barcelona",
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects",
     "section": "",
-    "text": "Barcelona’s urban form carries its history in its buildings. The historic core is dense and old; the outer ring is newer and more spread out — but how clearly does that pattern hold at the census-section level? This project combines building-age data from the Cadastre with population data from the municipal census, joining them onto the official geospatial boundaries to produce a bivariate map.\nData sourced from the Ajuntament de Barcelona Open Data Portal."
+    "text": "Population density and building age in Barcelona\n\n\n\ndata visualization\n\ngeospatial\n\nurban data\n\nPython\n\n\n\nA bivariate choropleth analysis of how building age and population density interact across Barcelona’s 1,068 census sections.\n\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\nOpen Access status of publications in time\n\n\n\ndata science\n\nbibliometrics\n\nopen access\n\n\n\nTracking how the open-access status of scientific publications has evolved over time.\n\n\n\nDec 2, 2025\n\n\n\n\n\n\n\n\n\n\nIndustrial water consumption in Catalonia\n\n\n\ndata visualization\n\ngeospatial\n\nopen data\n\nPython\n\n\n\nCombining three Catalan open data sources to show how industrial water use is concentrated in the Barcelona and Tarragona comarques.\n\n\n\nJun 1, 2025\n\n\n\n\n\n\n\n\n\n\nEuropean University Alliances Observatory\n\n\n\ndata engineering\n\nETL\n\nconsulting\n\nhigher education\n\n\n\nRedesigned a 10-pipeline Mage AI backend integrating 6 international data sources to power an interactive research analytics platform for European universities.\n\n\n\nFeb 1, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "projects/barcelona_edificacions.html#result",
-    "href": "projects/barcelona_edificacions.html#result",
-    "title": "Population density and building age in Barcelona",
-    "section": "Result",
-    "text": "Result\nThe bivariate colour scheme encodes two variables simultaneously: building age (x-axis of the legend) and population density (y-axis). Dark blue-purple = old and dense; light grey = new and sparse.\n\n\n\nPopulation density and mean building age across Barcelona’s census sections\n\n\nInstead of looking at a single variable, I tried to combine two: population density and the average age of buildings across Barcelona.\nWhat I found interesting is that looking at them together tells a more nuanced story:\n\nIn the historic core there is a pocket of high density and high building age in Raval, less so in Ciutat Vella\nBut there are also pockets of relatively old buildings outside the very center, with high population density. Poble Sec is particularly striking.\nThere is also a stark contrast between the Eixample Esquerra and Eixample Dreta\nAnd some dense areas that are not particularly old, hinting at more recent urban development\n\nSo rather than a simple “old center vs new outskirts” narrative, the city feels more heterogeneous, shaped by different waves of growth and transformation."
+    "objectID": "personal/photography/index.html",
+    "href": "personal/photography/index.html",
+    "title": "Photography",
+    "section": "",
+    "text": "Note\n\n\n\nNote — These pictures were taken with a Nikon D750 digital camera.\n\n\nThis gallery showcases some pictures I took in different times and different places. Enjoy!\n\n\n\n\n\n\n\n\n\nFigure 1: Easter in the small village of Sabiñán (Spain) is full of rituals and traditions. On Good Friday there is the traditional procession of the Via Crucis\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: My first daughter was born in December 2020, when COVID was in full swing. When her grandparents came to visit her for the first time, we had them look at her from behind a glass door.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: The Cócora Valley in Colombia is well known for its luxurious vegetation and its coffee plantations. A stunning sunset blessed our visit to a lovely coffee farm.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: The feminist march of March 8th 2018 in Barcelona marked a turning point in the public discourse around women’s rights. “Prou” means “Enough” in Catalan."
   },
   {
-    "objectID": "projects/barcelona_edificacions.html#interactive-map",
-    "href": "projects/barcelona_edificacions.html#interactive-map",
-    "title": "Population density and building age in Barcelona",
-    "section": "Interactive map",
-    "text": "Interactive map\nThe interactive version below lets you zoom and hover over individual census sections to inspect the mean building age directly.\n\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\nSource: Density of population and building ages in Barcelona"
-  },
-  {
-    "objectID": "projects/barcelona_edificacions.html#full-analysis",
-    "href": "projects/barcelona_edificacions.html#full-analysis",
-    "title": "Population density and building age in Barcelona",
-    "section": "Full analysis",
-    "text": "Full analysis\nThe complete data pipeline — loading five geospatial datasets, merging them, computing quantile-based bivariate classes, and producing all visualisations — is in the notebook that can be downloaded here."
-  },
-  {
-    "objectID": "projects/barcelona_edificacions.html#libraries",
-    "href": "projects/barcelona_edificacions.html#libraries",
-    "title": "Population density and building age in Barcelona",
-    "section": "Libraries",
-    "text": "Libraries"
-  },
-  {
-    "objectID": "projects/barcelona_edificacions.html#data",
-    "href": "projects/barcelona_edificacions.html#data",
-    "title": "Population density and building age in Barcelona",
-    "section": "Data",
-    "text": "Data\nData is obtained from the Open Data Portal of the Ajuntament de Barcelona, and from a curated GitHub repository containing the geographical information on the partitioning of the city in “Districtes”, “Barris”, and “Seccions Censals”.\n\n\n\n\n\n\n\n\n\nSEC_CENS\nBARRI\nDISTRICTE\nAREA\ngeometry\n\n\n\n\n0\n1\n1\n1\n226854.317\nPOLYGON ((2.17575 41.37827, 2.17577 41.37823, ...\n\n\n1\n2\n1\n1\n37756.212\nPOLYGON ((2.1751 41.37905, 2.17543 41.37877, 2...\n\n\n2\n3\n1\n1\n40992.088\nPOLYGON ((2.1722 41.37692, 2.17265 41.37681, 2...\n\n\n3\n4\n1\n1\n96760.068\nPOLYGON ((2.16962 41.37847, 2.17043 41.37779, ...\n\n\n4\n5\n1\n1\n60542.195\nPOLYGON ((2.17366 41.38071, 2.17407 41.38024, ...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBARRI\nDISTRICTE\nNOM_BARRI\ngeometry\n\n\n\n\n0\n1\n1\nel Raval\nPOLYGON ((2.16471 41.38593, 2.16936 41.38554, ...\n\n\n1\n2\n1\nel Barri Gòtic\nPOLYGON ((2.17701 41.38525, 2.17873 41.38396, ...\n\n\n2\n3\n1\nla Barceloneta\nPOLYGON ((2.19623 41.38745, 2.19631 41.38745, ...\n\n\n3\n7\n2\nla Dreta de l'Eixample\nPOLYGON ((2.17091 41.40182, 2.17221 41.40083, ...\n\n\n4\n8\n2\nl'Antiga Esquerra de l'Eixample\nPOLYGON ((2.15736 41.39331, 2.15847 41.39245, ...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDISTRICTE\nNOM_DISTRICTE\ngeometry\n\n\n\n\n0\n1\nCiutat Vella\nPOLYGON ((2.18345 41.39061, 2.18459 41.38976, ...\n\n\n1\n2\nEixample\nPOLYGON ((2.1869 41.40165, 2.18689 41.40087, 2...\n\n\n2\n3\nSants-Montjuïc\nMULTIPOLYGON (((2.14824 41.37623, 2.14896 41.3...\n\n\n3\n4\nLes Corts\nPOLYGON ((2.10342 41.4011, 2.10352 41.40109, 2...\n\n\n4\n5\nSarrià-Sant Gervasi\nMULTIPOLYGON (((2.07313 41.43522, 2.07319 41.4...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSEC_CENS\nBARRI\nDISTRICTE\nEdat_mitjana\n\n\n\n\n0\n1\n1\n1\n100.4\n\n\n1\n2\n1\n1\n108.7\n\n\n2\n3\n1\n1\n110.8\n\n\n3\n4\n1\n1\n95.4\n\n\n4\n5\n1\n1\n119.6\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDISTRICTE\nSEC_CENS\npopulation\n\n\n\n\n0\n1\n1\n1419\n\n\n1\n1\n2\n1345\n\n\n2\n1\n3\n3710\n\n\n3\n1\n4\n3092\n\n\n4\n1\n5\n2443\n\n\n\n\n\n\n\n\n\n&lt;class 'geopandas.geodataframe.GeoDataFrame'&gt;\nRangeIndex: 1068 entries, 0 to 1067\nData columns (total 8 columns):\n #   Column        Non-Null Count  Dtype   \n---  ------        --------------  -----   \n 0   SEC_CENS      1068 non-null   int64   \n 1   BARRI         1068 non-null   int64   \n 2   DISTRICTE     1068 non-null   int64   \n 3   AREA          1068 non-null   float64 \n 4   geometry      1068 non-null   geometry\n 5   Edat_mitjana  1055 non-null   float64 \n 6   population    1068 non-null   int64   \n 7   density       1068 non-null   float64 \ndtypes: float64(3), geometry(1), int64(4)\nmemory usage: 66.9 KB"
-  },
-  {
-    "objectID": "projects/barcelona_edificacions.html#plots",
-    "href": "projects/barcelona_edificacions.html#plots",
-    "title": "Population density and building age in Barcelona",
-    "section": "Plots",
-    "text": "Plots\n\nBivariate map\n\n\n\n\n\n\n\n\n\nSEC_CENS\nBARRI\nDISTRICTE\nAREA\ngeometry\nEdat_mitjana\npopulation\ndensity\nx_group\ny_group\nxy_group\n\n\n\n\n0\n1\n1\n1\n226854.317\nPOLYGON ((2.17575 41.37827, 2.17577 41.37823, ...\n100.4\n1419\n0.006255\n2\n0\n2-0\n\n\n1\n2\n1\n1\n37756.212\nPOLYGON ((2.1751 41.37905, 2.17543 41.37877, 2...\n108.7\n1345\n0.035623\n2\n1\n2-1\n\n\n2\n3\n1\n1\n40992.088\nPOLYGON ((2.1722 41.37692, 2.17265 41.37681, 2...\n110.8\n3710\n0.090505\n2\n2\n2-2\n\n\n3\n4\n1\n1\n96760.068\nPOLYGON ((2.16962 41.37847, 2.17043 41.37779, ...\n95.4\n3092\n0.031955\n2\n0\n2-0\n\n\n4\n5\n1\n1\n60542.195\nPOLYGON ((2.17366 41.38071, 2.17407 41.38024, ...\n119.6\n2443\n0.040352\n2\n1\n2-1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nText(0, 0.5, 'Mean density of population (hab/m²)')\n\n\n\n\n\n\n\n\n\n\n\nText(0, 0.5, 'Mean density of population (hab/m²)')\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBARRI\narea\nEdat_mitjana\npopulation\ndensity\nDISTRICTE\nNOM_BARRI\nNOM_DISTRICTE\n\n\n\n\n0\n1\n1100286.139\n119.895238\n49917\n0.045367\n1\nel Raval\nCiutat Vella\n\n\n1\n2\n815593.939\n131.933333\n27878\n0.034181\n1\nel Barri Gòtic\nCiutat Vella\n\n\n2\n3\n1179381.956\n92.836364\n14749\n0.012506\n1\nla Barceloneta\nCiutat Vella\n\n\n3\n4\n1109668.776\n118.576923\n22767\n0.020517\n1\nSant Pere, Santa Caterina i la Ribera\nCiutat Vella\n\n\n4\n5\n929355.787\n70.425000\n36621\n0.039405\n2\nel Fort Pienc\nEixample\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n68\n69\n1226952.564\n33.271429\n13691\n0.011159\n10\nDiagonal Mar i el Front Marítim del Poblenou\nSant Martí\n\n\n69\n70\n1208701.464\n54.375000\n30724\n0.025419\n10\nel Besòs i el Maresme\nSant Martí\n\n\n70\n71\n1085739.627\n53.480000\n21902\n0.020172\n10\nProvençals del Poblenou\nSant Martí\n\n\n71\n72\n733989.017\n61.487500\n26976\n0.036753\n10\nSant Martí de Provençals\nSant Martí\n\n\n72\n73\n1129978.396\n54.875000\n31173\n0.027587\n10\nla Verneda i la Pau\nSant Martí\n\n\n\n\n73 rows × 8 columns\n\n\n\n\n\nText(0, 0.5, 'Mean density of population (hab/m²)')\n\n\n\n\n\n\n\n\n\n\n\nText(120, 250, 'Mean = 69.4')\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBARRI\nNOM_BARRI\nDISTRICTE\ngeometry\n\n\n\n\n0\n1\nel Raval\n1\nPOLYGON ((2.16471 41.38593, 2.16936 41.38554, ...\n\n\n1\n2\nel Barri Gòtic\n1\nPOLYGON ((2.17701 41.38525, 2.17873 41.38396, ...\n\n\n2\n3\nla Barceloneta\n1\nPOLYGON ((2.19623 41.38745, 2.19631 41.38745, ...\n\n\n3\n7\nla Dreta de l'Eixample\n2\nPOLYGON ((2.17091 41.40182, 2.17221 41.40083, ...\n\n\n4\n8\nl'Antiga Esquerra de l'Eixample\n2\nPOLYGON ((2.15736 41.39331, 2.15847 41.39245, ...\n\n\n...\n...\n...\n...\n...\n\n\n68\n50\nles Roquetes\n8\nPOLYGON ((2.18315 41.45279, 2.18312 41.45271, ...\n\n\n69\n53\nla Trinitat Nova\n8\nPOLYGON ((2.18872 41.45504, 2.18878 41.45484, ...\n\n\n70\n54\nTorre Baró\n8\nPOLYGON ((2.18137 41.46144, 2.18173 41.46103, ...\n\n\n71\n55\nCiutat Meridiana\n8\nPOLYGON ((2.17959 41.46406, 2.17998 41.46357, ...\n\n\n72\n56\nVallbona\n8\nPOLYGON ((2.18407 41.4683, 2.18417 41.46828, 2...\n\n\n\n\n73 rows × 4 columns\n\n\n\n\n\n\n\n\n\n\n\n\nid\nSEC_CENS\nBARRI\nDISTRICTE\nAREA\ngeometry_x\nEdat_mitjana\nNOM_BARRI\ngeometry_y\n\n\n\n\n0\n0\n1\n1\n1\n226854.317\nPOLYGON ((2.17575 41.37827, 2.17577 41.37823, ...\n100.4\nel Raval\nPOLYGON ((2.16471 41.38593, 2.16936 41.38554, ...\n\n\n1\n1\n2\n1\n1\n37756.212\nPOLYGON ((2.1751 41.37905, 2.17543 41.37877, 2...\n108.7\nel Raval\nPOLYGON ((2.16471 41.38593, 2.16936 41.38554, ...\n\n\n2\n2\n3\n1\n1\n40992.088\nPOLYGON ((2.1722 41.37692, 2.17265 41.37681, 2...\n110.8\nel Raval\nPOLYGON ((2.16471 41.38593, 2.16936 41.38554, ...\n\n\n3\n3\n4\n1\n1\n96760.068\nPOLYGON ((2.16962 41.37847, 2.17043 41.37779, ...\n95.4\nel Raval\nPOLYGON ((2.16471 41.38593, 2.16936 41.38554, ...\n\n\n4\n4\n5\n1\n1\n60542.195\nPOLYGON ((2.17366 41.38071, 2.17407 41.38024, ...\n119.6\nel Raval\nPOLYGON ((2.16471 41.38593, 2.16936 41.38554, ...\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n1050\n1050\n16\n19\n4\n26533.586\nPOLYGON ((2.14156 41.38653, 2.14264 41.38562, ...\n55.9\nles Corts\nPOLYGON ((2.13747 41.39144, 2.13877 41.39124, ...\n\n\n1051\n1051\n90\n27\n5\n52964.068\nPOLYGON ((2.14645 41.40951, 2.14719 41.40859, ...\n68.9\nel Putxet i el Farró\nPOLYGON ((2.14838 41.40699, 2.14848 41.4069, 2...\n\n\n1052\n1052\n91\n27\n5\n40719.053\nPOLYGON ((2.14315 41.41149, 2.14447 41.41138, ...\n66.5\nel Putxet i el Farró\nPOLYGON ((2.14838 41.40699, 2.14848 41.4069, 2...\n\n\n1053\n1053\n92\n27\n5\n162177.819\nPOLYGON ((2.14264 41.41083, 2.1427 41.41082, 2...\n63.2\nel Putxet i el Farró\nPOLYGON ((2.14838 41.40699, 2.14848 41.4069, 2...\n\n\n1054\n1054\n93\n27\n5\n28166.117\nPOLYGON ((2.13981 41.40682, 2.14038 41.40684, ...\n58.0\nel Putxet i el Farró\nPOLYGON ((2.14838 41.40699, 2.14848 41.4069, 2...\n\n\n\n\n1055 rows × 9 columns\n\n\n\n\n\nBARRI\n1     146.9\n2     173.5\n3     110.6\n4     134.1\n5      86.9\n      ...  \n69     49.3\n70     78.0\n71     70.4\n72    101.1\n73     86.9\nName: Edat_mitjana, Length: 73, dtype: float64"
+    "objectID": "personal/maps/index.html",
+    "href": "personal/maps/index.html",
+    "title": "Fantasy Maps",
+    "section": "",
+    "text": "A small showcase of fantasy map making. All maps were drawn by me with Inkarnate\n\n\n\n\n\n\nThe world of Yara, my fantasy creation, is a small-ish continent surrounded by misterious impenetrable lands and oceans.\n\n\n\n\n\n\n\nThe Princedom of Owens is one of the most fertile and rich parts of the Kingdom of Lorya.\n\n\n\n\n\n\n\nKalin: pearl of the North. The city was built in ancient times around seven towers, and has never in history been conquered by force.\n\n\n\n\n\n\n\nThe State of Kazam is not a particularly pleasant place to visit. The Isle of Faith with its volcano is not a friendly place."
   },
   {
     "objectID": "assets/barcelona_edificacions/map.html",
@@ -322,6 +182,69 @@
     "text": "Data visualizations\n\nIndustrial water consumption\n\n# prepare a data series for visualization. Show the cumulative distribution\ns = consumption_data.query('any == 2024').set_index(\"comarca_sane\").activitats_econ_miques_i.sort_values()\ncum_s = s.cumsum()/s.sum()\ncum_s.tail(10)\n\ncomarca_sane\nGIRONÈS              0.323280\nOSONA                0.354505\nSEGRIÀ               0.386755\nMARESME              0.420630\nSELVA                0.460057\nVALLÈS ORIENTAL      0.509066\nVALLÈS OCCIDENTAL    0.591534\nBAIX LLOBREGAT       0.683549\nBARCELONÈS           0.836494\nTARRAGONÈS           1.000000\nName: activitats_econ_miques_i, dtype: float64\n\n\n\nfig, ax = plt.subplots(figsize=(10,8))\n\n# 1. Normalize values\nnorm = mpl.colors.Normalize(\n    vmin=s.min(),\n    vmax=s.max()\n)\n\n# 2. Choose a colormap\ncmap = mpl.cm.Blues  # we'll discuss palettes below\n\n# 3. Map values to colors\ncolors = cmap(norm(s))\n\nplot_df = s / 1e6\nplot_df.plot(ax=ax, kind='barh', color=colors)\n\nax.set_ylabel(\"\")\nax.tick_params(axis='both', which='both', left=False, bottom=False)\nax.set_xlabel(\"\")\nax.set_xticklabels([])\nax.spines['left'].set_visible(False)\nax.spines['bottom'].set_visible(False)\n\nbbox = dict(ec=\"limegreen\", fc=\"xkcd:light blue\", alpha=0.2, pad=0.1)\nplt.setp(ax.get_yticklabels(), bbox=bbox, fontsize=8, fontweight='bold')\n\nfor i, val in enumerate(s.values):\n    ax.text(val/1e6+0.2, i-0.25, f'{val/1e6:.1f}', fontsize=8, color='xkcd:grey')\n\nha = 0.98\n\nax.text(\n    ha,\n    1.01,\n    \"Total industrial consumption of water, in millions of cubic meters\",\n    transform=ax.transAxes,\n    color='xkcd:dark grey',\n    fontsize=8,\n    style='italic',\n    ha='right'\n    )\n\nax.text(\n    ha,\n    0.02,\n    \"Source: Portal de Transparència de Catalunya\\nYear: 2024, Dataset ID: 2gws-ubmt\\nVisualization by Ruggero Cortini\",\n    transform=ax.transAxes,\n    color='xkcd:grey',\n    fontsize=8,\n    style='italic',\n    fontweight='medium',\n    ha='right'\n    )\n\nax.text(\n    ha,\n    0.85,\n    \"The top four administrative divisions account for\\nover half of the total industrial water consumption\",\n    transform=ax.transAxes,\n    color='xkcd:dark grey',\n    fontsize=10,\n    style='italic',\n    fontweight='medium',\n    ha='right'\n    )\n\nax.set_title(\n    \"Industrial water consumption in Catalonia is highly concentrated in Barcelona and Tarragona\",\n    pad=20,\n    fontweight='bold'\n)\n\n## MAP OF CATALONIA\n\n# These are in unitless percentages of the figure size. (0,0 is bottom left)\nleft, bottom, width, height = [0.25, 0.1, 0.7, 0.7]\nax2 = fig.add_axes([left, bottom, width, height])\n\n# prepare data to plot\nplot_df = gdf.query('any == 2024')\n\n# plot Cloropleth\nplot_df.plot(\n    ax=ax2,\n    column='activitats_econ_miques_i',\n    cmap=cmap\n)\n\n# plot contours of the Comarques\ncomarques.plot(\n    ax=ax2,\n    facecolor=\"none\",\n    edgecolor=\"xkcd:grey\",\n    linewidth=0.3\n)\n\nbarcelona_coords = [2.171474, 41.389160]\ngirona_coords = [2.819219, 41.986706]\ntarragona_coords = [1.245463, 41.116712]\nlleida_coords = [0.625974, 41.617497]\n\ncity_coords = {\n    'Barcelona' : barcelona_coords,\n    'Girona' : girona_coords,\n    'Tarragona' : tarragona_coords,\n    'Lleida' : lleida_coords\n}\n\nfor city, coords in city_coords.items():\n    ax2.scatter(coords[0], coords[1], color='k', s=50)\n    ax2.text(coords[0]+0.05, coords[1]-0.04, city, color='xkcd:dark gray', fontsize=10, fontweight='bold')\n\n# remove spines\nplt.axis('off')\n\nfig.savefig(\"industrial_consumption_viz.jpg\", bbox_inches='tight')\nplt.show()"
   },
   {
+    "objectID": "assets/OA_time.html",
+    "href": "assets/OA_time.html",
+    "title": "Open Access status in time",
+    "section": "",
+    "text": "# libraries and imports\nimport sys\nimport requests\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nplt.style.use('../matplotlib.mplstyle')\n\nIn this study, we will get data from OpenAlex to extract data on how the Open Access status of publications has evolved in the past 10 years.\n\n# first, we define a handy function that will help us perform queries to the OpenAlex APIs.\ndef send_query(url, params, print_query=False):\n\n        # perform the request using the specified URL and parameters\n        r = requests.get(url, params)\n\n        if print_query:\n            print(r.request.url)\n\n        # check the status code of the request\n        if r.status_code != 200:\n\n            if r.status_code == 414:\n                raise ValueError(\"\"\"API error: {}\"\"\".format(r.reason))\n            else:\n                import ast\n                err = ast.literal_eval(r.text)\n                raise ValueError(\"\"\"API error:\\n\\tERROR  :  {error}\\n\\tMESSAGE:  {message}\"\"\".format(**err))\n        else:\n\n            # if there is no error return the JSON object for the results\n            return r.json()\n\n\n# then, we obtain the data, starting from MIN_YEAR and ending at MAX_YEAR, both included\nMIN_YEAR = 2015\nMAX_YEAR = 2025\nOA_API_URL = 'https://api.openalex.org'\noa_status_year = {}\nfor year in range(MIN_YEAR, MAX_YEAR+1):\n    # build the URL for the request\n    URL = f'{OA_API_URL}/works'\n    tmp = send_query(\n        URL,\n        params={'filter':f'type:article,publication_year:{year}', 'group_by':'oa_status'})['group_by']\n    oa_status_year[year] = pd.DataFrame(tmp).set_index('key')['count'].rename('npapers')\n\n\noa_status_year = pd.DataFrame(oa_status_year)\noa_status_year.sum()\n\n2015    7207568\n2016    7246654\n2017    6853936\n2018    6810353\n2019    7087018\n2020    7227151\n2021    6644701\n2022    6043447\n2023    6322328\n2024    6655393\n2025    7691611\ndtype: int64\n\n\n\n# prepare data\nplot_df = (oa_status_year/1e6).T\norder_status = plot_df.sum(axis=0).sort_values(ascending=False).index\nplot_df = plot_df[order_status]\n\n# init figure\nfig, ax = plt.subplots(figsize=(7,3.5))\n\n# color mapping\ncolors = {\n    'closed':'red',\n    'gold':'xkcd:gold',\n    'bronze':'xkcd:bronze',\n    'green':'green',\n    'hybrid':'xkcd:light blue',\n    'diamond':'xkcd:emerald'\n}\n\nfor col in plot_df.columns:\n    plot_df[col].plot(\n        color=colors[col],\n        linewidth=3,\n        label=col.capitalize(),\n        ax=ax\n    )\n\nax.set_xlabel('Year')\nax.set_ylabel('Number of publications (M)')\n\n# legend\nleg = ax.legend(title='', ncols=6, loc='lower left', bbox_to_anchor=(0,1), handlelength=0.3, columnspacing=0.8)\nfor legobj in leg.legend_handles:\n    legobj.set_linewidth(7.0)\n\nax.set_title('Evolution of number of publications per year by Open Access status', loc='left', pad=30, fontsize=12, fontweight='bold')\nax.grid(axis='y', linestyle='--', linewidth=0.5)\nax.text(2014.5, -1., \"Source: OpenAlex\\nData visualization by Ruggero Cortini\", color='xkcd:dark grey',fontsize=8)\n\nfig.savefig('n_year.png', dpi=600, bbox_inches='tight')"
+  },
+  {
+    "objectID": "index.html#what-i-do",
+    "href": "index.html#what-i-do",
+    "title": "Ruggero Cortini",
+    "section": "What I do",
+    "text": "What I do\n\nApplied ML & AI systems — end-to-end pipelines, LLM applications, agent frameworks\nData science consulting — translating pharma/biotech problems into analytical solutions\nScientific computing — biophysics-informed modelling, genomics data analysis\nIoT & robotics — embedded systems, sensor data, edge ML"
+  },
+  {
+    "objectID": "index.html#selected-projects",
+    "href": "index.html#selected-projects",
+    "title": "Ruggero Cortini",
+    "section": "Selected projects",
+    "text": "Selected projects\n\nEuropean University Alliances Observatory — redesigned a 10-pipeline Mage AI backend integrating 6 international data sources to power a research analytics platform for European universities\nIndustrial water consumption in Catalonia — combining three Catalan open data sources to map how industrial water use is concentrated across the region\nPopulation density and building age in Barcelona — bivariate choropleth analysis of urban structure across Barcelona’s 1,068 census sections\nOpen Access status of publications in time — tracking how open-access publishing practices have evolved from 2015 to 2025"
+  },
+  {
+    "objectID": "personal/coc/index.html",
+    "href": "personal/coc/index.html",
+    "title": "Call of Cthulhu",
+    "section": "",
+    "text": "Download scenario PDF"
+  },
+  {
+    "objectID": "personal/coc/index.html#about-this-scenario",
+    "href": "personal/coc/index.html#about-this-scenario",
+    "title": "Call of Cthulhu",
+    "section": "About this scenario",
+    "text": "About this scenario\nI dreamed one day of a deep well full of water where I had to plunge to discover a terrible secret. This dream sparked my imagination and inspired me to write this scenario for the Call of Cthulhu 7th edition role-playing game.\nI had lots of fun designing, writing, researching, playtesting, and publishing this work. I learned many many things, and huge thanks to The Storytelling Collective for providing guidance for this work.\nThe scenario is set in modern-day Naples, and intertwines elements of the ancient history of Naples with the modern reality of criminality. It is a high-stakes scenario that will challenge the players to survive until the end, and rescue a very close friend who unwillingly stepped into a horrible trap.\n\n\n\nIntrepid investigators approach the final threat of the scenario. Art by Kurt Komoda - https://agonyagogo.com/"
+  },
+  {
+    "objectID": "personal/coc/index.html#ancient-history-of-naples",
+    "href": "personal/coc/index.html#ancient-history-of-naples",
+    "title": "Call of Cthulhu",
+    "section": "Ancient history of Naples",
+    "text": "Ancient history of Naples\nAbyssus Aquae is set in Naples not for local colour but because Naples was already half a Call of Cthulhu scenario before Chaosium existed. The city sits on a dormant supervolcano. It is built on tuff quarried from beneath itself, leaving a second Naples hollowed into the rock — cisterns, aqueducts, catacombs, air-raid shelters, and tunnels nobody has a complete map of. And for most of its history, the person the Neapolitans considered responsible for keeping the lid on all of that was a poet who had been dead for a thousand years.\nVirgil — Publius Vergilius Maro, author of the Aeneid, born 70 BC, died at Brindisi in 19 BC — lived long enough in Campania that he asked to be buried there, and was. His tomb, or the monument generally held to be his tomb, still stands at Piedigrotta, at the mouth of the Crypta Neapolitana, the long Roman road-tunnel that bores through the Posillipo hill. That is where the historical record ends and something stranger begins. Starting around the twelfth century, Neapolitans began telling stories in which Virgil was not only a poet but a sorcerer — the city’s guardian magician, posthumously on duty. The legends spread from Naples across medieval Europe and, for a few centuries, Virgil the wizard was about as famous as Virgil the author of the Aeneid.\n\n\n\nVirgil’s Tomb by Moonlight, with Silius Italicus Declaiming. Joseph Wright (Wright of Derby) (British, Derby 1734–1797 Derby). Reproduced under the Met’s Museum Open Access policy.\n\n\nThe tales are beautifully specific to place. Virgil is said to have conjured the Crypta Neapolitana itself in a single night, cutting the Posillipo in a feat of engineering so implausible by medieval standards that magic was the obvious explanation. He is said to have fashioned a bronze fly that drove every real fly from the city. And, most famously, he is said to have hidden an egg in the foundations of Castel dell’Ovo — the “Castle of the Egg,” still standing on the islet of Megaride — whose integrity is bound to the fate of Naples. If the egg cracks, so does the city. In the fourteenth century, when part of the castle collapsed, Queen Giovanna I reportedly felt obliged to announce publicly that she had personally verified the egg’s replacement, which tells you how seriously the story was still being taken.\nThere is a darker strand too, and this is the one Abyssus Aquae pulls on. In some versions of the legend, Virgil’s magic came from a book — variously said to have been written by King Solomon, or by the centaur Chiron — which Virgil either authored, inherited, or discovered. When he was buried, his head was laid upon the book. In the Middle Ages an Englishman at the Norman court of Sicily — “Ludovicus,” sometimes linked to Thomas Becket’s circle — is supposed to have taken the book from the tomb to practice necromancy, and Virgil’s bones were quietly moved to Castel dell’Ovo, where they were lost. The book was never recovered. This is the thread the scenario picks up: a lost tome, a modern archaeologist who thinks he knows where it went, and a very bad reason to want it back.\nThe Cimmerians are the other half of the equation. In Homer they are a mythic people who live “wrapped in mist and cloud” at the edge of the world, where the sun never shines. Later Greek and Roman geographers — Strabo especially — relocated them to the Phlegraean Fields just west of Naples, picturing them as a subterranean race living in tunnels around Lake Avernus, the volcanic lake the Romans considered an entrance to the underworld. Strabo goes further and suggests that the Roman architect Cocceius, who actually built the Crypta Neapolitana and the nearby Grotta di Cocceio, may have been inspired by older stories of Cimmerian tunnelling. There is no archaeological evidence that any Cimmerian people ever lived in Italy. But the idea that the ground under the Phlegraean Fields is honeycombed with something old and not-quite-human is older than Rome.\nWalk the area today and the geology keeps agreeing with the myths. The Phlegraean Fields are still active — the ground at Pozzuoli rises and falls in slow-motion bradyseismic cycles, measured in decimeters per decade, and the Solfatara crater vents sulphur continuously. The Aqua Augusta, the 100-kilometre Roman aqueduct that ran from the Apennines to the great cistern at Misenum, is still partly walkable in places. Monte Gauro — the extinct cone where the scenario’s climax unfolds — is a real crater with real ruins on it, including the remains of the Eremo del San Salvatore. Virgil’s tomb is a real place you can visit for free. Castel dell’Ovo is open to the public most days.\nWhat Abyssus Aquae does is take this stack — the sorcerer-poet, the lost book, the underground race, the protective spell, the ever-present volcano — and ask what happens when a modern academic starts pulling at threads he doesn’t understand. Naples provided the scenery. I only had to cast it."
+  },
+  {
+    "objectID": "projects/barcelona_edificacions.html",
+    "href": "projects/barcelona_edificacions.html",
+    "title": "Population density and building age in Barcelona",
+    "section": "",
+    "text": "Barcelona’s urban form carries its history in its buildings. The historic core is dense and old; the outer ring is newer and more spread out — but how clearly does that pattern hold at the census-section level? This project combines building-age data from the Cadastre with population data from the municipal census, joining them onto the official geospatial boundaries to produce a bivariate map.\nData sourced from the Ajuntament de Barcelona Open Data Portal."
+  },
+  {
+    "objectID": "projects/barcelona_edificacions.html#result",
+    "href": "projects/barcelona_edificacions.html#result",
+    "title": "Population density and building age in Barcelona",
+    "section": "Result",
+    "text": "Result\nThe bivariate colour scheme encodes two variables simultaneously: building age (x-axis of the legend) and population density (y-axis). Dark blue-purple = old and dense; light grey = new and sparse.\n\n\n\nPopulation density and mean building age across Barcelona’s census sections\n\n\nInstead of looking at a single variable, I tried to combine two: population density and the average age of buildings across Barcelona.\nWhat I found interesting is that looking at them together tells a more nuanced story:\n\nIn the historic core there is a pocket of high density and high building age in Raval, less so in Ciutat Vella\nBut there are also pockets of relatively old buildings outside the very center, with high population density. Poble Sec is particularly striking.\nThere is also a stark contrast between the Eixample Esquerra and Eixample Dreta\nAnd some dense areas that are not particularly old, hinting at more recent urban development\n\nSo rather than a simple “old center vs new outskirts” narrative, the city feels more heterogeneous, shaped by different waves of growth and transformation."
+  },
+  {
+    "objectID": "projects/barcelona_edificacions.html#full-analysis",
+    "href": "projects/barcelona_edificacions.html#full-analysis",
+    "title": "Population density and building age in Barcelona",
+    "section": "Full analysis",
+    "text": "Full analysis\nThe complete data pipeline — loading five geospatial datasets, merging them, computing quantile-based bivariate classes, and producing all visualisations — is in the notebook that can be downloaded here."
+  },
+  {
     "objectID": "projects/aigues_catalunya.html",
     "href": "projects/aigues_catalunya.html",
     "title": "Industrial water consumption in Catalonia",
@@ -341,20 +264,6 @@
     "title": "Industrial water consumption in Catalonia",
     "section": "Analysis",
     "text": "Analysis\nThe notebook below walks through the full pipeline: fetching consumption data from the Socrata API, loading comarca boundaries from a GeoJSON zip, merging the two datasets, and producing the visualisation. Download here."
-  },
-  {
-    "objectID": "projects/aigues_catalunya.html#data-load",
-    "href": "projects/aigues_catalunya.html#data-load",
-    "title": "Industrial water consumption in Catalonia",
-    "section": "Data load",
-    "text": "Data load\n\nAgència Catalana de l’Aigua\nThe Agència Catalana de l’Aigua has documentation pertaining to the public APIs that allow for retrieving structured data on water in Catalonia.\n\n\n\n\n\n\n\n\nDatos\nCatálogo\nÚltimos datos recogidos\n\n\n\n\nEmbalses\nhttps://aplicacions.aca.gencat.cat/sdim2/apirest/catalog?componentType=embassament\nhttps://aplicacions.aca.gencat.cat/sdim2/apirest/data/EMBASSAMENT-EST\n\n\nAforos\nhttps://aplicacions.aca.gencat.cat/sdim2/apirest/catalog?componentType=aforament\nhttps://aplicacions.aca.gencat.cat/sdim2/apirest/data/AFORAMENT-EST\n\n\nPluviómetros\nhttps://aplicacions.aca.gencat.cat/sdim2/apirest/catalog?componentType=pluviometre\nhttps://aplicacions.aca.gencat.cat/sdim2/apirest/data/PLUVIOMETREACA-EST\n\n\nPiezómetros\nhttps://aplicacions.aca.gencat.cat/sdim2/apirest/catalog?componentType=piezometre\nhttps://aplicacions.aca.gencat.cat/sdim2/apirest/data/PIEZOMETRE-EST\n\n\n\n\n\nPortal de Transparència de Catalunya\nThen, there is the water consumption data from the Portal de Transparència de Catalunya.\n\n\n\n\n\n\n\n\n\nany\ncodi_comarca\ncomarca\npoblaci\ndom_stic_xarxa\nactivitats_econ_miques_i\ntotal\nconsum_dom_stic_per_c_pita\n\n\n\n\n0\n2024\n1\nALT CAMP, L'\n46338\n1588721\n2602737\n4191458\n93.93\n\n\n1\n2024\n2\nALT EMPORDÀ, L'\n148856\n7532744\n4005563\n11538307\n138.64\n\n\n2\n2024\n3\nALT PENEDÈS, L'\n114215\n4217395\n2723893\n6941288\n101.16\n\n\n3\n2024\n4\nALT URGELL, L'\n21214\n1007067\n1299444\n2306511\n130.06\n\n\n4\n2024\n5\nALTA RIBAGORÇA, L'\n4002\n466835\n429561\n896396\n319.59\n\n\n\n\n\n\n\n\n\nInstitut Cartogràfic i Geològic de Catalunya\nThe data here was obtained in the ICGC website. It refers to the geographical coordinates of the boundaries between catalan “comarques”.\n\n\n\n\n\n\n\n\n\nCODICOMAR\nNOMCOMAR\nCAPCOMAR\nAREAC5000\ngeometry\n\n\n\n\n0\n01\nAlt Camp\nValls\n537.8597\nMULTIPOLYGON (((1.47594 41.47798, 1.47459 41.4...\n\n\n1\n02\nAlt Empordà\nFigueres\n1356.9070\nMULTIPOLYGON (((3.22338 42.23682, 3.22337 42.2...\n\n\n2\n03\nAlt Penedès\nVilafranca del Penedès\n592.5553\nMULTIPOLYGON (((1.6169 41.5126, 1.61666 41.512...\n\n\n3\n04\nAlt Urgell\nla Seu d'Urgell\n1446.6785\nMULTIPOLYGON (((1.31941 41.99157, 1.31775 41.9...\n\n\n4\n05\nAlta Ribagorça\nel Pont de Suert\n427.2234\nMULTIPOLYGON (((0.8795 42.6314, 0.87928 42.631...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nany\ncodi_comarca\ncomarca\npoblaci\ndom_stic_xarxa\nactivitats_econ_miques_i\ntotal\nconsum_dom_stic_per_c_pita\ncomarca_sane\n\n\n\n\n0\n2024\n1\nALT CAMP, L'\n46338\n1588721\n2602737\n4191458\n93.93\nALT CAMP\n\n\n1\n2024\n2\nALT EMPORDÀ, L'\n148856\n7532744\n4005563\n11538307\n138.64\nALT EMPORDÀ\n\n\n2\n2024\n3\nALT PENEDÈS, L'\n114215\n4217395\n2723893\n6941288\n101.16\nALT PENEDÈS\n\n\n3\n2024\n4\nALT URGELL, L'\n21214\n1007067\n1299444\n2306511\n130.06\nALT URGELL\n\n\n4\n2024\n5\nALTA RIBAGORÇA, L'\n4002\n466835\n429561\n896396\n319.59\nALTA RIBAGORÇA\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n540\n2012\n37\nTERRA ALTA\n12713\n441824\n225143\n666967\n95.22\nTERRA ALTA\n\n\n541\n2012\n38\nURGELL, L'\n36975\n1543234\n1422857\n2966091\n114.35\nURGELL\n\n\n542\n2012\n39\nVAL D'ARAN, LA\n10056\n1112630\n731409\n1844038\n303.13\nVAL D'ARAN\n\n\n543\n2012\n40\nVALLÈS OCCIDENTAL, EL\n898173\n36611134\n25651000\n62262134\n111.68\nVALLÈS OCCIDENTAL\n\n\n544\n2012\n41\nVALLÈS ORIENTAL, EL\n402632\n17020094\n14216816\n31236910\n115.81\nVALLÈS ORIENTAL\n\n\n\n\n545 rows × 9 columns"
-  },
-  {
-    "objectID": "projects/aigues_catalunya.html#data-visualizations",
-    "href": "projects/aigues_catalunya.html#data-visualizations",
-    "title": "Industrial water consumption in Catalonia",
-    "section": "Data visualizations",
-    "text": "Data visualizations\n\nIndustrial water consumption\n\n\ncomarca_sane\nGIRONÈS              0.323280\nOSONA                0.354505\nSEGRIÀ               0.386755\nMARESME              0.420630\nSELVA                0.460057\nVALLÈS ORIENTAL      0.509066\nVALLÈS OCCIDENTAL    0.591534\nBAIX LLOBREGAT       0.683549\nBARCELONÈS           0.836494\nTARRAGONÈS           1.000000\nName: activitats_econ_miques_i, dtype: float64"
   },
   {
     "objectID": "projects/eua_observatory.html",
@@ -399,52 +308,24 @@
     "text": "Result\nThe platform is live at eua-observatory.sirislab.com and is used by SIRIS Academic for research and policy analysis work on European higher education.\n\n\n\nMain dashboard — alliance explorer with country filter\n\n\n\n\n\nAlliance detail view — research metrics, SDG flower plot, and member institution table"
   },
   {
-    "objectID": "cv.html#ruggero-cortini-phd",
-    "href": "cv.html#ruggero-cortini-phd",
-    "title": "Curriculum Vitae",
-    "section": "Ruggero Cortini, PhD",
-    "text": "Ruggero Cortini, PhD\nData Scientist · Computational Biology & Bioinformatics · NLP for Life Sciences\nruggero.cortini@gmail.com · +34 652 02 65 67 · Barcelona, Spain linkedin.com/in/ruggerocortini · github.com/rcortini"
+    "objectID": "STATE.html",
+    "href": "STATE.html",
+    "title": "Site State",
+    "section": "",
+    "text": "Last updated: 2026-04-23\n\n\n\n\n\n\n\n\n\nPage\nStatus\n\n\n\n\nindex.qmd\nDone — professional landing page\n\n\nabout.qmd\nDone — real bio, education, skills\n\n\ncv.qmd\nDone — fully populated from real CV\n\n\nprojects/index.qmd\nDone — auto-listing, 4 cards\n\n\nprojects/oa_time.qmd\nDone — content + analysis written by you\n\n\nprojects/barcelona_edificacions.qmd\nDone — content + analysis written by you\n\n\nprojects/aigues_catalunya.qmd\nDone — content written\n\n\nprojects/eua_observatory.qmd\nDone — case study page\n\n\npersonal/photography/index.qmd\nDone — 4 photos with lightbox captions\n\n\npersonal/maps/index.qmd\nDone — 3 maps with captions\n\n\npersonal/coc/index.qmd\nDone — fully written, links to DriveThruRPG\n\n\nREADME.md\nDone\n\n\n\n\n\n\n\n\n\n\nAdd assets/cv.pdf — the Download PDF button on the CV page is live but the file doesn’t exist yet. Export your CV as a PDF and drop it there.\nCommit and push to GitHub — nothing has been committed since the restructure. Run quarto render first to rebuild docs/, then commit and push.\n\n\n\n\n\nRemove stale comment block from personal/photography/index.qmd lines 23–30 (the old placeholder template inside &lt;!-- --&gt;; the gallery is live and those lines are dead weight).\nAdd fourth map — assets/maps/State_of_Kazam.jpg is in the repo but not shown in personal/maps/index.qmd. Add a .map-entry block for it.\nUpdate index.qmd Selected Projects — all four projects now listed.\n\n\n\n\n\nMore photography — gallery structure is proven; just add images to assets/photography/ and append new entries to the layout block (remember: blank line between each, .lightbox class, unique #fig- id).\nProject dates — barcelona_edificacions (2026-01-01) and eua_observatory (2025-02-01) use placeholder dates. Correct them to reflect when you actually built them; this affects sort order in the listing.\nNew projects — any future project gets a .qmd in projects/ with title, date, description, and categories front matter; it appears in the listing automatically."
   },
   {
-    "objectID": "cv.html#profile",
-    "href": "cv.html#profile",
-    "title": "Curriculum Vitae",
-    "section": "Profile",
-    "text": "Profile\nData scientist and consultant with 5+ years of experience applying NLP, machine learning, and advanced analytics to life sciences and biomedical research challenges. Built and delivered scalable pipelines for mining scientific literature, patents, and clinical trial data at scale. Deep domain expertise in computational biology and biophysics (PhD from Imperial College London, postdoctoral research at CRG Barcelona), with hands-on experience analysing omics datasets (single-cell RNA-seq, ChIP-seq), molecular simulations, and heterogeneous biomedical data sources. Proven track record of end-to-end consulting project delivery for international clients, translating complex scientific data into actionable insights through dashboards, visualisations, and evidence-based reports. Experienced in client engagement, cross-functional team leadership, and mentoring."
+    "objectID": "STATE.html#whats-complete",
+    "href": "STATE.html#whats-complete",
+    "title": "Site State",
+    "section": "",
+    "text": "Page\nStatus\n\n\n\n\nindex.qmd\nDone — professional landing page\n\n\nabout.qmd\nDone — real bio, education, skills\n\n\ncv.qmd\nDone — fully populated from real CV\n\n\nprojects/index.qmd\nDone — auto-listing, 4 cards\n\n\nprojects/oa_time.qmd\nDone — content + analysis written by you\n\n\nprojects/barcelona_edificacions.qmd\nDone — content + analysis written by you\n\n\nprojects/aigues_catalunya.qmd\nDone — content written\n\n\nprojects/eua_observatory.qmd\nDone — case study page\n\n\npersonal/photography/index.qmd\nDone — 4 photos with lightbox captions\n\n\npersonal/maps/index.qmd\nDone — 3 maps with captions\n\n\npersonal/coc/index.qmd\nDone — fully written, links to DriveThruRPG\n\n\nREADME.md\nDone"
   },
   {
-    "objectID": "cv.html#selected-publications",
-    "href": "cv.html#selected-publications",
-    "title": "Curriculum Vitae",
-    "section": "Selected publications",
-    "text": "Selected publications\n\nTheoretical principles of transcription factor traffic on folded chromatin, Nature Communications (2018)\nThe Physics of Epigenetics, Reviews of Modern Physics (2016)\nTheory and Simulations of Toroidal and Rod-Like Structures in DNA Condensation, J. Chem. Phys. (2015)"
-  },
-  {
-    "objectID": "cv.html#selected-projects",
-    "href": "cv.html#selected-projects",
-    "title": "Curriculum Vitae",
-    "section": "Selected projects",
-    "text": "Selected projects\n\nsc_hiv (R, Python) — End-to-end analysis of single-cell RNA-seq data from cell lines expressing HIV proteins: gene expression quantification, clustering, differential expression, and correlation with HIV integration locus.\nVocTagger (Python) — High-performance NLP library for entity extraction and thematic mapping in large scientific corpora (spaCy, multiprocessing); used to classify 30,000+ Horizon 2020 projects against UN SDGs.\nsbs_tracers (Python) — Scalable simulation and analysis pipeline for coarse-grained models of DNA–protein interactions on HPC clusters; published in Nature Communications."
-  },
-  {
-    "objectID": "cv.html#additional",
-    "href": "cv.html#additional",
-    "title": "Curriculum Vitae",
-    "section": "Additional",
-    "text": "Additional\nLanguages: Italian (native) · English, Spanish, Catalan, French (full professional proficiency)\nTraining: Professional trainer at The Paper Mill (2018–2019) — workshops on scientific communication for PhD students at ICTA and IDIBAPS, Barcelona"
-  },
-  {
-    "objectID": "personal/coc/index.html#about-this-scenario",
-    "href": "personal/coc/index.html#about-this-scenario",
-    "title": "Call of Cthulhu",
-    "section": "About this scenario",
-    "text": "About this scenario\nI dreamed one day of a deep well full of water where I had to plunge to discover a terrible secret. This dream sparked my imagination and inspired me to write this scenario for the Call of Cthulhu 7th edition role-playing game.\nI had lots of fun designing, writing, researching, playtesting, and publishing this work. I learned many many things, and huge thanks to The Storytelling Collective for providing guidance for this work.\nThe scenario is set in modern-day Naples, and intertwines elements of the ancient history of Naples with the modern reality of criminality. It is a high-stakes scenario that will challenge the players to survive until the end, and rescue a very close friend who unwillingly stepped into a horrible trap.\n\n\n\nIntrepid investigators approach the final threat of the scenario. Art by Kurt Komoda - https://agonyagogo.com/"
-  },
-  {
-    "objectID": "personal/coc/index.html#ancient-history-of-naples",
-    "href": "personal/coc/index.html#ancient-history-of-naples",
-    "title": "Call of Cthulhu",
-    "section": "Ancient history of Naples",
-    "text": "Ancient history of Naples\nAbyssus Aquae is set in Naples not for local colour but because Naples was already half a Call of Cthulhu scenario before Chaosium existed. The city sits on a dormant supervolcano. It is built on tuff quarried from beneath itself, leaving a second Naples hollowed into the rock — cisterns, aqueducts, catacombs, air-raid shelters, and tunnels nobody has a complete map of. And for most of its history, the person the Neapolitans considered responsible for keeping the lid on all of that was a poet who had been dead for a thousand years.\nVirgil — Publius Vergilius Maro, author of the Aeneid, born 70 BC, died at Brindisi in 19 BC — lived long enough in Campania that he asked to be buried there, and was. His tomb, or the monument generally held to be his tomb, still stands at Piedigrotta, at the mouth of the Crypta Neapolitana, the long Roman road-tunnel that bores through the Posillipo hill. That is where the historical record ends and something stranger begins. Starting around the twelfth century, Neapolitans began telling stories in which Virgil was not only a poet but a sorcerer — the city’s guardian magician, posthumously on duty. The legends spread from Naples across medieval Europe and, for a few centuries, Virgil the wizard was about as famous as Virgil the author of the Aeneid.\n\n\n\nVirgil’s Tomb by Moonlight, with Silius Italicus Declaiming. Joseph Wright (Wright of Derby) (British, Derby 1734–1797 Derby). Reproduced under the Met’s Museum Open Access policy.\n\n\nThe tales are beautifully specific to place. Virgil is said to have conjured the Crypta Neapolitana itself in a single night, cutting the Posillipo in a feat of engineering so implausible by medieval standards that magic was the obvious explanation. He is said to have fashioned a bronze fly that drove every real fly from the city. And, most famously, he is said to have hidden an egg in the foundations of Castel dell’Ovo — the “Castle of the Egg,” still standing on the islet of Megaride — whose integrity is bound to the fate of Naples. If the egg cracks, so does the city. In the fourteenth century, when part of the castle collapsed, Queen Giovanna I reportedly felt obliged to announce publicly that she had personally verified the egg’s replacement, which tells you how seriously the story was still being taken.\nThere is a darker strand too, and this is the one Abyssus Aquae pulls on. In some versions of the legend, Virgil’s magic came from a book — variously said to have been written by King Solomon, or by the centaur Chiron — which Virgil either authored, inherited, or discovered. When he was buried, his head was laid upon the book. In the Middle Ages an Englishman at the Norman court of Sicily — “Ludovicus,” sometimes linked to Thomas Becket’s circle — is supposed to have taken the book from the tomb to practice necromancy, and Virgil’s bones were quietly moved to Castel dell’Ovo, where they were lost. The book was never recovered. This is the thread the scenario picks up: a lost tome, a modern archaeologist who thinks he knows where it went, and a very bad reason to want it back.\nThe Cimmerians are the other half of the equation. In Homer they are a mythic people who live “wrapped in mist and cloud” at the edge of the world, where the sun never shines. Later Greek and Roman geographers — Strabo especially — relocated them to the Phlegraean Fields just west of Naples, picturing them as a subterranean race living in tunnels around Lake Avernus, the volcanic lake the Romans considered an entrance to the underworld. Strabo goes further and suggests that the Roman architect Cocceius, who actually built the Crypta Neapolitana and the nearby Grotta di Cocceio, may have been inspired by older stories of Cimmerian tunnelling. There is no archaeological evidence that any Cimmerian people ever lived in Italy. But the idea that the ground under the Phlegraean Fields is honeycombed with something old and not-quite-human is older than Rome.\nWalk the area today and the geology keeps agreeing with the myths. The Phlegraean Fields are still active — the ground at Pozzuoli rises and falls in slow-motion bradyseismic cycles, measured in decimeters per decade, and the Solfatara crater vents sulphur continuously. The Aqua Augusta, the 100-kilometre Roman aqueduct that ran from the Apennines to the great cistern at Misenum, is still partly walkable in places. Monte Gauro — the extinct cone where the scenario’s climax unfolds — is a real crater with real ruins on it, including the remains of the Eremo del San Salvatore. Virgil’s tomb is a real place you can visit for free. Castel dell’Ovo is open to the public most days.\nWhat Abyssus Aquae does is take this stack — the sorcerer-poet, the lost book, the underground race, the protective spell, the ever-present volcano — and ask what happens when a modern academic starts pulling at threads he doesn’t understand. Naples provided the scenery. I only had to cast it."
+    "objectID": "STATE.html#to-do-next-session",
+    "href": "STATE.html#to-do-next-session",
+    "title": "Site State",
+    "section": "",
+    "text": "Add assets/cv.pdf — the Download PDF button on the CV page is live but the file doesn’t exist yet. Export your CV as a PDF and drop it there.\nCommit and push to GitHub — nothing has been committed since the restructure. Run quarto render first to rebuild docs/, then commit and push.\n\n\n\n\n\nRemove stale comment block from personal/photography/index.qmd lines 23–30 (the old placeholder template inside &lt;!-- --&gt;; the gallery is live and those lines are dead weight).\nAdd fourth map — assets/maps/State_of_Kazam.jpg is in the repo but not shown in personal/maps/index.qmd. Add a .map-entry block for it.\nUpdate index.qmd Selected Projects — all four projects now listed.\n\n\n\n\n\nMore photography — gallery structure is proven; just add images to assets/photography/ and append new entries to the layout block (remember: blank line between each, .lightbox class, unique #fig- id).\nProject dates — barcelona_edificacions (2026-01-01) and eua_observatory (2025-02-01) use placeholder dates. Correct them to reflect when you actually built them; this affects sort order in the listing.\nNew projects — any future project gets a .qmd in projects/ with title, date, description, and categories front matter; it appears in the listing automatically."
   }
 ]

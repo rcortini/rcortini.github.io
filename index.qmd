@@ -29,4 +29,7 @@ combining scientific rigour with practical machine-learning engineering.
 
 ## Selected projects
 
-- [Open Access status of publications in time](projects/oa_time.qmd) — tracking how open-access publishing practices have evolved over time
+- [European University Alliances Observatory](projects/eua_observatory.qmd) — redesigned a 10-pipeline Mage AI backend integrating 6 international data sources to power a research analytics platform for European universities
+- [Industrial water consumption in Catalonia](projects/aigues_catalunya.qmd) — combining three Catalan open data sources to map how industrial water use is concentrated across the region
+- [Population density and building age in Barcelona](projects/barcelona_edificacions.qmd) — bivariate choropleth analysis of urban structure across Barcelona's 1,068 census sections
+- [Open Access status of publications in time](projects/oa_time.qmd) — tracking how open-access publishing practices have evolved from 2015 to 2025

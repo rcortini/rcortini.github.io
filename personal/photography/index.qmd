@@ -20,11 +20,3 @@ This gallery showcases some pictures I took in different times and different pla
 
 ![The feminist march of March 8th 2018 in Barcelona marked a turning point in the public discourse around women's rights. "Prou" means "Enough" in Catalan.](../../assets/photography/Mani-8M-2018.jpg){#fig-mani .lightbox group="gallery"}
 :::
-<!--
-
-![Caption](../../assets/photography/image03.jpg){group="gallery"}
-![Caption](../../assets/photography/image04.jpg){group="gallery"}
-![Caption](../../assets/photography/image05.jpg){group="gallery"}
-![Caption](../../assets/photography/image06.jpg){group="gallery"}
-:::
--->

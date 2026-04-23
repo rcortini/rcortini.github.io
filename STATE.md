@@ -1,54 +1,37 @@
-# Site Restructure — State Summary
+# Site State
 _Last updated: 2026-04-23_
 
-## What was done
+## What's complete
 
-### Files modified
-| File | Change |
+| Page | Status |
 |------|--------|
-| `_quarto.yml` | New navbar (Home, About, Projects, Personal dropdown, CV); removed `brand` theme layer |
-| `index.qmd` | Rewritten as professional landing page with CTA buttons and "What I do" section |
-| `about.qmd` | Structured bio with placeholder tables for education, skills |
-| `styles.css` | Added minimal CSS: navbar padding, gallery spacing, map caption styling |
-
-### Files created
-| File | Purpose |
-|------|---------|
-| `cv.qmd` | Styled HTML CV with "Download PDF" button; placeholder sections |
-| `projects/index.qmd` | Quarto listing page — auto-generates cards from `projects/*.qmd` |
-| `projects/oa_time.qmd` | Moved from root; added YAML front matter (title, date, description, categories) |
-| `personal/photography/index.qmd` | Lightbox gallery template (placeholder, commented-out example) |
-| `personal/maps/index.qmd` | Large captioned images template (placeholder, commented-out example) |
-| `personal/coc/index.qmd` | Text + PDF download button (placeholder content) |
+| `index.qmd` | Done — professional landing page |
+| `about.qmd` | Done — real bio, education, skills |
+| `cv.qmd` | Done — fully populated from real CV |
+| `projects/index.qmd` | Done — auto-listing, 4 cards |
+| `projects/oa_time.qmd` | Done — content + analysis written by you |
+| `projects/barcelona_edificacions.qmd` | Done — content + analysis written by you |
+| `projects/aigues_catalunya.qmd` | Done — content written |
+| `projects/eua_observatory.qmd` | Done — case study page |
+| `personal/photography/index.qmd` | Done — 4 photos with lightbox captions |
+| `personal/maps/index.qmd` | Done — 3 maps with captions |
+| `personal/coc/index.qmd` | Done — fully written, links to DriveThruRPG |
+| `README.md` | Done |
 
 ---
 
-## What's pending (content you need to provide)
+## To-do next session
 
-### High priority (visible to recruiters)
-- [ ] **CV content** — fill in Experience and Education sections in `cv.qmd`
-- [ ] **CV PDF** — export your CV as PDF, save to `assets/cv.pdf`
-- [ ] **About narrative** — replace placeholder text in `about.qmd` with your own bio
-- [ ] **Home tagline** — review and personalise the one-liner in `index.qmd`
-- [ ] **`oa_time.qmd` content** — the project card renders but the page body is mostly placeholder; add the actual analysis
+### Must-do before publishing
+- [ ] **Add `assets/cv.pdf`** — the Download PDF button on the CV page is live but the file doesn't exist yet. Export your CV as a PDF and drop it there.
+- [ ] **Commit and push to GitHub** — nothing has been committed since the restructure. Run `quarto render` first to rebuild `docs/`, then commit and push.
 
-### Medium priority
-- [ ] **Projects** — add more `*.qmd` files to `projects/` (each needs `title`, `date`, `description`, `categories` in its YAML front matter to show as a card)
-- [ ] **Photography** — add images to `assets/photography/`, then uncomment and populate the gallery template in `personal/photography/index.qmd`
-- [ ] **Fantasy maps** — add images to `assets/maps/`, then uncomment and populate `personal/maps/index.qmd`
-- [ ] **Call of Cthulhu** — write campaign text in `personal/coc/index.qmd`; add PDF to `assets/coc/campaign.pdf`
+### Quick fixes
+- [ ] **Remove stale comment block** from `personal/photography/index.qmd` lines 23–30 (the old placeholder template inside `<!-- -->`; the gallery is live and those lines are dead weight).
+- [ ] **Add fourth map** — `assets/maps/State_of_Kazam.jpg` is in the repo but not shown in `personal/maps/index.qmd`. Add a `.map-entry` block for it.
+- [x] **Update `index.qmd` Selected Projects** — all four projects now listed.
 
-### Housekeeping
-- [ ] Delete root-level `oa_time.qmd` once you confirm `projects/oa_time.qmd` renders correctly (the root file is superseded but not yet deleted)
-- [ ] Verify `quarto render` completes without errors after the restructure
-- [ ] Push `docs/` to GitHub Pages
-
----
-
-## Decisions made (for future reference)
-
-- **Theme:** `cosmo` — clean, Bootstrap 5 base, recruiter-readable; `brand` layer removed (no `_brand.yml` existed)
-- **Projects listing:** auto-generated via Quarto `listing`, grid layout sorted by date; add front matter to any `.qmd` in `projects/` to get a card
-- **Photography:** uses Quarto's built-in `lightbox: true` — no extension required
-- **CV:** styled HTML page at `cv.qmd` + download button pointing to `assets/cv.pdf`
-- **Personal pages:** one dropdown click deeper from nav — visible but not leading
+### Content to add when ready
+- [ ] **More photography** — gallery structure is proven; just add images to `assets/photography/` and append new entries to the layout block (remember: blank line between each, `.lightbox` class, unique `#fig-` id).
+- [ ] **Project dates** — `barcelona_edificacions` (2026-01-01) and `eua_observatory` (2025-02-01) use placeholder dates. Correct them to reflect when you actually built them; this affects sort order in the listing.
+- [ ] **New projects** — any future project gets a `.qmd` in `projects/` with `title`, `date`, `description`, and `categories` front matter; it appears in the listing automatically.

@@ -22,3 +22,9 @@ The Princedom of Owens is one of the most fertile and rich parts of the Kingdom 
 
 Kalin: pearl of the North. The city was built in ancient times around seven towers, and has never in history been conquered by force.
 :::
+
+::: {.map-entry}
+![](../../assets/maps/State_of_Kazam.jpg){fig-align="center" width=100%}
+
+The State of Kazam is not a particularly pleasant place to visit. The Isle of Faith with its volcano is not a friendly place.
+:::

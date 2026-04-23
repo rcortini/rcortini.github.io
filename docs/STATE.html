@@ -143,20 +143,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#site-restructure-state-summary" id="toc-site-restructure-state-summary" class="nav-link active" data-scroll-target="#site-restructure-state-summary">Site Restructure — State Summary</a>
+  <li><a href="#site-state" id="toc-site-state" class="nav-link active" data-scroll-target="#site-state">Site State</a>
   <ul class="collapse">
-  <li><a href="#what-was-done" id="toc-what-was-done" class="nav-link" data-scroll-target="#what-was-done">What was done</a>
+  <li><a href="#whats-complete" id="toc-whats-complete" class="nav-link" data-scroll-target="#whats-complete">What’s complete</a></li>
+  <li><a href="#to-do-next-session" id="toc-to-do-next-session" class="nav-link" data-scroll-target="#to-do-next-session">To-do next session</a>
   <ul class="collapse">
-  <li><a href="#files-modified" id="toc-files-modified" class="nav-link" data-scroll-target="#files-modified">Files modified</a></li>
-  <li><a href="#files-created" id="toc-files-created" class="nav-link" data-scroll-target="#files-created">Files created</a></li>
+  <li><a href="#must-do-before-publishing" id="toc-must-do-before-publishing" class="nav-link" data-scroll-target="#must-do-before-publishing">Must-do before publishing</a></li>
+  <li><a href="#quick-fixes" id="toc-quick-fixes" class="nav-link" data-scroll-target="#quick-fixes">Quick fixes</a></li>
+  <li><a href="#content-to-add-when-ready" id="toc-content-to-add-when-ready" class="nav-link" data-scroll-target="#content-to-add-when-ready">Content to add when ready</a></li>
   </ul></li>
-  <li><a href="#whats-pending-content-you-need-to-provide" id="toc-whats-pending-content-you-need-to-provide" class="nav-link" data-scroll-target="#whats-pending-content-you-need-to-provide">What’s pending (content you need to provide)</a>
-  <ul class="collapse">
-  <li><a href="#high-priority-visible-to-recruiters" id="toc-high-priority-visible-to-recruiters" class="nav-link" data-scroll-target="#high-priority-visible-to-recruiters">High priority (visible to recruiters)</a></li>
-  <li><a href="#medium-priority" id="toc-medium-priority" class="nav-link" data-scroll-target="#medium-priority">Medium priority</a></li>
-  <li><a href="#housekeeping" id="toc-housekeeping" class="nav-link" data-scroll-target="#housekeeping">Housekeeping</a></li>
-  </ul></li>
-  <li><a href="#decisions-made-for-future-reference" id="toc-decisions-made-for-future-reference" class="nav-link" data-scroll-target="#decisions-made-for-future-reference">Decisions made (for future reference)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -167,13 +162,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="site-restructure-state-summary" class="level1">
-<h1>Site Restructure — State Summary</h1>
+<section id="site-state" class="level1">
+<h1>Site State</h1>
 <p><em>Last updated: 2026-04-23</em></p>
-<section id="what-was-done" class="level2">
-<h2 class="anchored" data-anchor-id="what-was-done">What was done</h2>
-<section id="files-modified" class="level3">
-<h3 class="anchored" data-anchor-id="files-modified">Files modified</h3>
+<section id="whats-complete" class="level2">
+<h2 class="anchored" data-anchor-id="whats-complete">What’s complete</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 42%">
@@ -181,115 +174,90 @@ ul.task-list li input[type="checkbox"] {
 </colgroup>
 <thead>
 <tr class="header">
-<th>File</th>
-<th>Change</th>
+<th>Page</th>
+<th>Status</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>_quarto.yml</code></td>
-<td>New navbar (Home, About, Projects, Personal dropdown, CV); removed <code>brand</code> theme layer</td>
-</tr>
-<tr class="even">
 <td><code>index.qmd</code></td>
-<td>Rewritten as professional landing page with CTA buttons and “What I do” section</td>
-</tr>
-<tr class="odd">
-<td><code>about.qmd</code></td>
-<td>Structured bio with placeholder tables for education, skills</td>
+<td>Done — professional landing page</td>
 </tr>
 <tr class="even">
-<td><code>styles.css</code></td>
-<td>Added minimal CSS: navbar padding, gallery spacing, map caption styling</td>
+<td><code>about.qmd</code></td>
+<td>Done — real bio, education, skills</td>
 </tr>
-</tbody>
-</table>
-</section>
-<section id="files-created" class="level3">
-<h3 class="anchored" data-anchor-id="files-created">Files created</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 40%">
-<col style="width: 60%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>File</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
 <tr class="odd">
 <td><code>cv.qmd</code></td>
-<td>Styled HTML CV with “Download PDF” button; placeholder sections</td>
+<td>Done — fully populated from real CV</td>
 </tr>
 <tr class="even">
 <td><code>projects/index.qmd</code></td>
-<td>Quarto listing page — auto-generates cards from <code>projects/*.qmd</code></td>
+<td>Done — auto-listing, 4 cards</td>
 </tr>
 <tr class="odd">
 <td><code>projects/oa_time.qmd</code></td>
-<td>Moved from root; added YAML front matter (title, date, description, categories)</td>
+<td>Done — content + analysis written by you</td>
 </tr>
 <tr class="even">
-<td><code>personal/photography/index.qmd</code></td>
-<td>Lightbox gallery template (placeholder, commented-out example)</td>
+<td><code>projects/barcelona_edificacions.qmd</code></td>
+<td>Done — content + analysis written by you</td>
 </tr>
 <tr class="odd">
-<td><code>personal/maps/index.qmd</code></td>
-<td>Large captioned images template (placeholder, commented-out example)</td>
+<td><code>projects/aigues_catalunya.qmd</code></td>
+<td>Done — content written</td>
 </tr>
 <tr class="even">
+<td><code>projects/eua_observatory.qmd</code></td>
+<td>Done — case study page</td>
+</tr>
+<tr class="odd">
+<td><code>personal/photography/index.qmd</code></td>
+<td>Done — 4 photos with lightbox captions</td>
+</tr>
+<tr class="even">
+<td><code>personal/maps/index.qmd</code></td>
+<td>Done — 3 maps with captions</td>
+</tr>
+<tr class="odd">
 <td><code>personal/coc/index.qmd</code></td>
-<td>Text + PDF download button (placeholder content)</td>
+<td>Done — fully written, links to DriveThruRPG</td>
+</tr>
+<tr class="even">
+<td><code>README.md</code></td>
+<td>Done</td>
 </tr>
 </tbody>
 </table>
 <hr>
 </section>
-</section>
-<section id="whats-pending-content-you-need-to-provide" class="level2">
-<h2 class="anchored" data-anchor-id="whats-pending-content-you-need-to-provide">What’s pending (content you need to provide)</h2>
-<section id="high-priority-visible-to-recruiters" class="level3">
-<h3 class="anchored" data-anchor-id="high-priority-visible-to-recruiters">High priority (visible to recruiters)</h3>
+<section id="to-do-next-session" class="level2">
+<h2 class="anchored" data-anchor-id="to-do-next-session">To-do next session</h2>
+<section id="must-do-before-publishing" class="level3">
+<h3 class="anchored" data-anchor-id="must-do-before-publishing">Must-do before publishing</h3>
 <ul class="task-list">
-<li><label><input type="checkbox"><strong>CV content</strong> — fill in Experience and Education sections in <code>cv.qmd</code></label></li>
-<li><label><input type="checkbox"><strong>CV PDF</strong> — export your CV as PDF, save to <code>assets/cv.pdf</code></label></li>
-<li><label><input type="checkbox"><strong>About narrative</strong> — replace placeholder text in <code>about.qmd</code> with your own bio</label></li>
-<li><label><input type="checkbox"><strong>Home tagline</strong> — review and personalise the one-liner in <code>index.qmd</code></label></li>
-<li><label><input type="checkbox"><strong><code>oa_time.qmd</code> content</strong> — the project card renders but the page body is mostly placeholder; add the actual analysis</label></li>
+<li><label><input type="checkbox"><strong>Add <code>assets/cv.pdf</code></strong> — the Download PDF button on the CV page is live but the file doesn’t exist yet. Export your CV as a PDF and drop it there.</label></li>
+<li><label><input type="checkbox"><strong>Commit and push to GitHub</strong> — nothing has been committed since the restructure. Run <code>quarto render</code> first to rebuild <code>docs/</code>, then commit and push.</label></li>
 </ul>
 </section>
-<section id="medium-priority" class="level3">
-<h3 class="anchored" data-anchor-id="medium-priority">Medium priority</h3>
+<section id="quick-fixes" class="level3">
+<h3 class="anchored" data-anchor-id="quick-fixes">Quick fixes</h3>
 <ul class="task-list">
-<li><label><input type="checkbox"><strong>Projects</strong> — add more <code>*.qmd</code> files to <code>projects/</code> (each needs <code>title</code>, <code>date</code>, <code>description</code>, <code>categories</code> in its YAML front matter to show as a card)</label></li>
-<li><label><input type="checkbox"><strong>Photography</strong> — add images to <code>assets/photography/</code>, then uncomment and populate the gallery template in <code>personal/photography/index.qmd</code></label></li>
-<li><label><input type="checkbox"><strong>Fantasy maps</strong> — add images to <code>assets/maps/</code>, then uncomment and populate <code>personal/maps/index.qmd</code></label></li>
-<li><label><input type="checkbox"><strong>Call of Cthulhu</strong> — write campaign text in <code>personal/coc/index.qmd</code>; add PDF to <code>assets/coc/campaign.pdf</code></label></li>
+<li><label><input type="checkbox"><strong>Remove stale comment block</strong> from <code>personal/photography/index.qmd</code> lines 23–30 (the old placeholder template inside <code>&lt;!-- --&gt;</code>; the gallery is live and those lines are dead weight).</label></li>
+<li><label><input type="checkbox"><strong>Add fourth map</strong> — <code>assets/maps/State_of_Kazam.jpg</code> is in the repo but not shown in <code>personal/maps/index.qmd</code>. Add a <code>.map-entry</code> block for it.</label></li>
+<li><label><input type="checkbox" checked=""><strong>Update <code>index.qmd</code> Selected Projects</strong> — all four projects now listed.</label></li>
 </ul>
 </section>
-<section id="housekeeping" class="level3">
-<h3 class="anchored" data-anchor-id="housekeeping">Housekeeping</h3>
+<section id="content-to-add-when-ready" class="level3">
+<h3 class="anchored" data-anchor-id="content-to-add-when-ready">Content to add when ready</h3>
 <ul class="task-list">
-<li><label><input type="checkbox">Delete root-level <code>oa_time.qmd</code> once you confirm <code>projects/oa_time.qmd</code> renders correctly (the root file is superseded but not yet deleted)</label></li>
-<li><label><input type="checkbox">Verify <code>quarto render</code> completes without errors after the restructure</label></li>
-<li><label><input type="checkbox">Push <code>docs/</code> to GitHub Pages</label></li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="decisions-made-for-future-reference" class="level2">
-<h2 class="anchored" data-anchor-id="decisions-made-for-future-reference">Decisions made (for future reference)</h2>
-<ul>
-<li><strong>Theme:</strong> <code>cosmo</code> — clean, Bootstrap 5 base, recruiter-readable; <code>brand</code> layer removed (no <code>_brand.yml</code> existed)</li>
-<li><strong>Projects listing:</strong> auto-generated via Quarto <code>listing</code>, grid layout sorted by date; add front matter to any <code>.qmd</code> in <code>projects/</code> to get a card</li>
-<li><strong>Photography:</strong> uses Quarto’s built-in <code>lightbox: true</code> — no extension required</li>
-<li><strong>CV:</strong> styled HTML page at <code>cv.qmd</code> + download button pointing to <code>assets/cv.pdf</code></li>
-<li><strong>Personal pages:</strong> one dropdown click deeper from nav — visible but not leading</li>
+<li><label><input type="checkbox"><strong>More photography</strong> — gallery structure is proven; just add images to <code>assets/photography/</code> and append new entries to the layout block (remember: blank line between each, <code>.lightbox</code> class, unique <code>#fig-</code> id).</label></li>
+<li><label><input type="checkbox"><strong>Project dates</strong> — <code>barcelona_edificacions</code> (2026-01-01) and <code>eua_observatory</code> (2025-02-01) use placeholder dates. Correct them to reflect when you actually built them; this affects sort order in the listing.</label></li>
+<li><label><input type="checkbox"><strong>New projects</strong> — any future project gets a <code>.qmd</code> in <code>projects/</code> with <code>title</code>, <code>date</code>, <code>description</code>, and <code>categories</code> front matter; it appears in the listing automatically.</label></li>
 </ul>
 
 
+</section>
 </section>
 </section>
 
