@@ -43,6 +43,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-867499df3138a8a61182f45feb162158.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -171,16 +174,56 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Placeholder</strong> — Add your images to <code>assets/photography/</code> and replace the commented template below with your gallery.</p>
+<p><strong>Note</strong> — These pictures were taken with a Nikon D750 digital camera.</p>
+</div>
+</div>
+<p>This gallery showcases some pictures I took in different times and different places. Enjoy!</p>
+<div class="quarto-layout-panel" data-layout-ncol="1">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-easter" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" data-group="gallery">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-easter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../../assets/photography/Easter_Sabinan.jpg" class="lightbox" data-gallery="gallery" title="Figure&nbsp;1: Easter in the small village of Sabiñán (Spain) is full of rituals and traditions. On Good Friday there is the traditional procession of the Via Crucis"><img src="../../assets/photography/Easter_Sabinan.jpg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-easter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Easter in the small village of Sabiñán (Spain) is full of rituals and traditions. On Good Friday there is the traditional procession of the <em>Via Crucis</em>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-mar-birth" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" data-group="gallery">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mar-birth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../../assets/photography/Mar_birth.jpg" class="lightbox" data-gallery="gallery" title="Figure&nbsp;2: My first daughter was born in December 2020, when COVID was in full swing. When her grandparents came to visit her for the first time, we had them look at her from behind a glass door."><img src="../../assets/photography/Mar_birth.jpg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mar-birth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: My first daughter was born in December 2020, when COVID was in full swing. When her grandparents came to visit her for the first time, we had them look at her from behind a glass door.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-cocora" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" data-group="gallery">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cocora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../../assets/photography/Cocora.jpg" class="lightbox" data-gallery="gallery" title="Figure&nbsp;3: The Cócora Valley in Colombia is well known for its luxurious vegetation and its coffee plantations. A stunning sunset blessed our visit to a lovely coffee farm."><img src="../../assets/photography/Cocora.jpg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cocora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: The Cócora Valley in Colombia is well known for its luxurious vegetation and its coffee plantations. A stunning sunset blessed our visit to a lovely coffee farm.
+</figcaption>
+</figure>
+</div>
+</div>
 </div>
 </div>
 <!--
-Example 3-column lightbox gallery — uncomment and populate when images are ready.
-Images link to full-size versions; clicking opens the lightbox overlay.
 
-::: {layout-ncol=3}
-![Caption](../../assets/photography/image01.jpg){group="gallery"}
-![Caption](../../assets/photography/image02.jpg){group="gallery"}
 ![Caption](../../assets/photography/image03.jpg){group="gallery"}
 ![Caption](../../assets/photography/image04.jpg){group="gallery"}
 ![Caption](../../assets/photography/image05.jpg){group="gallery"}
@@ -592,6 +635,38 @@ Images link to full-size versions; clicking opens the lightbox overlay.
   });
   </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

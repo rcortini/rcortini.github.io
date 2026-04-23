@@ -5,17 +5,21 @@ lightbox: true
 ---
 
 ::: {.callout-note}
-**Placeholder** — Add your images to `assets/photography/` and replace the commented
-template below with your gallery.
+**Note** — These pictures were taken with a Nikon D750 digital camera.
 :::
 
-<!--
-Example 3-column lightbox gallery — uncomment and populate when images are ready.
-Images link to full-size versions; clicking opens the lightbox overlay.
 
-::: {layout-ncol=3}
-![Caption](../../assets/photography/image01.jpg){group="gallery"}
-![Caption](../../assets/photography/image02.jpg){group="gallery"}
+This gallery showcases some pictures I took in different times and different places. Enjoy!
+
+::: {layout-ncol=1}
+![Easter in the small village of Sabiñán (Spain) is full of rituals and traditions. On Good Friday there is the traditional procession of the _Via Crucis_](../../assets/photography/Easter_Sabinan.jpg){#fig-easter .lightbox group="gallery"}
+
+![My first daughter was born in December 2020, when COVID was in full swing. When her grandparents came to visit her for the first time, we had them look at her from behind a glass door.](../../assets/photography/Mar_birth.jpg){#fig-mar-birth .lightbox group="gallery"}
+
+![The Cócora Valley in Colombia is well known for its luxurious vegetation and its coffee plantations. A stunning sunset blessed our visit to a lovely coffee farm.](../../assets/photography/Cocora.jpg){#fig-cocora .lightbox group="gallery"}
+:::
+<!--
+
 ![Caption](../../assets/photography/image03.jpg){group="gallery"}
 ![Caption](../../assets/photography/image04.jpg){group="gallery"}
 ![Caption](../../assets/photography/image05.jpg){group="gallery"}
