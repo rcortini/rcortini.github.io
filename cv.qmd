@@ -1,0 +1,70 @@
+---
+title: "Curriculum Vitae"
+toc: false
+---
+
+[Download PDF](assets/cv.pdf){.btn .btn-primary .btn-sm}
+
+---
+
+## Ruggero Cortini
+
+*Data Scientist · Biophysicist · Consultant*
+ruggero.cortini@gmail.com
+
+---
+
+## Summary
+
+<!-- Replace with your own summary -->
+
+Data scientist and consultant with a PhD in biophysics and experience spanning academic
+research, management consulting, and applied ML engineering. Specialised in translating
+complex scientific and business problems into robust data solutions for pharma and biotech
+organisations.
+
+---
+
+## Experience
+
+### *[Current Role]* — *[Company]*
+*[Start] – present*
+
+- *[Key responsibility or achievement]*
+- *[Key responsibility or achievement]*
+- *[Key responsibility or achievement]*
+
+### *[Previous Role]* — *[Company]*
+*[Start] – [End]*
+
+- *[Key responsibility or achievement]*
+- *[Key responsibility or achievement]*
+
+---
+
+## Education
+
+### PhD, Biophysics — *[Institution]*
+*[Year]*
+Thesis: *[Title]*
+
+### *[Degree]* — *[Institution]*
+*[Year]*
+
+---
+
+## Skills
+
+| Category | Technologies |
+|----------|-------------|
+| Languages | Python · R · SQL · Julia |
+| ML / AI | scikit-learn · PyTorch · LangChain · Hugging Face |
+| Data engineering | dbt · Airflow · Spark |
+| Cloud | AWS · GCP |
+| Tools | Git · Docker · Quarto |
+
+---
+
+## Publications
+
+*[List key publications, or link to your Google Scholar / ORCID profile]*

@@ -1,1 +1,33 @@
-/* css styles */
+/* Tighten navbar vertical padding */
+.navbar {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+
+/* Home page: consistent spacing below CTA buttons */
+.lead {
+  margin-bottom: 0.5rem;
+}
+
+/* Photography gallery: add breathing room between grid images */
+.quarto-layout-panel img {
+  margin-bottom: 0.5rem;
+}
+
+/* Maps: constrain large images and add caption spacing */
+.map-entry {
+  margin-bottom: 3rem;
+}
+
+.map-entry p em {
+  display: block;
+  text-align: center;
+  color: #6c757d;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* CV: tighten role headings */
+.cv-role {
+  margin-bottom: 0.25rem;
+}

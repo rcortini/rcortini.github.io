@@ -1,0 +1,23 @@
+---
+title: "Call of Cthulhu"
+toc: true
+---
+
+[Download campaign PDF](../../assets/coc/campaign.pdf){.btn .btn-outline-secondary .btn-sm}
+
+---
+
+## About this campaign
+
+<!-- Replace with your own campaign description -->
+
+*[Write an introduction to your Call of Cthulhu campaign — setting, era, tone, and what
+makes it distinctive.]*
+
+## Background & lore
+
+*[Campaign background: the Mythos threat, key NPCs, the investigators' world.]*
+
+## Sessions
+
+*[Optional: session reports, a play log, or handouts for players.]*

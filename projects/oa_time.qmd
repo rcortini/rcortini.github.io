@@ -1,0 +1,11 @@
+---
+title: "Open Access status of publications in time"
+date: 2025-01-01
+description: "Tracking how the open-access status of scientific publications has evolved over time."
+categories: [data science, bibliometrics, open access]
+---
+
+As an ex-researcher and ex-consultant in the field of Higher Education and Research, I have
+been interested for a long time in publications practices.
+
+<!-- Add full project content here — analysis, figures, narrative, etc. -->

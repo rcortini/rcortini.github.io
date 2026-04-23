@@ -2,4 +2,42 @@
 title: "About"
 ---
 
-About this site
+![](assets/ruggero.png){width=200 style="border-radius: 8px; margin-bottom: 1.5rem;"}
+
+## Background
+
+<!-- Replace with your own narrative -->
+
+I am a data scientist and consultant with a background in computational biophysics. After
+completing my PhD and several years in academic research, I transitioned into management
+consulting — working with higher education and research institutions on data strategy and
+analytics. I now focus on applied machine learning, AI systems, and data engineering for
+pharma and biotech clients.
+
+## What I do
+
+| Area | Details |
+|------|---------|
+| **Data science & ML** | End-to-end ML pipelines, predictive modelling, model deployment |
+| **AI systems** | LLM applications, retrieval-augmented generation, agent frameworks |
+| **Scientific computing** | Biophysics modelling, genomics data analysis |
+| **Consulting** | Analytical strategy for pharma and biotech organisations |
+
+## Education
+
+| Degree | Institution | Year |
+|--------|-------------|------|
+| PhD, Biophysics | *[Institution]* | *[Year]* |
+| *[Degree]* | *[Institution]* | *[Year]* |
+
+## Skills
+
+**Languages:** Python · R · SQL · Julia
+**ML / AI:** scikit-learn · PyTorch · LangChain · Hugging Face
+**Data engineering:** dbt · Airflow · Spark
+**Cloud:** AWS · GCP
+**Tools:** Git · Docker · Quarto
+
+---
+
+Outside work I enjoy photography, fantasy cartography, and tabletop role-playing games.

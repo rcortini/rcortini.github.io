@@ -1,0 +1,16 @@
+font.family : Roboto
+
+axes.spines.left : True
+axes.spines.bottom : True
+axes.spines.top : False
+axes.spines.right : False
+
+# Set color of the spines to grey
+axes.edgecolor : 'xkcd:dark grey'
+axes.labelcolor : 'xkcd:dark grey'
+xtick.color : 'xkcd:grey'
+ytick.color : 'xkcd:grey'
+
+legend.frameon : False
+
+axes.labelsize : 18

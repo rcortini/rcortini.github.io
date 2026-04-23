@@ -1,21 +1,30 @@
 project:
   type: website
+  output-dir: docs
 
 website:
-  title: "rcortini.github.io"
+  title: "Ruggero Cortini"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: about.qmd
+        text: About
+      - href: projects/index.qmd
+        text: Projects
+      - text: Personal
+        menu:
+          - href: personal/photography/index.qmd
+            text: Photography
+          - href: personal/maps/index.qmd
+            text: Fantasy Maps
+          - href: personal/coc/index.qmd
+            text: Call of Cthulhu
+      - href: cv.qmd
+        text: CV
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: cosmo
     css: styles.css
     toc: true
-
-
-

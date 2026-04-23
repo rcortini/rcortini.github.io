@@ -1,0 +1,24 @@
+---
+title: "Photography"
+toc: false
+lightbox: true
+---
+
+::: {.callout-note}
+**Placeholder** — Add your images to `assets/photography/` and replace the commented
+template below with your gallery.
+:::
+
+<!--
+Example 3-column lightbox gallery — uncomment and populate when images are ready.
+Images link to full-size versions; clicking opens the lightbox overlay.
+
+::: {layout-ncol=3}
+![Caption](../../assets/photography/image01.jpg){group="gallery"}
+![Caption](../../assets/photography/image02.jpg){group="gallery"}
+![Caption](../../assets/photography/image03.jpg){group="gallery"}
+![Caption](../../assets/photography/image04.jpg){group="gallery"}
+![Caption](../../assets/photography/image05.jpg){group="gallery"}
+![Caption](../../assets/photography/image06.jpg){group="gallery"}
+:::
+-->

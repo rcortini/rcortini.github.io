@@ -1,0 +1,27 @@
+---
+title: "Fantasy Maps"
+toc: false
+---
+
+::: {.callout-note}
+**Placeholder** — Add your map images to `assets/maps/` and replace the commented
+template below with your maps and captions.
+:::
+
+<!--
+Example layout for large captioned maps — uncomment and populate when images are ready.
+Repeat the .map-entry block for each map.
+
+::: {.map-entry}
+![](../../assets/maps/map01.jpg){fig-align="center" width=100%}
+
+*Name of the world / region — a sentence or two describing the setting, campaign, or
+creative context for this map.*
+:::
+
+::: {.map-entry}
+![](../../assets/maps/map02.jpg){fig-align="center" width=100%}
+
+*Caption for second map.*
+:::
+-->

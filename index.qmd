@@ -1,7 +1,32 @@
 ---
-title: "rcortini.github.io"
+title: "Ruggero Cortini"
+toc: false
 ---
 
-This is a Quarto website.
+![](assets/ruggero.png){width=200 .rounded-circle style="display: block; margin: 0 auto 1.5rem;"}
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+::: {.text-center .lead}
+**Data Scientist · Biophysicist · Consultant**
+
+I help pharma and biotech organisations turn complex data into actionable decisions,
+combining scientific rigour with practical machine-learning engineering.
+:::
+
+::: {.text-center style="margin: 1.5rem 0 2rem;"}
+[View Projects](projects/index.qmd){.btn .btn-primary}
+[About Me](about.qmd){.btn .btn-outline-secondary}
+[CV](cv.qmd){.btn .btn-outline-secondary}
+:::
+
+---
+
+## What I do
+
+- **Applied ML & AI systems** — end-to-end pipelines, LLM applications, agent frameworks
+- **Data science consulting** — translating pharma/biotech problems into analytical solutions
+- **Scientific computing** — biophysics-informed modelling, genomics data analysis
+- **IoT & robotics** — embedded systems, sensor data, edge ML
+
+## Selected projects
+
+- [Open Access status of publications in time](projects/oa_time.qmd) — tracking how open-access publishing practices have evolved over time

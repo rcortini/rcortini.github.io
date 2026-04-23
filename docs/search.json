@@ -9,8 +9,204 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "rcortini.github.io",
+    "title": "Ruggero Cortini’s personal website",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Ruggero\nData scientist with a background in biophysics and consulting.\nI enjoy working at the intersection of:"
+  },
+  {
+    "objectID": "index.html#current-interests",
+    "href": "index.html#current-interests",
+    "title": "Ruggero Cortini’s personal website",
+    "section": "Current interests",
+    "text": "Current interests\n\nMachine learning\nData pipelines\nAI agents\nIoT and robotics\nMusic, always\nPhotography"
+  },
+  {
+    "objectID": "index.html#selected-projects",
+    "href": "index.html#selected-projects",
+    "title": "Ruggero Cortini",
+    "section": "Selected projects",
+    "text": "Selected projects\n\nOpen Access status of publications in time — tracking how open-access publishing practices have evolved over time"
+  },
+  {
+    "objectID": "oa_time.html",
+    "href": "oa_time.html",
+    "title": "Open Access status of publications in time",
+    "section": "",
+    "text": "Open Access status of publications in time\nAs an ex-researcher and ex-consultant in the field of Higher Education and Research, I have been interested for a long time in publications practices."
+  },
+  {
+    "objectID": "assets/OA_time.html",
+    "href": "assets/OA_time.html",
+    "title": "Open Access status in time",
+    "section": "",
+    "text": "# libraries and imports\nimport sys\nimport requests\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nplt.style.use('../matplotlib.mplstyle')\n\nIn this study, we will get data from OpenAlex to extract data on how the Open Access status of publications has evolved in the past 10 years.\n\n# first, we define a handy function that will help us perform queries to the OpenAlex APIs.\ndef send_query(url, params, print_query=False):\n\n        # perform the request using the specified URL and parameters\n        r = requests.get(url, params)\n\n        if print_query:\n            print(r.request.url)\n\n        # check the status code of the request\n        if r.status_code != 200:\n\n            if r.status_code == 414:\n                raise ValueError(\"\"\"API error: {}\"\"\".format(r.reason))\n            else:\n                import ast\n                err = ast.literal_eval(r.text)\n                raise ValueError(\"\"\"API error:\\n\\tERROR  :  {error}\\n\\tMESSAGE:  {message}\"\"\".format(**err))\n        else:\n\n            # if there is no error return the JSON object for the results\n            return r.json()\n\n\n# then, we obtain the data, starting from MIN_YEAR and ending at MAX_YEAR, both included\nMIN_YEAR = 2015\nMAX_YEAR = 2025\nOA_API_URL = 'https://api.openalex.org'\noa_status_year = {}\nfor year in range(MIN_YEAR, MAX_YEAR+1):\n    # build the URL for the request\n    URL = f'{OA_API_URL}/works'\n    tmp = send_query(\n        URL,\n        params={'filter':f'type:article,publication_year:{year}', 'group_by':'oa_status'})['group_by']\n    oa_status_year[year] = pd.DataFrame(tmp).set_index('key')['count'].rename('npapers')\n\n\noa_status_year = pd.DataFrame(oa_status_year)\noa_status_year.sum()\n\n2015    7207568\n2016    7246654\n2017    6853936\n2018    6810353\n2019    7087018\n2020    7227151\n2021    6644701\n2022    6043447\n2023    6322328\n2024    6655393\n2025    7691611\ndtype: int64\n\n\n\n# prepare data\nplot_df = (oa_status_year/1e6).T\norder_status = plot_df.sum(axis=0).sort_values(ascending=False).index\nplot_df = plot_df[order_status]\n\n# init figure\nfig, ax = plt.subplots(figsize=(7,3.5))\n\n# color mapping\ncolors = {\n    'closed':'red',\n    'gold':'xkcd:gold',\n    'bronze':'xkcd:bronze',\n    'green':'green',\n    'hybrid':'xkcd:light blue',\n    'diamond':'xkcd:emerald'\n}\n\nfor col in plot_df.columns:\n    plot_df[col].plot(\n        color=colors[col],\n        linewidth=3,\n        label=col.capitalize(),\n        ax=ax\n    )\n\nax.set_xlabel('Year')\nax.set_ylabel('Number of publications (M)')\n\n# legend\nleg = ax.legend(title='', ncols=6, loc='lower left', bbox_to_anchor=(0,1), handlelength=0.3, columnspacing=0.8)\nfor legobj in leg.legend_handles:\n    legobj.set_linewidth(7.0)\n\nax.set_title('Evolution of number of publications per year by Open Access status', loc='left', pad=30, fontsize=12, fontweight='bold')\nax.grid(axis='y', linestyle='--', linewidth=0.5)\nax.text(2014.5, -1., \"Source: OpenAlex\\nData visualization by Ruggero Cortini\", color='xkcd:dark grey',fontsize=8)\n\nfig.savefig('n_year.png', dpi=600, bbox_inches='tight')"
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Curriculum Vitae",
+    "section": "",
+    "text": "Download PDF"
+  },
+  {
+    "objectID": "cv.html#ruggero-cortini",
+    "href": "cv.html#ruggero-cortini",
+    "title": "Curriculum Vitae",
+    "section": "Ruggero Cortini",
+    "text": "Ruggero Cortini\nData Scientist · Biophysicist · Consultant ruggero.cortini@gmail.com"
+  },
+  {
+    "objectID": "cv.html#summary",
+    "href": "cv.html#summary",
+    "title": "Curriculum Vitae",
+    "section": "Summary",
+    "text": "Summary\n\nData scientist and consultant with a PhD in biophysics and experience spanning academic research, management consulting, and applied ML engineering. Specialised in translating complex scientific and business problems into robust data solutions for pharma and biotech organisations."
+  },
+  {
+    "objectID": "cv.html#experience",
+    "href": "cv.html#experience",
+    "title": "Curriculum Vitae",
+    "section": "Experience",
+    "text": "Experience\n\n[Current Role] — [Company]\n[Start] – present\n\n[Key responsibility or achievement]\n[Key responsibility or achievement]\n[Key responsibility or achievement]\n\n\n\n[Previous Role] — [Company]\n[Start] – [End]\n\n[Key responsibility or achievement]\n[Key responsibility or achievement]"
+  },
+  {
+    "objectID": "cv.html#education",
+    "href": "cv.html#education",
+    "title": "Curriculum Vitae",
+    "section": "Education",
+    "text": "Education\n\nPhD, Biophysics — [Institution]\n[Year] Thesis: [Title]\n\n\n[Degree] — [Institution]\n[Year]"
+  },
+  {
+    "objectID": "cv.html#skills",
+    "href": "cv.html#skills",
+    "title": "Curriculum Vitae",
+    "section": "Skills",
+    "text": "Skills\n\n\n\nCategory\nTechnologies\n\n\n\n\nLanguages\nPython · R · SQL · Julia\n\n\nML / AI\nscikit-learn · PyTorch · LangChain · Hugging Face\n\n\nData engineering\ndbt · Airflow · Spark\n\n\nCloud\nAWS · GCP\n\n\nTools\nGit · Docker · Quarto"
+  },
+  {
+    "objectID": "cv.html#publications",
+    "href": "cv.html#publications",
+    "title": "Curriculum Vitae",
+    "section": "Publications",
+    "text": "Publications\n[List key publications, or link to your Google Scholar / ORCID profile]"
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About",
+    "section": "Background",
+    "text": "Background\n\nI am a data scientist and consultant with a background in computational biophysics. After completing my PhD and several years in academic research, I transitioned into management consulting — working with higher education and research institutions on data strategy and analytics. I now focus on applied machine learning, AI systems, and data engineering for pharma and biotech clients."
+  },
+  {
+    "objectID": "about.html#what-i-do",
+    "href": "about.html#what-i-do",
+    "title": "About",
+    "section": "What I do",
+    "text": "What I do\n\n\n\n\n\n\n\nArea\nDetails\n\n\n\n\nData science & ML\nEnd-to-end ML pipelines, predictive modelling, model deployment\n\n\nAI systems\nLLM applications, retrieval-augmented generation, agent frameworks\n\n\nScientific computing\nBiophysics modelling, genomics data analysis\n\n\nConsulting\nAnalytical strategy for pharma and biotech organisations"
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About",
+    "section": "Education",
+    "text": "Education\n\n\n\nDegree\nInstitution\nYear\n\n\n\n\nPhD, Biophysics\n[Institution]\n[Year]\n\n\n[Degree]\n[Institution]\n[Year]"
+  },
+  {
+    "objectID": "about.html#skills",
+    "href": "about.html#skills",
+    "title": "About",
+    "section": "Skills",
+    "text": "Skills\nLanguages: Python · R · SQL · Julia ML / AI: scikit-learn · PyTorch · LangChain · Hugging Face Data engineering: dbt · Airflow · Spark Cloud: AWS · GCP Tools: Git · Docker · Quarto\n\nOutside work I enjoy photography, fantasy cartography, and tabletop role-playing games."
+  },
+  {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Open Access status of publications in time\n\n\n\ndata science\n\nbibliometrics\n\nopen access\n\n\n\nTracking how the open-access status of scientific publications has evolved over time.\n\n\n\nJan 1, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "personal/coc/index.html",
+    "href": "personal/coc/index.html",
+    "title": "Call of Cthulhu",
+    "section": "",
+    "text": "Download campaign PDF"
+  },
+  {
+    "objectID": "personal/coc/index.html#about-this-campaign",
+    "href": "personal/coc/index.html#about-this-campaign",
+    "title": "Call of Cthulhu",
+    "section": "About this campaign",
+    "text": "About this campaign\n\n[Write an introduction to your Call of Cthulhu campaign — setting, era, tone, and what makes it distinctive.]"
+  },
+  {
+    "objectID": "personal/coc/index.html#background-lore",
+    "href": "personal/coc/index.html#background-lore",
+    "title": "Call of Cthulhu",
+    "section": "Background & lore",
+    "text": "Background & lore\n[Campaign background: the Mythos threat, key NPCs, the investigators’ world.]"
+  },
+  {
+    "objectID": "personal/coc/index.html#sessions",
+    "href": "personal/coc/index.html#sessions",
+    "title": "Call of Cthulhu",
+    "section": "Sessions",
+    "text": "Sessions\n[Optional: session reports, a play log, or handouts for players.]"
+  },
+  {
+    "objectID": "index.html#what-i-do",
+    "href": "index.html#what-i-do",
+    "title": "Ruggero Cortini",
+    "section": "What I do",
+    "text": "What I do\n\nApplied ML & AI systems — end-to-end pipelines, LLM applications, agent frameworks\nData science consulting — translating pharma/biotech problems into analytical solutions\nScientific computing — biophysics-informed modelling, genomics data analysis\nIoT & robotics — embedded systems, sensor data, edge ML"
+  },
+  {
+    "objectID": "personal/maps/index.html",
+    "href": "personal/maps/index.html",
+    "title": "Fantasy Maps",
+    "section": "",
+    "text": "Note\n\n\n\nPlaceholder — Add your map images to assets/maps/ and replace the commented template below with your maps and captions."
+  },
+  {
+    "objectID": "personal/photography/index.html",
+    "href": "personal/photography/index.html",
+    "title": "Photography",
+    "section": "",
+    "text": "Note\n\n\n\nPlaceholder — Add your images to assets/photography/ and replace the commented template below with your gallery."
+  },
+  {
+    "objectID": "projects/oa_time.html",
+    "href": "projects/oa_time.html",
+    "title": "Open Access status of publications in time",
+    "section": "",
+    "text": "As an ex-researcher and ex-consultant in the field of Higher Education and Research, I have been interested for a long time in publications practices."
+  },
+  {
+    "objectID": "STATE.html",
+    "href": "STATE.html",
+    "title": "Site Restructure — State Summary",
+    "section": "",
+    "text": "Last updated: 2026-04-23\n\n\n\n\n\n\n\n\n\n\n\nFile\nChange\n\n\n\n\n_quarto.yml\nNew navbar (Home, About, Projects, Personal dropdown, CV); removed brand theme layer\n\n\nindex.qmd\nRewritten as professional landing page with CTA buttons and “What I do” section\n\n\nabout.qmd\nStructured bio with placeholder tables for education, skills\n\n\nstyles.css\nAdded minimal CSS: navbar padding, gallery spacing, map caption styling\n\n\n\n\n\n\n\n\n\n\n\n\n\nFile\nPurpose\n\n\n\n\ncv.qmd\nStyled HTML CV with “Download PDF” button; placeholder sections\n\n\nprojects/index.qmd\nQuarto listing page — auto-generates cards from projects/*.qmd\n\n\nprojects/oa_time.qmd\nMoved from root; added YAML front matter (title, date, description, categories)\n\n\npersonal/photography/index.qmd\nLightbox gallery template (placeholder, commented-out example)\n\n\npersonal/maps/index.qmd\nLarge captioned images template (placeholder, commented-out example)\n\n\npersonal/coc/index.qmd\nText + PDF download button (placeholder content)\n\n\n\n\n\n\n\n\n\n\n\nCV content — fill in Experience and Education sections in cv.qmd\nCV PDF — export your CV as PDF, save to assets/cv.pdf\nAbout narrative — replace placeholder text in about.qmd with your own bio\nHome tagline — review and personalise the one-liner in index.qmd\noa_time.qmd content — the project card renders but the page body is mostly placeholder; add the actual analysis\n\n\n\n\n\nProjects — add more *.qmd files to projects/ (each needs title, date, description, categories in its YAML front matter to show as a card)\nPhotography — add images to assets/photography/, then uncomment and populate the gallery template in personal/photography/index.qmd\nFantasy maps — add images to assets/maps/, then uncomment and populate personal/maps/index.qmd\nCall of Cthulhu — write campaign text in personal/coc/index.qmd; add PDF to assets/coc/campaign.pdf\n\n\n\n\n\nDelete root-level oa_time.qmd once you confirm projects/oa_time.qmd renders correctly (the root file is superseded but not yet deleted)\nVerify quarto render completes without errors after the restructure\nPush docs/ to GitHub Pages\n\n\n\n\n\n\n\nTheme: cosmo — clean, Bootstrap 5 base, recruiter-readable; brand layer removed (no _brand.yml existed)\nProjects listing: auto-generated via Quarto listing, grid layout sorted by date; add front matter to any .qmd in projects/ to get a card\nPhotography: uses Quarto’s built-in lightbox: true — no extension required\nCV: styled HTML page at cv.qmd + download button pointing to assets/cv.pdf\nPersonal pages: one dropdown click deeper from nav — visible but not leading"
+  },
+  {
+    "objectID": "STATE.html#what-was-done",
+    "href": "STATE.html#what-was-done",
+    "title": "Site Restructure — State Summary",
+    "section": "",
+    "text": "File\nChange\n\n\n\n\n_quarto.yml\nNew navbar (Home, About, Projects, Personal dropdown, CV); removed brand theme layer\n\n\nindex.qmd\nRewritten as professional landing page with CTA buttons and “What I do” section\n\n\nabout.qmd\nStructured bio with placeholder tables for education, skills\n\n\nstyles.css\nAdded minimal CSS: navbar padding, gallery spacing, map caption styling\n\n\n\n\n\n\n\n\n\n\n\n\n\nFile\nPurpose\n\n\n\n\ncv.qmd\nStyled HTML CV with “Download PDF” button; placeholder sections\n\n\nprojects/index.qmd\nQuarto listing page — auto-generates cards from projects/*.qmd\n\n\nprojects/oa_time.qmd\nMoved from root; added YAML front matter (title, date, description, categories)\n\n\npersonal/photography/index.qmd\nLightbox gallery template (placeholder, commented-out example)\n\n\npersonal/maps/index.qmd\nLarge captioned images template (placeholder, commented-out example)\n\n\npersonal/coc/index.qmd\nText + PDF download button (placeholder content)"
+  },
+  {
+    "objectID": "STATE.html#whats-pending-content-you-need-to-provide",
+    "href": "STATE.html#whats-pending-content-you-need-to-provide",
+    "title": "Site Restructure — State Summary",
+    "section": "",
+    "text": "CV content — fill in Experience and Education sections in cv.qmd\nCV PDF — export your CV as PDF, save to assets/cv.pdf\nAbout narrative — replace placeholder text in about.qmd with your own bio\nHome tagline — review and personalise the one-liner in index.qmd\noa_time.qmd content — the project card renders but the page body is mostly placeholder; add the actual analysis\n\n\n\n\n\nProjects — add more *.qmd files to projects/ (each needs title, date, description, categories in its YAML front matter to show as a card)\nPhotography — add images to assets/photography/, then uncomment and populate the gallery template in personal/photography/index.qmd\nFantasy maps — add images to assets/maps/, then uncomment and populate personal/maps/index.qmd\nCall of Cthulhu — write campaign text in personal/coc/index.qmd; add PDF to assets/coc/campaign.pdf\n\n\n\n\n\nDelete root-level oa_time.qmd once you confirm projects/oa_time.qmd renders correctly (the root file is superseded but not yet deleted)\nVerify quarto render completes without errors after the restructure\nPush docs/ to GitHub Pages"
+  },
+  {
+    "objectID": "STATE.html#decisions-made-for-future-reference",
+    "href": "STATE.html#decisions-made-for-future-reference",
+    "title": "Site Restructure — State Summary",
+    "section": "",
+    "text": "Theme: cosmo — clean, Bootstrap 5 base, recruiter-readable; brand layer removed (no _brand.yml existed)\nProjects listing: auto-generated via Quarto listing, grid layout sorted by date; add front matter to any .qmd in projects/ to get a card\nPhotography: uses Quarto’s built-in lightbox: true — no extension required\nCV: styled HTML page at cv.qmd + download button pointing to assets/cv.pdf\nPersonal pages: one dropdown click deeper from nav — visible but not leading"
   }
 ]

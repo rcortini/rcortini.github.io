@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Ruggero Cortini</title>
+<title>state – Ruggero Cortini</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -97,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
@@ -143,43 +143,70 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
-  <li><a href="#what-i-do" id="toc-what-i-do" class="nav-link" data-scroll-target="#what-i-do">What I do</a></li>
-  <li><a href="#education" id="toc-education" class="nav-link" data-scroll-target="#education">Education</a></li>
-  <li><a href="#skills" id="toc-skills" class="nav-link" data-scroll-target="#skills">Skills</a></li>
+  <li><a href="#site-restructure-state-summary" id="toc-site-restructure-state-summary" class="nav-link active" data-scroll-target="#site-restructure-state-summary">Site Restructure — State Summary</a>
+  <ul class="collapse">
+  <li><a href="#what-was-done" id="toc-what-was-done" class="nav-link" data-scroll-target="#what-was-done">What was done</a>
+  <ul class="collapse">
+  <li><a href="#files-modified" id="toc-files-modified" class="nav-link" data-scroll-target="#files-modified">Files modified</a></li>
+  <li><a href="#files-created" id="toc-files-created" class="nav-link" data-scroll-target="#files-created">Files created</a></li>
+  </ul></li>
+  <li><a href="#whats-pending-content-you-need-to-provide" id="toc-whats-pending-content-you-need-to-provide" class="nav-link" data-scroll-target="#whats-pending-content-you-need-to-provide">What’s pending (content you need to provide)</a>
+  <ul class="collapse">
+  <li><a href="#high-priority-visible-to-recruiters" id="toc-high-priority-visible-to-recruiters" class="nav-link" data-scroll-target="#high-priority-visible-to-recruiters">High priority (visible to recruiters)</a></li>
+  <li><a href="#medium-priority" id="toc-medium-priority" class="nav-link" data-scroll-target="#medium-priority">Medium priority</a></li>
+  <li><a href="#housekeeping" id="toc-housekeeping" class="nav-link" data-scroll-target="#housekeeping">Housekeeping</a></li>
+  </ul></li>
+  <li><a href="#decisions-made-for-future-reference" id="toc-decisions-made-for-future-reference" class="nav-link" data-scroll-target="#decisions-made-for-future-reference">Decisions made (for future reference)</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">About</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p><img src="assets/ruggero.png" class="img-fluid" style="border-radius: 8px; margin-bottom: 1.5rem;" width="200"></p>
-<section id="background" class="level2">
-<h2 class="anchored" data-anchor-id="background">Background</h2>
-<!-- Replace with your own narrative -->
-<p>I am a data scientist and consultant with a background in computational biophysics. After completing my PhD and several years in academic research, I transitioned into management consulting — working with higher education and research institutions on data strategy and analytics. I now focus on applied machine learning, AI systems, and data engineering for pharma and biotech clients.</p>
+<section id="site-restructure-state-summary" class="level1">
+<h1>Site Restructure — State Summary</h1>
+<p><em>Last updated: 2026-04-23</em></p>
+<section id="what-was-done" class="level2">
+<h2 class="anchored" data-anchor-id="what-was-done">What was done</h2>
+<section id="files-modified" class="level3">
+<h3 class="anchored" data-anchor-id="files-modified">Files modified</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 42%">
+<col style="width: 57%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>_quarto.yml</code></td>
+<td>New navbar (Home, About, Projects, Personal dropdown, CV); removed <code>brand</code> theme layer</td>
+</tr>
+<tr class="even">
+<td><code>index.qmd</code></td>
+<td>Rewritten as professional landing page with CTA buttons and “What I do” section</td>
+</tr>
+<tr class="odd">
+<td><code>about.qmd</code></td>
+<td>Structured bio with placeholder tables for education, skills</td>
+</tr>
+<tr class="even">
+<td><code>styles.css</code></td>
+<td>Added minimal CSS: navbar padding, gallery spacing, map caption styling</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="what-i-do" class="level2">
-<h2 class="anchored" data-anchor-id="what-i-do">What I do</h2>
+<section id="files-created" class="level3">
+<h3 class="anchored" data-anchor-id="files-created">Files created</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 40%">
@@ -187,61 +214,83 @@ ul.task-list li input[type="checkbox"] {
 </colgroup>
 <thead>
 <tr class="header">
-<th>Area</th>
-<th>Details</th>
+<th>File</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Data science &amp; ML</strong></td>
-<td>End-to-end ML pipelines, predictive modelling, model deployment</td>
+<td><code>cv.qmd</code></td>
+<td>Styled HTML CV with “Download PDF” button; placeholder sections</td>
 </tr>
 <tr class="even">
-<td><strong>AI systems</strong></td>
-<td>LLM applications, retrieval-augmented generation, agent frameworks</td>
+<td><code>projects/index.qmd</code></td>
+<td>Quarto listing page — auto-generates cards from <code>projects/*.qmd</code></td>
 </tr>
 <tr class="odd">
-<td><strong>Scientific computing</strong></td>
-<td>Biophysics modelling, genomics data analysis</td>
+<td><code>projects/oa_time.qmd</code></td>
+<td>Moved from root; added YAML front matter (title, date, description, categories)</td>
 </tr>
 <tr class="even">
-<td><strong>Consulting</strong></td>
-<td>Analytical strategy for pharma and biotech organisations</td>
+<td><code>personal/photography/index.qmd</code></td>
+<td>Lightbox gallery template (placeholder, commented-out example)</td>
+</tr>
+<tr class="odd">
+<td><code>personal/maps/index.qmd</code></td>
+<td>Large captioned images template (placeholder, commented-out example)</td>
+</tr>
+<tr class="even">
+<td><code>personal/coc/index.qmd</code></td>
+<td>Text + PDF download button (placeholder content)</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="education" class="level2">
-<h2 class="anchored" data-anchor-id="education">Education</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Degree</th>
-<th>Institution</th>
-<th>Year</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>PhD, Biophysics</td>
-<td><em>[Institution]</em></td>
-<td><em>[Year]</em></td>
-</tr>
-<tr class="even">
-<td><em>[Degree]</em></td>
-<td><em>[Institution]</em></td>
-<td><em>[Year]</em></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="skills" class="level2">
-<h2 class="anchored" data-anchor-id="skills">Skills</h2>
-<p><strong>Languages:</strong> Python · R · SQL · Julia <strong>ML / AI:</strong> scikit-learn · PyTorch · LangChain · Hugging Face <strong>Data engineering:</strong> dbt · Airflow · Spark <strong>Cloud:</strong> AWS · GCP <strong>Tools:</strong> Git · Docker · Quarto</p>
 <hr>
-<p>Outside work I enjoy photography, fantasy cartography, and tabletop role-playing games.</p>
+</section>
+</section>
+<section id="whats-pending-content-you-need-to-provide" class="level2">
+<h2 class="anchored" data-anchor-id="whats-pending-content-you-need-to-provide">What’s pending (content you need to provide)</h2>
+<section id="high-priority-visible-to-recruiters" class="level3">
+<h3 class="anchored" data-anchor-id="high-priority-visible-to-recruiters">High priority (visible to recruiters)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>CV content</strong> — fill in Experience and Education sections in <code>cv.qmd</code></label></li>
+<li><label><input type="checkbox"><strong>CV PDF</strong> — export your CV as PDF, save to <code>assets/cv.pdf</code></label></li>
+<li><label><input type="checkbox"><strong>About narrative</strong> — replace placeholder text in <code>about.qmd</code> with your own bio</label></li>
+<li><label><input type="checkbox"><strong>Home tagline</strong> — review and personalise the one-liner in <code>index.qmd</code></label></li>
+<li><label><input type="checkbox"><strong><code>oa_time.qmd</code> content</strong> — the project card renders but the page body is mostly placeholder; add the actual analysis</label></li>
+</ul>
+</section>
+<section id="medium-priority" class="level3">
+<h3 class="anchored" data-anchor-id="medium-priority">Medium priority</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>Projects</strong> — add more <code>*.qmd</code> files to <code>projects/</code> (each needs <code>title</code>, <code>date</code>, <code>description</code>, <code>categories</code> in its YAML front matter to show as a card)</label></li>
+<li><label><input type="checkbox"><strong>Photography</strong> — add images to <code>assets/photography/</code>, then uncomment and populate the gallery template in <code>personal/photography/index.qmd</code></label></li>
+<li><label><input type="checkbox"><strong>Fantasy maps</strong> — add images to <code>assets/maps/</code>, then uncomment and populate <code>personal/maps/index.qmd</code></label></li>
+<li><label><input type="checkbox"><strong>Call of Cthulhu</strong> — write campaign text in <code>personal/coc/index.qmd</code>; add PDF to <code>assets/coc/campaign.pdf</code></label></li>
+</ul>
+</section>
+<section id="housekeeping" class="level3">
+<h3 class="anchored" data-anchor-id="housekeeping">Housekeeping</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Delete root-level <code>oa_time.qmd</code> once you confirm <code>projects/oa_time.qmd</code> renders correctly (the root file is superseded but not yet deleted)</label></li>
+<li><label><input type="checkbox">Verify <code>quarto render</code> completes without errors after the restructure</label></li>
+<li><label><input type="checkbox">Push <code>docs/</code> to GitHub Pages</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="decisions-made-for-future-reference" class="level2">
+<h2 class="anchored" data-anchor-id="decisions-made-for-future-reference">Decisions made (for future reference)</h2>
+<ul>
+<li><strong>Theme:</strong> <code>cosmo</code> — clean, Bootstrap 5 base, recruiter-readable; <code>brand</code> layer removed (no <code>_brand.yml</code> existed)</li>
+<li><strong>Projects listing:</strong> auto-generated via Quarto <code>listing</code>, grid layout sorted by date; add front matter to any <code>.qmd</code> in <code>projects/</code> to get a card</li>
+<li><strong>Photography:</strong> uses Quarto’s built-in <code>lightbox: true</code> — no extension required</li>
+<li><strong>CV:</strong> styled HTML page at <code>cv.qmd</code> + download button pointing to <code>assets/cv.pdf</code></li>
+<li><strong>Personal pages:</strong> one dropdown click deeper from nav — visible but not leading</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
