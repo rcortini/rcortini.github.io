@@ -123,7 +123,7 @@
     "href": "projects/index.html",
     "title": "Projects",
     "section": "",
-    "text": "Population density and building age in Barcelona\n\n\n\ndata visualization\n\ngeospatial\n\nurban data\n\nPython\n\n\n\nA bivariate choropleth analysis of how building age and population density interact across Barcelona’s 1,068 census sections.\n\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\nIndustrial water consumption in Catalonia\n\n\n\ndata visualization\n\ngeospatial\n\nopen data\n\nPython\n\n\n\nCombining three Catalan open data sources to show how industrial water use is concentrated in the Barcelona and Tarragona comarques.\n\n\n\nJun 1, 2025\n\n\n\n\n\n\n\n\n\n\nEuropean University Alliances Observatory\n\n\n\ndata engineering\n\nETL\n\nconsulting\n\nhigher education\n\n\n\nRedesigned a 10-pipeline Mage AI backend integrating 6 international data sources to power an interactive research analytics platform for European universities.\n\n\n\nFeb 1, 2025\n\n\n\n\n\n\n\n\n\n\nOpen Access status of publications in time\n\n\n\ndata science\n\nbibliometrics\n\nopen access\n\n\n\nTracking how the open-access status of scientific publications has evolved over time.\n\n\n\nJan 1, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Population density and building age in Barcelona\n\n\n\ndata visualization\n\ngeospatial\n\nurban data\n\nPython\n\n\n\nA bivariate choropleth analysis of how building age and population density interact across Barcelona’s 1,068 census sections.\n\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\nOpen Access status of publications in time\n\n\n\ndata science\n\nbibliometrics\n\nopen access\n\n\n\nTracking how the open-access status of scientific publications has evolved over time.\n\n\n\nDec 2, 2025\n\n\n\n\n\n\n\n\n\n\nIndustrial water consumption in Catalonia\n\n\n\ndata visualization\n\ngeospatial\n\nopen data\n\nPython\n\n\n\nCombining three Catalan open data sources to show how industrial water use is concentrated in the Barcelona and Tarragona comarques.\n\n\n\nJun 1, 2025\n\n\n\n\n\n\n\n\n\n\nEuropean University Alliances Observatory\n\n\n\ndata engineering\n\nETL\n\nconsulting\n\nhigher education\n\n\n\nRedesigned a 10-pipeline Mage AI backend integrating 6 international data sources to power an interactive research analytics platform for European universities.\n\n\n\nFeb 1, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "personal/coc/index.html",
@@ -214,14 +214,14 @@
     "href": "projects/oa_time.html#result",
     "title": "Open Access status of publications in time",
     "section": "Result",
-    "text": "Result\n\n\n\nEvolution of publications by Open Access status, 2015–2025"
+    "text": "Result\n\n\n\nEvolution of publications by Open Access status, 2015–2025\n\n\nThe shift toward open access is striking: the share of paywalled (“closed”) articles has steadily declined, while Gold and Diamond open access have grown into major publication channels.\nGold open access in particular has become a dominant model among large publishers — improving public accessibility, but also shifting costs toward research funders through publication fees.\nOne thing I didn’t fully understand was: in the last couple of years, closed publications appear to rise again. After an interesting discussion on LinkedIn, the reason seems to be that the rise in closed publications is genuine, although it is complicated by the impact of embargos (meaning some of the 2025 closed publications will move to green if you re-run this analysis in future). James Butcher attributes most of the increase in closed publications to the growth in output from China, see: https://newsletter.journalology.com/p/the-rise-of-china-and-the-fall-of/. I know Cameron Neylon has also done some digging into this question and believes there is a wider slow down in the transition to OA, which matches my own impressions. Fundamentally, the growth in outputs is outstripping the funding available to pay for open access, and so much of the increase is being captured by closed outlets."
   },
   {
     "objectID": "projects/oa_time.html#analysis",
     "href": "projects/oa_time.html#analysis",
     "title": "Open Access status of publications in time",
     "section": "Analysis",
-    "text": "Analysis\nThe full analysis — data retrieval from the OpenAlex API, processing, and visualisation — is in the notebook below. It can also be downloaded here."
+    "text": "Analysis\nThe full analysis — data retrieval from the OpenAlex API, processing, and visualisation — is in the notebook that can be downloaded here."
   },
   {
     "objectID": "projects/barcelona_edificacions.html",
@@ -235,7 +235,7 @@
     "href": "projects/barcelona_edificacions.html#result",
     "title": "Population density and building age in Barcelona",
     "section": "Result",
-    "text": "Result\nThe bivariate colour scheme encodes two variables simultaneously: building age (x-axis of the legend) and population density (y-axis). Dark blue-purple = old and dense; light grey = new and sparse.\n\n\n\nPopulation density and mean building age across Barcelona’s census sections"
+    "text": "Result\nThe bivariate colour scheme encodes two variables simultaneously: building age (x-axis of the legend) and population density (y-axis). Dark blue-purple = old and dense; light grey = new and sparse.\n\n\n\nPopulation density and mean building age across Barcelona’s census sections\n\n\nInstead of looking at a single variable, I tried to combine two: population density and the average age of buildings across Barcelona.\nWhat I found interesting is that looking at them together tells a more nuanced story:\n\nIn the historic core there is a pocket of high density and high building age in Raval, less so in Ciutat Vella\nBut there are also pockets of relatively old buildings outside the very center, with high population density. Poble Sec is particularly striking.\nThere is also a stark contrast between the Eixample Esquerra and Eixample Dreta\nAnd some dense areas that are not particularly old, hinting at more recent urban development\n\nSo rather than a simple “old center vs new outskirts” narrative, the city feels more heterogeneous, shaped by different waves of growth and transformation."
   },
   {
     "objectID": "projects/barcelona_edificacions.html#interactive-map",
@@ -249,7 +249,7 @@
     "href": "projects/barcelona_edificacions.html#full-analysis",
     "title": "Population density and building age in Barcelona",
     "section": "Full analysis",
-    "text": "Full analysis\nThe complete data pipeline — loading five geospatial datasets, merging them, computing quantile-based bivariate classes, and producing all visualisations — is in the notebook below. It can also be downloaded here."
+    "text": "Full analysis\nThe complete data pipeline — loading five geospatial datasets, merging them, computing quantile-based bivariate classes, and producing all visualisations — is in the notebook that can be downloaded here."
   },
   {
     "objectID": "projects/barcelona_edificacions.html#libraries",
@@ -340,7 +340,7 @@
     "href": "projects/aigues_catalunya.html#analysis",
     "title": "Industrial water consumption in Catalonia",
     "section": "Analysis",
-    "text": "Analysis\nThe notebook below walks through the full pipeline: fetching consumption data from the Socrata API, loading comarca boundaries from a GeoJSON zip, merging the two datasets, and producing the visualisation. It can also be downloaded here."
+    "text": "Analysis\nThe notebook below walks through the full pipeline: fetching consumption data from the Socrata API, loading comarca boundaries from a GeoJSON zip, merging the two datasets, and producing the visualisation. Download here."
   },
   {
     "objectID": "projects/aigues_catalunya.html#data-load",

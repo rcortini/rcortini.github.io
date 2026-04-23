@@ -27,7 +27,4 @@ cluster around Tarragona driven by the petrochemical complex at the mouth of the
 
 The notebook below walks through the full pipeline: fetching consumption data from the
 Socrata API, loading comarca boundaries from a GeoJSON zip, merging the two datasets, and
-producing the visualisation. It can also be
-[downloaded here](../assets/aigues_catalunya/0.ACA_APIs_exploration.ipynb).
-
-{{< embed ../assets/aigues_catalunya/0.ACA_APIs_exploration.ipynb >}}
+producing the visualisation. [Download here](../assets/aigues_catalunya/0.ACA_APIs_exploration.ipynb).

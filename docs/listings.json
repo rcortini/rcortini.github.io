@@ -3,9 +3,9 @@
     "listing": "/projects/index.html",
     "items": [
       "/projects/barcelona_edificacions.html",
+      "/projects/oa_time.html",
       "/projects/aigues_catalunya.html",
-      "/projects/eua_observatory.html",
-      "/projects/oa_time.html"
+      "/projects/eua_observatory.html"
     ]
   }
 ]

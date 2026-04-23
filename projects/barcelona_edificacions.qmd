@@ -22,10 +22,19 @@ grey = new and sparse.
 
 ![Population density and mean building age across Barcelona's census sections](../assets/barcelona_edificacions/map.png)
 
+Instead of looking at a single variable, I tried to combine two: population density and the average age of buildings across Barcelona.
+
+What I found interesting is that looking at them together tells a more nuanced story:
+
+- In the historic core there is a pocket of high density and high building age in Raval, less so in Ciutat Vella
+- But there are also pockets of relatively old buildings outside the very center, with high population density. Poble Sec is particularly striking.
+- There is also a stark contrast between the Eixample Esquerra and Eixample Dreta
+- And some dense areas that are not particularly old, hinting at more recent urban development
+
+So rather than a simple “old center vs new outskirts” narrative, the city feels more heterogeneous, shaped by different waves of growth and transformation.
+
+
 ## Full analysis
 
 The complete data pipeline — loading five geospatial datasets, merging them, computing
-quantile-based bivariate classes, and producing all visualisations — is in the notebook
-below. It can also be [downloaded here](../assets/barcelona_edificacions/map.ipynb).
-
-{{< embed ../assets/barcelona_edificacions/map.ipynb >}}
+quantile-based bivariate classes, and producing all visualisations — is in the notebook that can be [downloaded here](../assets/barcelona_edificacions/map.ipynb).
