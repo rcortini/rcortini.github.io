@@ -17,6 +17,8 @@ This gallery showcases some pictures I took in different times and different pla
 ![My first daughter was born in December 2020, when COVID was in full swing. When her grandparents came to visit her for the first time, we had them look at her from behind a glass door.](../../assets/photography/Mar_birth.jpg){#fig-mar-birth .lightbox group="gallery"}
 
 ![The Cócora Valley in Colombia is well known for its luxurious vegetation and its coffee plantations. A stunning sunset blessed our visit to a lovely coffee farm.](../../assets/photography/Cocora.jpg){#fig-cocora .lightbox group="gallery"}
+
+![The feminist march of March 8th 2018 in Barcelona marked a turning point in the public discourse around women's rights. "Prou" means "Enough" in Catalan.](../../assets/photography/Mani-8M-2018.jpg){#fig-mani .lightbox group="gallery"}
 :::
 <!--
 
