@@ -95,28 +95,28 @@
     "href": "about.html#background",
     "title": "About",
     "section": "Background",
-    "text": "Background\n\nI am a data scientist and consultant with a background in computational biophysics. After completing my PhD and several years in academic research, I transitioned into management consulting — working with higher education and research institutions on data strategy and analytics. I now focus on applied machine learning, AI systems, and data engineering for pharma and biotech clients."
+    "text": "Background\nI am a data scientist and consultant with a background in computational biophysics. After completing my PhD and several years in academic research, I transitioned into strategic consulting — working with higher education and research institutions on data strategy and analytics. I now wish to transition to applied machine learning, AI systems, and data engineering for pharma, biotech, and water management engineering."
   },
   {
     "objectID": "about.html#what-i-do",
     "href": "about.html#what-i-do",
     "title": "About",
     "section": "What I do",
-    "text": "What I do\n\n\n\n\n\n\n\nArea\nDetails\n\n\n\n\nData science & ML\nEnd-to-end ML pipelines, predictive modelling, model deployment\n\n\nAI systems\nLLM applications, retrieval-augmented generation, agent frameworks\n\n\nScientific computing\nBiophysics modelling, genomics data analysis\n\n\nConsulting\nAnalytical strategy for pharma and biotech organisations"
+    "text": "What I do\n\n\n\n\n\n\n\nArea\nDetails\n\n\n\n\nData science & ML\nEnd-to-end ML pipelines, predictive modelling, model deployment\n\n\nAI systems\nLLM applications, retrieval-augmented generation, agent frameworks\n\n\nScientific computing\nBiophysics modelling, genomics data analysis\n\n\nConsulting\nAnalytical strategy for research organizations; interest in moving to pharma, biotech, and water supply management"
   },
   {
     "objectID": "about.html#education",
     "href": "about.html#education",
     "title": "About",
     "section": "Education",
-    "text": "Education\n\n\n\nDegree\nInstitution\nYear\n\n\n\n\nPhD, Biophysics\n[Institution]\n[Year]\n\n\n[Degree]\n[Institution]\n[Year]"
+    "text": "Education\n\n\n\n\n\n\n\n\nDegree\nInstitution\nYear\n\n\n\n\nPhD, Biophysics\nImperial College London\n2012\n\n\nMsC Physics\nUniversità degli Studi di Napoli “Federico II”\n2009\n\n\nBsC Physics\nUniversità degli Studi di Napoli “Federico II”\n2006"
   },
   {
     "objectID": "about.html#skills",
     "href": "about.html#skills",
     "title": "About",
     "section": "Skills",
-    "text": "Skills\nLanguages: Python · R · SQL · Julia ML / AI: scikit-learn · PyTorch · LangChain · Hugging Face Data engineering: dbt · Airflow · Spark Cloud: AWS · GCP Tools: Git · Docker · Quarto\n\nOutside work I enjoy photography, fantasy cartography, and tabletop role-playing games."
+    "text": "Skills\nLanguages: Python · R · SQL · C/C++ ML / AI: scikit-learn · PyTorch · Hugging Face Data engineering: dbt · Airflow · Spark · PostgreSQL · Mage AI Cloud: AWS · GCP Tools: Git · Docker · Quarto\n\nOutside work I enjoy photography, fantasy cartography, and tabletop role-playing games."
   },
   {
     "objectID": "projects/index.html",
