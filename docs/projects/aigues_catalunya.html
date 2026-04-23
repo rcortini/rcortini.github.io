@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-06-01">
+<meta name="description" content="Combining three Catalan open data sources to show how industrial water use is concentrated in the Barcelona and Tarragona comarques.">
 
-<title>Projects – Ruggero Cortini</title>
+<title>Industrial water consumption in Catalonia – Ruggero Cortini</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,15 +28,13 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -72,65 +72,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-    const options = {
-      valueNames: ['listing-title','listing-date','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -161,7 +106,7 @@ window.Quarto = {
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../projects/index.html" aria-current="page"> 
+    <a class="nav-link" href="../projects/index.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -195,24 +140,62 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="YmlibGlvbWV0cmljcw==">bibliometrics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMHNjaWVuY2U=">data science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMHZpc3VhbGl6YXRpb24=">data visualization <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Z2Vvc3BhdGlhbA==">geospatial <span class="quarto-category-count">(2)</span></div><div class="category" data-category="b3BlbiUyMGFjY2Vzcw==">open access <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3BlbiUyMGRhdGE=">open data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dXJiYW4lMjBkYXRh">urban data <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#result" id="toc-result" class="nav-link active" data-scroll-target="#result">Result</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
+  <li><a href="#catalan-open-data-exploration" id="toc-catalan-open-data-exploration" class="nav-link" data-scroll-target="#catalan-open-data-exploration">Catalan Open Data exploration</a>
+  <ul class="collapse">
+  <li><a href="#data-load" id="toc-data-load" class="nav-link" data-scroll-target="#data-load">Data load</a>
+  <ul class="collapse">
+  <li><a href="#agència-catalana-de-laigua" id="toc-agència-catalana-de-laigua" class="nav-link" data-scroll-target="#agència-catalana-de-laigua">Agència Catalana de l’Aigua</a></li>
+  <li><a href="#portal-de-transparència-de-catalunya" id="toc-portal-de-transparència-de-catalunya" class="nav-link" data-scroll-target="#portal-de-transparència-de-catalunya">Portal de Transparència de Catalunya</a></li>
+  <li><a href="#institut-cartogràfic-i-geològic-de-catalunya" id="toc-institut-cartogràfic-i-geològic-de-catalunya" class="nav-link" data-scroll-target="#institut-cartogràfic-i-geològic-de-catalunya">Institut Cartogràfic i Geològic de Catalunya</a></li>
+  </ul></li>
+  <li><a href="#data-visualizations" id="toc-data-visualizations" class="nav-link" data-scroll-target="#data-visualizations">Data visualizations</a>
+  <ul class="collapse">
+  <li><a href="#industrial-water-consumption" id="toc-industrial-water-consumption" class="nav-link" data-scroll-target="#industrial-water-consumption">Industrial water consumption</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="../assets/aigues_catalunya/0.ACA_APIs_exploration-preview.html"><i class="bi bi-journal-code"></i>Catalan Open Data exploration</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Projects</h1>
+<h1 class="title">Industrial water consumption in Catalonia</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">data visualization</div>
+    <div class="quarto-category">geospatial</div>
+    <div class="quarto-category">open data</div>
+    <div class="quarto-category">Python</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Combining three Catalan open data sources to show how industrial water use is concentrated in the Barcelona and Tarragona comarques.
+  </div>
 </div>
 
 
-
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 1, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -222,100 +205,415 @@ window.Quarto = {
 </header>
 
 
+<p>Catalonia publishes granular water consumption data — by sector and by <em>comarca</em> (the administrative unit below province) — through the <a href="https://analisi.transparenciacatalunya.cat">Portal de Transparència de Catalunya</a>. Cross-referencing this with geographic boundaries from the <a href="https://www.icgc.cat">Institut Cartogràfic i Geològic de Catalunya</a> makes it possible to map where industrial water use is actually concentrated.</p>
+<section id="result" class="level2">
+<h2 class="anchored" data-anchor-id="result">Result</h2>
+<p>The chart below pairs a ranked bar chart with an inset choropleth map. The colour scale is shared across both panels, making it easy to spot the geographic clusters at a glance.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/aigues_catalunya/industrial_consumption_viz.png" class="img-fluid figure-img"></p>
+<figcaption>Industrial water consumption by comarca, Catalonia 2024</figcaption>
+</figure>
+</div>
+<p>The concentration is stark: <strong>the top four comarques account for over half of total industrial water consumption</strong>. Barcelonès and its neighbours dominate, with a secondary cluster around Tarragona driven by the petrochemical complex at the mouth of the Ebre.</p>
+</section>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<p>The notebook below walks through the full pipeline: fetching consumption data from the Socrata API, loading comarca boundaries from a GeoJSON zip, merging the two datasets, and producing the visualisation. It can also be <a href="../assets/aigues_catalunya/0.ACA_APIs_exploration.html">downloaded here</a>.</p>
+</section>
+<section id="catalan-open-data-exploration" class="level1 quarto-embed-nb-cell">
+<h1>Catalan Open Data exploration</h1>
+<section id="data-load" class="level2">
+<h2 class="anchored" data-anchor-id="data-load">Data load</h2>
+<section id="agència-catalana-de-laigua" class="level3">
+<h3 class="anchored" data-anchor-id="agència-catalana-de-laigua">Agència Catalana de l’Aigua</h3>
+<p>The Agència Catalana de l’Aigua has <a href="https://aca.gencat.cat/es/laigua/consulta-de-dades/dades-obertes/dades-obertes-temps-real/">documentation</a> pertaining to the public APIs that allow for retrieving structured data on water in Catalonia.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 52%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Datos</th>
+<th>Catálogo</th>
+<th>Últimos datos recogidos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Embalses</td>
+<td>https://aplicacions.aca.gencat.cat/sdim2/apirest/catalog?componentType=embassament</td>
+<td>https://aplicacions.aca.gencat.cat/sdim2/apirest/data/EMBASSAMENT-EST</td>
+</tr>
+<tr class="even">
+<td>Aforos</td>
+<td>https://aplicacions.aca.gencat.cat/sdim2/apirest/catalog?componentType=aforament</td>
+<td>https://aplicacions.aca.gencat.cat/sdim2/apirest/data/AFORAMENT-EST</td>
+</tr>
+<tr class="odd">
+<td>Pluviómetros</td>
+<td>https://aplicacions.aca.gencat.cat/sdim2/apirest/catalog?componentType=pluviometre</td>
+<td>https://aplicacions.aca.gencat.cat/sdim2/apirest/data/PLUVIOMETREACA-EST</td>
+</tr>
+<tr class="even">
+<td>Piezómetros</td>
+<td>https://aplicacions.aca.gencat.cat/sdim2/apirest/catalog?componentType=piezometre</td>
+<td>https://aplicacions.aca.gencat.cat/sdim2/apirest/data/PIEZOMETRE-EST</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="portal-de-transparència-de-catalunya" class="level3">
+<h3 class="anchored" data-anchor-id="portal-de-transparència-de-catalunya">Portal de Transparència de Catalunya</h3>
+<p>Then, there is the water consumption data from the <a href="https://analisi.transparenciacatalunya.cat/Medi-Ambient/Consum-d-aigua-a-Catalunya-per-comarques/2gws-ubmt/about_data">Portal de Transparència de Catalunya</a>.</p>
+<div id="5665bdb2" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">any</th>
+<th data-quarto-table-cell-role="th">codi_comarca</th>
+<th data-quarto-table-cell-role="th">comarca</th>
+<th data-quarto-table-cell-role="th">poblaci</th>
+<th data-quarto-table-cell-role="th">dom_stic_xarxa</th>
+<th data-quarto-table-cell-role="th">activitats_econ_miques_i</th>
+<th data-quarto-table-cell-role="th">total</th>
+<th data-quarto-table-cell-role="th">consum_dom_stic_per_c_pita</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2024</td>
+<td>1</td>
+<td>ALT CAMP, L'</td>
+<td>46338</td>
+<td>1588721</td>
+<td>2602737</td>
+<td>4191458</td>
+<td>93.93</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2024</td>
+<td>2</td>
+<td>ALT EMPORDÀ, L'</td>
+<td>148856</td>
+<td>7532744</td>
+<td>4005563</td>
+<td>11538307</td>
+<td>138.64</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2024</td>
+<td>3</td>
+<td>ALT PENEDÈS, L'</td>
+<td>114215</td>
+<td>4217395</td>
+<td>2723893</td>
+<td>6941288</td>
+<td>101.16</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2024</td>
+<td>4</td>
+<td>ALT URGELL, L'</td>
+<td>21214</td>
+<td>1007067</td>
+<td>1299444</td>
+<td>2306511</td>
+<td>130.06</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2024</td>
+<td>5</td>
+<td>ALTA RIBAGORÇA, L'</td>
+<td>4002</td>
+<td>466835</td>
+<td>429561</td>
+<td>896396</td>
+<td>319.59</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="institut-cartogràfic-i-geològic-de-catalunya" class="level3">
+<h3 class="anchored" data-anchor-id="institut-cartogràfic-i-geològic-de-catalunya">Institut Cartogràfic i Geològic de Catalunya</h3>
+<p>The data here was obtained in the <a href="https://www.icgc.cat/ca/Geoinformacio-i-mapes/Dades-i-productes/Geoinformacio-cartografica/Divisions-administratives">ICGC website</a>. It refers to the geographical coordinates of the boundaries between catalan “comarques”.</p>
+<div id="a8cf7240" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CODICOMAR</th>
+<th data-quarto-table-cell-role="th">NOMCOMAR</th>
+<th data-quarto-table-cell-role="th">CAPCOMAR</th>
+<th data-quarto-table-cell-role="th">AREAC5000</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>01</td>
+<td>Alt Camp</td>
+<td>Valls</td>
+<td>537.8597</td>
+<td>MULTIPOLYGON (((1.47594 41.47798, 1.47459 41.4...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>02</td>
+<td>Alt Empordà</td>
+<td>Figueres</td>
+<td>1356.9070</td>
+<td>MULTIPOLYGON (((3.22338 42.23682, 3.22337 42.2...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>03</td>
+<td>Alt Penedès</td>
+<td>Vilafranca del Penedès</td>
+<td>592.5553</td>
+<td>MULTIPOLYGON (((1.6169 41.5126, 1.61666 41.512...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>04</td>
+<td>Alt Urgell</td>
+<td>la Seu d'Urgell</td>
+<td>1446.6785</td>
+<td>MULTIPOLYGON (((1.31941 41.99157, 1.31775 41.9...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>05</td>
+<td>Alta Ribagorça</td>
+<td>el Pont de Suert</td>
+<td>427.2234</td>
+<td>MULTIPOLYGON (((0.8795 42.6314, 0.87928 42.631...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="fa4cc567" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">any</th>
+<th data-quarto-table-cell-role="th">codi_comarca</th>
+<th data-quarto-table-cell-role="th">comarca</th>
+<th data-quarto-table-cell-role="th">poblaci</th>
+<th data-quarto-table-cell-role="th">dom_stic_xarxa</th>
+<th data-quarto-table-cell-role="th">activitats_econ_miques_i</th>
+<th data-quarto-table-cell-role="th">total</th>
+<th data-quarto-table-cell-role="th">consum_dom_stic_per_c_pita</th>
+<th data-quarto-table-cell-role="th">comarca_sane</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2024</td>
+<td>1</td>
+<td>ALT CAMP, L'</td>
+<td>46338</td>
+<td>1588721</td>
+<td>2602737</td>
+<td>4191458</td>
+<td>93.93</td>
+<td>ALT CAMP</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2024</td>
+<td>2</td>
+<td>ALT EMPORDÀ, L'</td>
+<td>148856</td>
+<td>7532744</td>
+<td>4005563</td>
+<td>11538307</td>
+<td>138.64</td>
+<td>ALT EMPORDÀ</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2024</td>
+<td>3</td>
+<td>ALT PENEDÈS, L'</td>
+<td>114215</td>
+<td>4217395</td>
+<td>2723893</td>
+<td>6941288</td>
+<td>101.16</td>
+<td>ALT PENEDÈS</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2024</td>
+<td>4</td>
+<td>ALT URGELL, L'</td>
+<td>21214</td>
+<td>1007067</td>
+<td>1299444</td>
+<td>2306511</td>
+<td>130.06</td>
+<td>ALT URGELL</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2024</td>
+<td>5</td>
+<td>ALTA RIBAGORÇA, L'</td>
+<td>4002</td>
+<td>466835</td>
+<td>429561</td>
+<td>896396</td>
+<td>319.59</td>
+<td>ALTA RIBAGORÇA</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">540</th>
+<td>2012</td>
+<td>37</td>
+<td>TERRA ALTA</td>
+<td>12713</td>
+<td>441824</td>
+<td>225143</td>
+<td>666967</td>
+<td>95.22</td>
+<td>TERRA ALTA</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">541</th>
+<td>2012</td>
+<td>38</td>
+<td>URGELL, L'</td>
+<td>36975</td>
+<td>1543234</td>
+<td>1422857</td>
+<td>2966091</td>
+<td>114.35</td>
+<td>URGELL</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">542</th>
+<td>2012</td>
+<td>39</td>
+<td>VAL D'ARAN, LA</td>
+<td>10056</td>
+<td>1112630</td>
+<td>731409</td>
+<td>1844038</td>
+<td>303.13</td>
+<td>VAL D'ARAN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">543</th>
+<td>2012</td>
+<td>40</td>
+<td>VALLÈS OCCIDENTAL, EL</td>
+<td>898173</td>
+<td>36611134</td>
+<td>25651000</td>
+<td>62262134</td>
+<td>111.68</td>
+<td>VALLÈS OCCIDENTAL</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">544</th>
+<td>2012</td>
+<td>41</td>
+<td>VALLÈS ORIENTAL, EL</td>
+<td>402632</td>
+<td>17020094</td>
+<td>14216816</td>
+<td>31236910</td>
+<td>115.81</td>
+<td>VALLÈS ORIENTAL</td>
+</tr>
+</tbody>
+</table>
+
+<p>545 rows × 9 columns</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualizations">Data visualizations</h2>
+<section id="industrial-water-consumption" class="level3">
+<h3 class="anchored" data-anchor-id="industrial-water-consumption">Industrial water consumption</h3>
+<div id="3f64d234" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>comarca_sane
+GIRONÈS              0.323280
+OSONA                0.354505
+SEGRIÀ               0.386755
+MARESME              0.420630
+SELVA                0.460057
+VALLÈS ORIENTAL      0.509066
+VALLÈS OCCIDENTAL    0.591534
+BAIX LLOBREGAT       0.683549
+BARCELONÈS           0.836494
+TARRAGONÈS           1.000000
+Name: activitats_econ_miques_i, dtype: float64</code></pre>
+</div>
+</div>
+<div id="04b70bcf" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="aigues_catalunya_files/figure-html/..-assets-aigues_catalunya-0.ACA_APIs_exploration-cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<a class="quarto-notebook-link" id="nblink-1" href="../assets/aigues_catalunya/0.ACA_APIs_exploration-preview.html#5aad55fa">Source: Catalan Open Data exploration</a></section>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNnZW9zcGF0aWFsJTJDdXJiYW4lMjBkYXRhJTJDUHl0aG9u" data-listing-date-sort="1767222000000" data-listing-file-modified-sort="1776931693617" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="137">
-<a href="../projects/barcelona_edificacions.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Population density and building age in Barcelona
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHZpc3VhbGl6YXRpb24='); return false;">data visualization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2Vvc3BhdGlhbA=='); return false;">geospatial</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dXJiYW4lMjBkYXRh'); return false;">urban data</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A bivariate choropleth analysis of how building age and population density interact across Barcelona’s 1,068 census sections.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jan 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNnZW9zcGF0aWFsJTJDb3BlbiUyMGRhdGElMkNQeXRob24=" data-listing-date-sort="1748728800000" data-listing-file-modified-sort="1776936538165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="153">
-<a href="../projects/aigues_catalunya.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Industrial water consumption in Catalonia
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHZpc3VhbGl6YXRpb24='); return false;">data visualization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2Vvc3BhdGlhbA=='); return false;">geospatial</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('b3BlbiUyMGRhdGE='); return false;">open data</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Combining three Catalan open data sources to show how industrial water use is concentrated in the Barcelona and Tarragona comarques.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jun 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="ZGF0YSUyMHNjaWVuY2UlMkNiaWJsaW9tZXRyaWNzJTJDb3BlbiUyMGFjY2Vzcw==" data-listing-date-sort="1735686000000" data-listing-file-modified-sort="1776931190042" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="89">
-<a href="../projects/oa_time.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Open Access status of publications in time
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHNjaWVuY2U='); return false;">data science</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YmlibGlvbWV0cmljcw=='); return false;">bibliometrics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('b3BlbiUyMGFjY2Vzcw=='); return false;">open access</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Tracking how the open-access status of scientific publications has evolved over time.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jan 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
