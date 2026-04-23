@@ -6,6 +6,17 @@ categories: [data science, bibliometrics, open access]
 ---
 
 As an ex-researcher and ex-consultant in the field of Higher Education and Research, I have
-been interested for a long time in publications practices.
+been interested for a long time in publication practices. [OpenAlex](https://openalex.org)
+provides a free, open API to query bibliographic data for millions of scholarly works. I used
+it to track how the Open Access status of journal articles has evolved from 2015 to 2025.
 
-<!-- Add full project content here — analysis, figures, narrative, etc. -->
+## Result
+
+![Evolution of publications by Open Access status, 2015–2025](../assets/n_year.png)
+
+## Analysis
+
+The full analysis — data retrieval from the OpenAlex API, processing, and visualisation —
+is in the notebook below. It can also be [downloaded here](../assets/OA_time.ipynb).
+
+{{< embed ../assets/OA_time.ipynb >}}

@@ -140,8 +140,16 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#result" id="toc-result" class="nav-link active" data-scroll-target="#result">Result</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
+  <li><a href="#open-access-status-in-time" id="toc-open-access-status-in-time" class="nav-link" data-scroll-target="#open-access-status-in-time">Open Access status in time</a></li>
+  </ul>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="../assets/OA_time-preview.html"><i class="bi bi-journal-code"></i>Open Access status in time</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -181,8 +189,49 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>As an ex-researcher and ex-consultant in the field of Higher Education and Research, I have been interested for a long time in publications practices.</p>
-<!-- Add full project content here — analysis, figures, narrative, etc. -->
+<p>As an ex-researcher and ex-consultant in the field of Higher Education and Research, I have been interested for a long time in publication practices. <a href="https://openalex.org">OpenAlex</a> provides a free, open API to query bibliographic data for millions of scholarly works. I used it to track how the Open Access status of journal articles has evolved from 2015 to 2025.</p>
+<section id="result" class="level2">
+<h2 class="anchored" data-anchor-id="result">Result</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/n_year.png" class="img-fluid figure-img"></p>
+<figcaption>Evolution of publications by Open Access status, 2015–2025</figcaption>
+</figure>
+</div>
+</section>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<p>The full analysis — data retrieval from the OpenAlex API, processing, and visualisation — is in the notebook below. It can also be <a href="../assets/OA_time.html">downloaded here</a>.</p>
+</section>
+<section id="open-access-status-in-time" class="level1 quarto-embed-nb-cell">
+<h1>Open Access status in time</h1>
+<p>In this study, we will get data from <a href="www.openalex.org">OpenAlex</a> to extract data on how the Open Access status of publications has evolved in the past 10 years.</p>
+<div id="cell-4" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>2015    7207568
+2016    7246654
+2017    6853936
+2018    6810353
+2019    7087018
+2020    7227151
+2021    6644701
+2022    6043447
+2023    6322328
+2024    6655393
+2025    7691611
+dtype: int64</code></pre>
+</div>
+</div>
+<div id="cell-5" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="oa_time_files/figure-html/..-assets-OA_time-cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-1" href="../assets/OA_time-preview.html#cell-0">Source: Open Access status in time</a></section>
 
 
 
