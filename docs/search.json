@@ -123,7 +123,7 @@
     "href": "projects/index.html",
     "title": "Projects",
     "section": "",
-    "text": "Population density and building age in Barcelona\n\n\n\ndata visualization\n\ngeospatial\n\nurban data\n\nPython\n\n\n\nA bivariate choropleth analysis of how building age and population density interact across Barcelona’s 1,068 census sections.\n\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\nIndustrial water consumption in Catalonia\n\n\n\ndata visualization\n\ngeospatial\n\nopen data\n\nPython\n\n\n\nCombining three Catalan open data sources to show how industrial water use is concentrated in the Barcelona and Tarragona comarques.\n\n\n\nJun 1, 2025\n\n\n\n\n\n\n\n\n\n\nOpen Access status of publications in time\n\n\n\ndata science\n\nbibliometrics\n\nopen access\n\n\n\nTracking how the open-access status of scientific publications has evolved over time.\n\n\n\nJan 1, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Population density and building age in Barcelona\n\n\n\ndata visualization\n\ngeospatial\n\nurban data\n\nPython\n\n\n\nA bivariate choropleth analysis of how building age and population density interact across Barcelona’s 1,068 census sections.\n\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\nIndustrial water consumption in Catalonia\n\n\n\ndata visualization\n\ngeospatial\n\nopen data\n\nPython\n\n\n\nCombining three Catalan open data sources to show how industrial water use is concentrated in the Barcelona and Tarragona comarques.\n\n\n\nJun 1, 2025\n\n\n\n\n\n\n\n\n\n\nEuropean University Alliances Observatory\n\n\n\ndata engineering\n\nETL\n\nconsulting\n\nhigher education\n\n\n\nRedesigned a 10-pipeline Mage AI backend integrating 6 international data sources to power an interactive research analytics platform for European universities.\n\n\n\nFeb 1, 2025\n\n\n\n\n\n\n\n\n\n\nOpen Access status of publications in time\n\n\n\ndata science\n\nbibliometrics\n\nopen access\n\n\n\nTracking how the open-access status of scientific publications has evolved over time.\n\n\n\nJan 1, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "personal/coc/index.html",
@@ -355,5 +355,47 @@
     "title": "Industrial water consumption in Catalonia",
     "section": "Data visualizations",
     "text": "Data visualizations\n\nIndustrial water consumption\n\n\ncomarca_sane\nGIRONÈS              0.323280\nOSONA                0.354505\nSEGRIÀ               0.386755\nMARESME              0.420630\nSELVA                0.460057\nVALLÈS ORIENTAL      0.509066\nVALLÈS OCCIDENTAL    0.591534\nBAIX LLOBREGAT       0.683549\nBARCELONÈS           0.836494\nTARRAGONÈS           1.000000\nName: activitats_econ_miques_i, dtype: float64"
+  },
+  {
+    "objectID": "projects/eua_observatory.html",
+    "href": "projects/eua_observatory.html",
+    "title": "European University Alliances Observatory",
+    "section": "",
+    "text": "The European University Alliances Observatory is an interactive analytics platform built by SIRIS Academic that tracks the research and education output of universities belonging to EU-funded alliances. It covers 10+ alliances, ~100 member institutions across Europe, and draws on publication records, EU funding data, staff demographics, and SDG alignment metrics.\nThe source code is private. This page describes the backend architecture I redesigned and the data contract it produces."
+  },
+  {
+    "objectID": "projects/eua_observatory.html#my-role",
+    "href": "projects/eua_observatory.html#my-role",
+    "title": "European University Alliances Observatory",
+    "section": "My role",
+    "text": "My role\nI joined the project after an initial version of the backend had been built. My task was to redesign and simplify the pipeline architecture using Mage AI to make it more maintainable and correct, and to own the final JSON generation step that feeds the React frontend."
+  },
+  {
+    "objectID": "projects/eua_observatory.html#architecture",
+    "href": "projects/eua_observatory.html#architecture",
+    "title": "European University Alliances Observatory",
+    "section": "Architecture",
+    "text": "Architecture\nThe backend is a set of 10 Mage AI pipelines, each responsible for one data source or processing stage. A master orchestration pipeline triggers them in sequence.\n\n\n\n\n\nData sources integrated:\n\n\n\nSource\nWhat it provides\n\n\n\n\nOpenAlex\nPublication counts, research fields, keyword wordclouds (2012–2022)\n\n\nCORDIS\nEU project participation counts, via SPARQL endpoint\n\n\nETER\nStaff and student demographics per institution\n\n\nARWU\nShanghai Rankings, resolved via Wikidata\n\n\nWikidata\nEntity disambiguation and cross-source ID mapping\n\n\nGoogle BigQuery\nSDG specialization indices (EU27 baseline comparison)\n\n\n\nEach pipeline reads from or writes to a PostgreSQL database (schema: eualliances). Entity disambiguation — matching the same institution across OpenAlex, CORDIS, ETER, ARWU, and Wikidata — was the hardest part of the data model."
+  },
+  {
+    "objectID": "projects/eua_observatory.html#key-contributions",
+    "href": "projects/eua_observatory.html#key-contributions",
+    "title": "European University Alliances Observatory",
+    "section": "Key contributions",
+    "text": "Key contributions\nMember disambiguation pipeline — The original logic for reconciling institution identities across six databases was complex and fragile. I refactored it end-to-end, reducing the block count by ~40% while making the matching more robust.\nAlliance pipeline foundation — Moved database schema creation into the first pipeline block, removing an external dependency that had caused environment setup issues.\nCORDIS and ETER pipelines — Debugged and corrected EU project counting logic and staff demographic extraction, both of which had silent data quality issues.\nSDG specialization pipeline — Improved the topology of the BigQuery-based calculation that compares each alliance’s publication distribution against the EU27 baseline.\nJSON generation — Fixed and owned the final pipeline block that merges all enriched tables into the hierarchical JSON file consumed by the frontend."
+  },
+  {
+    "objectID": "projects/eua_observatory.html#output-the-json-artefact",
+    "href": "projects/eua_observatory.html#output-the-json-artefact",
+    "title": "European University Alliances Observatory",
+    "section": "Output: the JSON artefact",
+    "text": "Output: the JSON artefact\nThe final pipeline produces a single JSON file — an array of alliance objects, each containing aggregated metrics and a nested array of member institutions. The React frontend loads this file once on startup and drives all views from it.\nSimplified schema:\n[\n  {\n    \"name\": \"4EU+\",\n    \"display_name\": \"The 4EU+ Alliance\",\n    \"website\": \"https://4euplus.eu\",\n    \"coordinator\": \"Sorbonne University\",\n    \"funded_year\": \"2019\",\n    \"seal_of_excellence\": true,\n    \"oa_alliance_npubs\": 591055,\n    \"cordis_alliance_nprojects\": 1487,\n    \"oa_wordcloud\": \"[{\\\"count\\\": 4200, \\\"key_display_name\\\": \\\"Clinical trial\\\"}, ...]\",\n    \"sdg_si\": { \"3\": 1.42, \"7\": 0.88, \"13\": 1.1 },\n    \"number_of_institutions\": 7,\n    \"members\": [\n      {\n        \"institution_name\": \"Charles University\",\n        \"wikidata_key\": \"Q182516\",\n        \"oa_pubs_n\": 54328,\n        \"oa_pubs_top_field_1\": \"Medicine\",\n        \"cordis_projects_n\": 612,\n        \"eter_staff_n\": 8269,\n        \"eter_staff_women_pct\": 48.2,\n        \"eter_students_n\": 42224,\n        \"arwu_ranking\": \"301-400\",\n        \"nuts_id\": \"CZ01\"\n      }\n    ]\n  }\n]"
+  },
+  {
+    "objectID": "projects/eua_observatory.html#result",
+    "href": "projects/eua_observatory.html#result",
+    "title": "European University Alliances Observatory",
+    "section": "Result",
+    "text": "Result\nThe platform is live at eua-observatory.sirislab.com and is used by SIRIS Academic for research and policy analysis work on European higher education.\n\n\n\nMain dashboard — alliance explorer with country filter\n\n\n\n\n\nAlliance detail view — research metrics, SDG flower plot, and member institution table"
   }
 ]
