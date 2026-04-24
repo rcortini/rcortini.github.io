@@ -1,6 +1,6 @@
 ---
 title: "Population density and building age in Barcelona"
-date: 2026-01-01
+date: 2026-03-14
 description: "A bivariate choropleth analysis of how building age and population density interact across Barcelona's 1,068 census sections."
 categories: [data visualization, geospatial, urban data, Python]
 ---

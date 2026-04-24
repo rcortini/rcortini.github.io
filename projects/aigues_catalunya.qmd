@@ -1,6 +1,6 @@
 ---
 title: "Industrial water consumption in Catalonia"
-date: 2025-06-01
+date: 2026-02-03
 description: "Combining three Catalan open data sources to show how industrial water use is concentrated in the Barcelona and Tarragona comarques."
 categories: [data visualization, geospatial, open data, Python]
 ---

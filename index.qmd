@@ -31,3 +31,4 @@ I'm a Barcelona-based data scientist with a PhD in biophysics from Imperial Coll
 - [Industrial water consumption in Catalonia](projects/aigues_catalunya.qmd) — combining three Catalan open data sources to map how industrial water use is concentrated across the region
 - [Population density and building age in Barcelona](projects/barcelona_edificacions.qmd) — bivariate choropleth analysis of urban structure across Barcelona's 1,068 census sections
 - [Open Access status of publications in time](projects/oa_time.qmd) — tracking how open-access publishing practices have evolved from 2015 to 2025
+- [Transcription factor dynamics on folded chromatin](projects/sbs_tracers.qmd) — GPU-accelerated simulation framework for studying protein search on 3D chromatin; published in *Nature Communications*
