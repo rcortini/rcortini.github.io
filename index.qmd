@@ -8,8 +8,7 @@ toc: false
 ::: {.text-center .lead}
 **Data Scientist · Biophysicist · Consultant**
 
-I help pharma and biotech organisations turn complex data into actionable decisions,
-combining scientific rigour with practical machine-learning engineering.
+I'm a Barcelona-based data scientist with a PhD in biophysics from Imperial College London and five years' consulting experience at SIRIS Academic. I help pharma, biotech, and research organisations turn complex scientific data into decisions — most recently through NLP and ML pipelines over biomedical literature, patents, and clinical trials. I'm currently exploring new roles in pharma/biotech consulting and applied ML.
 :::
 
 ::: {.text-center style="margin: 1.5rem 0 2rem;"}
@@ -25,7 +24,6 @@ combining scientific rigour with practical machine-learning engineering.
 - **Applied ML & AI systems** — end-to-end pipelines, LLM applications, agent frameworks
 - **Data science consulting** — translating pharma/biotech problems into analytical solutions
 - **Scientific computing** — biophysics-informed modelling, genomics data analysis
-- **IoT & robotics** — embedded systems, sensor data, edge ML
 
 ## Selected projects
 

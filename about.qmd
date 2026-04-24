@@ -25,9 +25,9 @@ pharma, biotech, and water management engineering.
 
 | Degree | Institution | Year |
 |--------|-------------|------|
-| PhD, Biophysics | *Imperial College London* | *2012* |
-| *MsC Physics* | *Università degli Studi di Napoli "Federico II"* | *2009* |
-| *BsC Physics* | *Università degli Studi di Napoli "Federico II"* | *2006* |
+| PhD, Biophysics | *Imperial College London* | *2009-2012* |
+| *MsC Physics* | *Università degli Studi di Napoli "Federico II"* | *2006-2009* |
+| *BsC Physics* | *Università degli Studi di Napoli "Federico II"* | *2003-2006* |
 
 ## Skills
 
