@@ -1,0 +1,64 @@
+---
+title: "Parsing the IPC patent classification tree"
+date: 2025-03-01
+description: "A self-contained Python notebook that downloads WIPO's official IPC XML schema, reconstructs full hierarchical descriptions for all 79,000+ classification symbols, and uploads the result to Google Sheets."
+categories: [data engineering, open data, patents, Python]
+---
+
+Patent data analysis often begins with the same tedious problem: the
+[International Patent Classification (IPC)](https://ipcpub.wipo.int/)
+system has over 79,000 technology symbols, but their descriptions in raw databases are
+*relative* — a leaf node only tells you what it is relative to its parent. To understand
+what `A01B0003280000` actually means, you have to walk up the tree through `A01B0003240000`,
+`A01B0003000000`, `A01B`, `A01`, and `A`, concatenating descriptions as you go.
+
+This notebook solves that once, for all symbols, and pushes the result to a Google Sheet
+that anyone on a team can use as a lookup table.
+
+---
+
+## What it does
+
+**Input:** the official IPC master XML file, downloaded on-the-fly directly from
+[WIPO's public server](https://ipcpub.wipo.int/) —
+no local copy needed.
+
+**Pipeline:**
+
+1. Fetch and unzip the schema in memory (no disk writes)
+2. Walk the XML tree, filtering out meta-nodes (`i`, `g`, `n`, `t` kinds)
+3. Build a parent–child map across all 79,473 symbols
+4. For each symbol, recursively collect ancestor descriptions and concatenate them into a
+   single human-readable string
+5. Convert WIPO's 14-character binary symbol format (`SCCUMMMMGGGGGG`) to the standard
+   PATSTAT format (e.g. `A01B   1/02`) so the output joins cleanly with patent databases
+6. Write a CSV (`ipc_descriptions.csv`) and upload two sheets to Google Sheets:
+   - **Schema** — every symbol with its full hierarchical description (79,473 rows)
+   - **Children** — every symbol with the flat list of all its descendants
+
+**Output example:**
+
+| WIPO symbol | PATSTAT symbol | Full description |
+|-------------|----------------|-----------------|
+| `A01B0003280000` | `A01B   3/28` | Agriculture; Soil working in agriculture or forestry; Soil-shifting machines; Arrangements for converting hand-operated into power-operated ploughs; Ploughs; Rotary tillers; Equipments with working tools; Details |
+
+---
+
+## Why it's useful
+
+Most patent analytics tools expose IPC codes as short strings (`A01B 3/28`) with no
+human-readable label attached. Joining against this table adds the full description in one
+step — useful for labelling charts, filtering by technology area, or explaining results to
+a non-expert audience.
+
+The Google Sheets output means the whole team has access to an always-current lookup table
+without any local setup.
+
+---
+
+## Notebook
+
+The full notebook is embedded below and can be
+[downloaded here](../assets/patstat/IPC_schema_parse.ipynb).
+To use it yourself, replace `YOUR_SHEET_ID` in the upload cells with the ID of your own
+Google Sheet (the string between `/d/` and `/edit` in the sheet URL).

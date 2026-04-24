@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-03-01">
+<meta name="description" content="A self-contained Python notebook that downloads WIPO’s official IPC XML schema, reconstructs full hierarchical descriptions for all 79,000+ classification symbols, and uploads the result to Google Sheets.">
 
-<title>Projects – Ruggero Cortini</title>
+<title>Parsing the IPC patent classification tree – Ruggero Cortini</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +35,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -72,65 +72,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-date','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -161,7 +103,7 @@ window.Quarto = {
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../projects/index.html" aria-current="page"> 
+    <a class="nav-link" href="../projects/index.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -195,24 +137,50 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="YmlibGlvbWV0cmljcw==">bibliometrics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmlvcGh5c2ljcw==">biophysics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29tcHV0YXRpb25hbCUyMGJpb2xvZ3k=">computational biology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29uc3VsdGluZw==">consulting <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMGVuZ2luZWVyaW5n">data engineering <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZGF0YSUyMHNjaWVuY2U=">data science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMHZpc3VhbGl6YXRpb24=">data visualization <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RVRM">ETL <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2Vvc3BhdGlhbA==">geospatial <span class="quarto-category-count">(2)</span></div><div class="category" data-category="aGlnaGVyJTIwZWR1Y2F0aW9u">higher education <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SFBD">HPC <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3BlbiUyMGFjY2Vzcw==">open access <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3BlbiUyMGRhdGE=">open data <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cGF0ZW50cw==">patents <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(4)</span></div><div class="category" data-category="c2ltdWxhdGlvbg==">simulation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dXJiYW4lMjBkYXRh">urban data <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-it-does" id="toc-what-it-does" class="nav-link active" data-scroll-target="#what-it-does">What it does</a></li>
+  <li><a href="#why-its-useful" id="toc-why-its-useful" class="nav-link" data-scroll-target="#why-its-useful">Why it’s useful</a></li>
+  <li><a href="#notebook" id="toc-notebook" class="nav-link" data-scroll-target="#notebook">Notebook</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Projects</h1>
+<h1 class="title">Parsing the IPC patent classification tree</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">data engineering</div>
+    <div class="quarto-category">open data</div>
+    <div class="quarto-category">patents</div>
+    <div class="quarto-category">Python</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    A self-contained Python notebook that downloads WIPO’s official IPC XML schema, reconstructs full hierarchical descriptions for all 79,000+ classification symbols, and uploads the result to Google Sheets.
+  </div>
 </div>
 
 
-
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 1, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -222,189 +190,63 @@ window.Quarto = {
 </header>
 
 
+<p>Patent data analysis often begins with the same tedious problem: the <a href="https://ipcpub.wipo.int/">International Patent Classification (IPC)</a> system has over 79,000 technology symbols, but their descriptions in raw databases are <em>relative</em> — a leaf node only tells you what it is relative to its parent. To understand what <code>A01B0003280000</code> actually means, you have to walk up the tree through <code>A01B0003240000</code>, <code>A01B0003000000</code>, <code>A01B</code>, <code>A01</code>, and <code>A</code>, concatenating descriptions as you go.</p>
+<p>This notebook solves that once, for all symbols, and pushes the result to a Google Sheet that anyone on a team can use as a lookup table.</p>
+<hr>
+<section id="what-it-does" class="level2">
+<h2 class="anchored" data-anchor-id="what-it-does">What it does</h2>
+<p><strong>Input:</strong> the official IPC master XML file, downloaded on-the-fly directly from <a href="https://ipcpub.wipo.int/">WIPO’s public server</a> — no local copy needed.</p>
+<p><strong>Pipeline:</strong></p>
+<ol type="1">
+<li>Fetch and unzip the schema in memory (no disk writes)</li>
+<li>Walk the XML tree, filtering out meta-nodes (<code>i</code>, <code>g</code>, <code>n</code>, <code>t</code> kinds)</li>
+<li>Build a parent–child map across all 79,473 symbols</li>
+<li>For each symbol, recursively collect ancestor descriptions and concatenate them into a single human-readable string</li>
+<li>Convert WIPO’s 14-character binary symbol format (<code>SCCUMMMMGGGGGG</code>) to the standard PATSTAT format (e.g.&nbsp;<code>A01B   1/02</code>) so the output joins cleanly with patent databases</li>
+<li>Write a CSV (<code>ipc_descriptions.csv</code>) and upload two sheets to Google Sheets:
+<ul>
+<li><strong>Schema</strong> — every symbol with its full hierarchical description (79,473 rows)</li>
+<li><strong>Children</strong> — every symbol with the flat list of all its descendants</li>
+</ul></li>
+</ol>
+<p><strong>Output example:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 34%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>WIPO symbol</th>
+<th>PATSTAT symbol</th>
+<th>Full description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>A01B0003280000</code></td>
+<td><code>A01B   3/28</code></td>
+<td>Agriculture; Soil working in agriculture or forestry; Soil-shifting machines; Arrangements for converting hand-operated into power-operated ploughs; Ploughs; Rotary tillers; Equipments with working tools; Details</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="why-its-useful" class="level2">
+<h2 class="anchored" data-anchor-id="why-its-useful">Why it’s useful</h2>
+<p>Most patent analytics tools expose IPC codes as short strings (<code>A01B 3/28</code>) with no human-readable label attached. Joining against this table adds the full description in one step — useful for labelling charts, filtering by technology area, or explaining results to a non-expert audience.</p>
+<p>The Google Sheets output means the whole team has access to an always-current lookup table without any local setup.</p>
+<hr>
+</section>
+<section id="notebook" class="level2">
+<h2 class="anchored" data-anchor-id="notebook">Notebook</h2>
+<p>The full notebook is embedded below and can be <a href="../assets/patstat/IPC_schema_parse.html">downloaded here</a>. To use it yourself, replace <code>YOUR_SHEET_ID</code> in the upload cells with the ID of your own Google Sheet (the string between <code>/d/</code> and <code>/edit</code> in the sheet URL).</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNnZW9zcGF0aWFsJTJDdXJiYW4lMjBkYXRhJTJDUHl0aG9u" data-listing-date-sort="1773442800000" data-listing-file-modified-sort="1777015537988" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="263">
-<a href="../projects/barcelona_edificacions.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Population density and building age in Barcelona
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHZpc3VhbGl6YXRpb24='); return false;">data visualization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2Vvc3BhdGlhbA=='); return false;">geospatial</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dXJiYW4lMjBkYXRh'); return false;">urban data</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A bivariate choropleth analysis of how building age and population density interact across Barcelona’s 1,068 census sections.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Mar 14, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNnZW9zcGF0aWFsJTJDb3BlbiUyMGRhdGElMkNQeXRob24=" data-listing-date-sort="1770073200000" data-listing-file-modified-sort="1777015530304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="147">
-<a href="../projects/aigues_catalunya.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Industrial water consumption in Catalonia
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHZpc3VhbGl6YXRpb24='); return false;">data visualization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2Vvc3BhdGlhbA=='); return false;">geospatial</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('b3BlbiUyMGRhdGE='); return false;">open data</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Combining three Catalan open data sources to show how industrial water use is concentrated in the Barcelona and Tarragona comarques.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Feb 3, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="ZGF0YSUyMHNjaWVuY2UlMkNiaWJsaW9tZXRyaWNzJTJDb3BlbiUyMGFjY2Vzcw==" data-listing-date-sort="1764630000000" data-listing-file-modified-sort="1776942079832" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="277">
-<a href="../projects/oa_time.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Open Access status of publications in time
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHNjaWVuY2U='); return false;">data science</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YmlibGlvbWV0cmljcw=='); return false;">bibliometrics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('b3BlbiUyMGFjY2Vzcw=='); return false;">open access</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Tracking how the open-access status of scientific publications has evolved over time.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Dec 2, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="ZGF0YSUyMGVuZ2luZWVyaW5nJTJDb3BlbiUyMGRhdGElMkNwYXRlbnRzJTJDUHl0aG9u" data-listing-date-sort="1740783600000" data-listing-file-modified-sort="1777016575163" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="356">
-<a href="../projects/ipc_schema_parser.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Parsing the IPC patent classification tree
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGVuZ2luZWVyaW5n'); return false;">data engineering</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('b3BlbiUyMGRhdGE='); return false;">open data</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGF0ZW50cw=='); return false;">patents</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A self-contained Python notebook that downloads WIPO’s official IPC XML schema, reconstructs full hierarchical descriptions for all 79,000+ classification symbols, and…</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Mar 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="ZGF0YSUyMGVuZ2luZWVyaW5nJTJDRVRMJTJDY29uc3VsdGluZyUyQ2hpZ2hlciUyMGVkdWNhdGlvbg==" data-listing-date-sort="1738364400000" data-listing-file-modified-sort="1776938802311" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="613">
-<a href="../projects/eua_observatory.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-European University Alliances Observatory
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGVuZ2luZWVyaW5n'); return false;">data engineering</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RVRM'); return false;">ETL</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29uc3VsdGluZw=='); return false;">consulting</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aGlnaGVyJTIwZWR1Y2F0aW9u'); return false;">higher education</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Redesigned a 10-pipeline Mage AI backend integrating 6 international data sources to power an interactive research analytics platform for European universities.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Feb 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="Y29tcHV0YXRpb25hbCUyMGJpb2xvZ3klMkNiaW9waHlzaWNzJTJDSFBDJTJDUHl0aG9uJTJDc2ltdWxhdGlvbg==" data-listing-date-sort="1535752800000" data-listing-file-modified-sort="1777015549381" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="359">
-<a href="../projects/sbs_tracers.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Transcription factor dynamics on folded chromatin
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29tcHV0YXRpb25hbCUyMGJpb2xvZ3k='); return false;">computational biology</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YmlvcGh5c2ljcw=='); return false;">biophysics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SFBD'); return false;">HPC</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c2ltdWxhdGlvbg=='); return false;">simulation</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A fully reproducible Python simulation framework for studying how transcription factors move on 3D chromatin structures, published in Nature Communications.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Sep 1, 2018
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
