@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-06-01">
+<meta name="description" content="An end-to-end pipeline that fetches games from the chess.com API, evaluates every position with the Stockfish engine, and surfaces patterns in move quality, opening preparation, and performance over time.">
 
-<title>Projects – Ruggero Cortini</title>
+<title>Chess game analytics with Stockfish – Ruggero Cortini</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +35,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -72,35 +72,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-date','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -161,7 +132,7 @@ window.Quarto = {
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../projects/index.html" aria-current="page"> 
+    <a class="nav-link" href="../projects/index.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -195,24 +166,51 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="YmlibGlvbWV0cmljcw==">bibliometrics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmlvcGh5c2ljcw==">biophysics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29tcHV0YXRpb25hbCUyMGJpb2xvZ3k=">computational biology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29uc3VsdGluZw==">consulting <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMGVuZ2luZWVyaW5n">data engineering <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZGF0YSUyMHNjaWVuY2U=">data science <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZGF0YSUyMHZpc3VhbGl6YXRpb24=">data visualization <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RVRM">ETL <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2Vvc3BhdGlhbA==">geospatial <span class="quarto-category-count">(2)</span></div><div class="category" data-category="aGlnaGVyJTIwZWR1Y2F0aW9u">higher education <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SFBD">HPC <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3BlbiUyMGFjY2Vzcw==">open access <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3BlbiUyMGRhdGE=">open data <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cGF0ZW50cw==">patents <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(5)</span></div><div class="category" data-category="c2ltdWxhdGlvbg==">simulation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3BvcnRzJTIwYW5hbHl0aWNz">sports analytics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dXJiYW4lMjBkYXRh">urban data <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#when-do-i-play-best" id="toc-when-do-i-play-best" class="nav-link active" data-scroll-target="#when-do-i-play-best">When do I play best?</a></li>
+  <li><a href="#move-quality-the-accuracy-model" id="toc-move-quality-the-accuracy-model" class="nav-link" data-scroll-target="#move-quality-the-accuracy-model">Move quality: the accuracy model</a></li>
+  <li><a href="#patterns-across-many-games" id="toc-patterns-across-many-games" class="nav-link" data-scroll-target="#patterns-across-many-games">Patterns across many games</a></li>
+  <li><a href="#pipeline-architecture" id="toc-pipeline-architecture" class="nav-link" data-scroll-target="#pipeline-architecture">Pipeline architecture</a></li>
+  <li><a href="#notebooks" id="toc-notebooks" class="nav-link" data-scroll-target="#notebooks">Notebooks</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Projects</h1>
+<h1 class="title">Chess game analytics with Stockfish</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">data science</div>
+    <div class="quarto-category">Python</div>
+    <div class="quarto-category">sports analytics</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    An end-to-end pipeline that fetches games from the chess.com API, evaluates every position with the Stockfish engine, and surfaces patterns in move quality, opening preparation, and performance over time.
+  </div>
 </div>
 
 
-
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 1, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -222,216 +220,102 @@ window.Quarto = {
 </header>
 
 
+<p>I play chess online — nothing serious, mostly blitz games — and I got curious whether I could use data science tools to understand my patterns and weaknesses. This project builds a full pipeline from raw API data to move-level engine analysis, using the same accuracy formula that <a href="https://lichess.org">Lichess</a> uses in their game reports.</p>
+<p>Data is fetched from the public <a href="https://www.chess.com/news/view/published-data-api">chess.com API</a> (no authentication needed) and positions are evaluated with <a href="https://stockfishchess.org">Stockfish 15.1</a>, the strongest open-source chess engine.</p>
+<hr>
+<section id="when-do-i-play-best" class="level2">
+<h2 class="anchored" data-anchor-id="when-do-i-play-best">When do I play best?</h2>
+<p>A first question: does the time of day affect my results? Fetching two years of games and grouping by hour reveals a clear pattern.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/chess_analytics/wld_hour.png" class="img-fluid figure-img"></p>
+<figcaption>Win, loss, and draw distribution by hour of day</figcaption>
+</figure>
+</div>
+<p>The left panel shows raw game counts; the right shows percentages with a 50% reference line. There is a visible dip in win rate in the late evening — not surprising for blitz, where fatigue affects calculation speed.</p>
+<hr>
+</section>
+<section id="move-quality-the-accuracy-model" class="level2">
+<h2 class="anchored" data-anchor-id="move-quality-the-accuracy-model">Move quality: the accuracy model</h2>
+<p>Chess.com and Lichess both publish move accuracy scores. The formula translates centipawn evaluation into a win probability using a sigmoid, then measures how much that probability dropped after each move:</p>
+<p><span class="math display">\[
+W(cp) = 50 + 50 \cdot \frac{2}{1 + e^{-0.00368208 \cdot cp}} - 1
+\]</span></p>
+<p><span class="math display">\[
+\text{accuracy} = 103.1668 \cdot e^{-0.04354 \cdot \Delta W} - 3.1669
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/chess_analytics/win_probability.png" class="img-fluid figure-img"></p>
+<figcaption>Win probability as a function of centipawn evaluation</figcaption>
+</figure>
+</div>
+<p>The curve shows that small centipawn differences near equality (−100 to +100) produce large changes in win probability — which is why a single blunder in a balanced position can be so decisive.</p>
+<p>Each move is then classified into one of seven categories based on centipawn loss: <strong>Book → Best → Excellent → Good → Inaccuracy → Mistake → Blunder</strong>.</p>
+<hr>
+</section>
+<section id="patterns-across-many-games" class="level2">
+<h2 class="anchored" data-anchor-id="patterns-across-many-games">Patterns across many games</h2>
+<p>Running this analysis across two months of games reveals where mistakes cluster.</p>
+<p><strong>Accuracy by move number:</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/chess_analytics/accuracy_by_move.png" class="img-fluid figure-img"></p>
+<figcaption>Average accuracy per move number, separated by colour</figcaption>
+</figure>
+</div>
+<p>Accuracy is highest in the opening (book moves) and peaks again in tactical middlegame positions. It dips in the endgame — consistent with time pressure in blitz.</p>
+<p><strong>Move classification by game phase:</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/chess_analytics/classification_by_move.png" class="img-fluid figure-img"></p>
+<figcaption>Distribution of move classifications across move numbers</figcaption>
+</figure>
+</div>
+<p>Blunders and mistakes concentrate in the 15–25 move range, where the position has left familiar opening patterns but the endgame simplifications haven’t yet reduced the complexity. Inaccuracies are spread evenly throughout.</p>
+<hr>
+</section>
+<section id="pipeline-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline-architecture">Pipeline architecture</h2>
+<pre><code>chess.com API  →  postprocess metadata  →  PGN extraction
+                                                ↓
+                                    Stockfish evaluation (per position)
+                                                ↓
+                                    Win% delta  →  move classification
+                                                ↓
+                                    Accuracy aggregation  →  plots</code></pre>
+<p>The batch analysis step (notebook 3) processes games in parallel using Python’s <code>ThreadPoolExecutor</code>. At depth 20 with 4 threads, a full game takes ~90 seconds; 5,000 games would take about 30 hours of engine time — feasible overnight on a machine with a GPU-accelerated Stockfish build.</p>
+<hr>
+</section>
+<section id="notebooks" class="level2">
+<h2 class="anchored" data-anchor-id="notebooks">Notebooks</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Notebook</th>
+<th>What it covers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="../assets/chess_analytics/1-retrieve_postprocess_data.html">1 — Data retrieval</a></td>
+<td>chess.com API fetch, postprocessing, time-of-day analysis</td>
+</tr>
+<tr class="even">
+<td><a href="../assets/chess_analytics/2-single_game_analysis.html">2 — Single game analysis</a></td>
+<td>move-by-move Stockfish evaluation, accuracy formula, game report</td>
+</tr>
+<tr class="odd">
+<td><a href="../assets/chess_analytics/4-move_tables.html">4 — Move tables</a></td>
+<td>batch classification, accuracy by move number, opening identification</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNnZW9zcGF0aWFsJTJDdXJiYW4lMjBkYXRhJTJDUHl0aG9u" data-listing-date-sort="1773442800000" data-listing-file-modified-sort="1777015537988" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="263">
-<a href="../projects/barcelona_edificacions.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Population density and building age in Barcelona
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHZpc3VhbGl6YXRpb24='); return false;">data visualization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2Vvc3BhdGlhbA=='); return false;">geospatial</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dXJiYW4lMjBkYXRh'); return false;">urban data</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A bivariate choropleth analysis of how building age and population density interact across Barcelona’s 1,068 census sections.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Mar 14, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNnZW9zcGF0aWFsJTJDb3BlbiUyMGRhdGElMkNQeXRob24=" data-listing-date-sort="1770073200000" data-listing-file-modified-sort="1777015530304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="147">
-<a href="../projects/aigues_catalunya.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Industrial water consumption in Catalonia
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHZpc3VhbGl6YXRpb24='); return false;">data visualization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2Vvc3BhdGlhbA=='); return false;">geospatial</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('b3BlbiUyMGRhdGE='); return false;">open data</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Combining three Catalan open data sources to show how industrial water use is concentrated in the Barcelona and Tarragona comarques.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Feb 3, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="ZGF0YSUyMHNjaWVuY2UlMkNiaWJsaW9tZXRyaWNzJTJDb3BlbiUyMGFjY2Vzcw==" data-listing-date-sort="1764630000000" data-listing-file-modified-sort="1776942079832" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="277">
-<a href="../projects/oa_time.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Open Access status of publications in time
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHNjaWVuY2U='); return false;">data science</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YmlibGlvbWV0cmljcw=='); return false;">bibliometrics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('b3BlbiUyMGFjY2Vzcw=='); return false;">open access</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Tracking how the open-access status of scientific publications has evolved over time.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Dec 2, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="ZGF0YSUyMGVuZ2luZWVyaW5nJTJDb3BlbiUyMGRhdGElMkNwYXRlbnRzJTJDUHl0aG9u" data-listing-date-sort="1740783600000" data-listing-file-modified-sort="1777016575163" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="356">
-<a href="../projects/ipc_schema_parser.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Parsing the IPC patent classification tree
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGVuZ2luZWVyaW5n'); return false;">data engineering</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('b3BlbiUyMGRhdGE='); return false;">open data</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGF0ZW50cw=='); return false;">patents</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A self-contained Python notebook that downloads WIPO’s official IPC XML schema, reconstructs full hierarchical descriptions for all 79,000+ classification symbols, and…</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Mar 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="ZGF0YSUyMGVuZ2luZWVyaW5nJTJDRVRMJTJDY29uc3VsdGluZyUyQ2hpZ2hlciUyMGVkdWNhdGlvbg==" data-listing-date-sort="1738364400000" data-listing-file-modified-sort="1776938802311" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="613">
-<a href="../projects/eua_observatory.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-European University Alliances Observatory
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGVuZ2luZWVyaW5n'); return false;">data engineering</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RVRM'); return false;">ETL</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29uc3VsdGluZw=='); return false;">consulting</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aGlnaGVyJTIwZWR1Y2F0aW9u'); return false;">higher education</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Redesigned a 10-pipeline Mage AI backend integrating 6 international data sources to power an interactive research analytics platform for European universities.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Feb 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="ZGF0YSUyMHNjaWVuY2UlMkNQeXRob24lMkNzcG9ydHMlMjBhbmFseXRpY3M=" data-listing-date-sort="1717192800000" data-listing-file-modified-sort="1777133752469" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="707">
-<a href="../projects/chess_analytics.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Chess game analytics with Stockfish
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHNjaWVuY2U='); return false;">data science</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c3BvcnRzJTIwYW5hbHl0aWNz'); return false;">sports analytics</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>An end-to-end pipeline that fetches games from the chess.com API, evaluates every position with the Stockfish engine, and surfaces patterns in move quality, opening…</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jun 1, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="Y29tcHV0YXRpb25hbCUyMGJpb2xvZ3klMkNiaW9waHlzaWNzJTJDSFBDJTJDUHl0aG9uJTJDc2ltdWxhdGlvbg==" data-listing-date-sort="1535752800000" data-listing-file-modified-sort="1777015549381" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="359">
-<a href="../projects/sbs_tracers.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Transcription factor dynamics on folded chromatin
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29tcHV0YXRpb25hbCUyMGJpb2xvZ3k='); return false;">computational biology</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YmlvcGh5c2ljcw=='); return false;">biophysics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SFBD'); return false;">HPC</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c2ltdWxhdGlvbg=='); return false;">simulation</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A fully reproducible Python simulation framework for studying how transcription factors move on 3D chromatin structures, published in Nature Communications.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Sep 1, 2018
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

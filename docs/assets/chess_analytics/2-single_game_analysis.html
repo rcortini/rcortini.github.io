@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Single game analysis – Ruggero Cortini</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6d4e4c6c342646cac9792aff734a6985.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-867499df3138a8a61182f45feb162158.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Ruggero Cortini</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects/index.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-personal" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Personal</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-personal">    
+        <li>
+    <a class="dropdown-item" href="../../personal/photography/index.html">
+ <span class="dropdown-text">Photography</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../personal/maps/index.html">
+ <span class="dropdown-text">Fantasy Maps</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../personal/coc/index.html">
+ <span class="dropdown-text">Call of Cthulhu</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#load-data" id="toc-load-data" class="nav-link active" data-scroll-target="#load-data">Load data</a>
+  <ul class="collapse">
+  <li><a href="#load-data-of-a-user" id="toc-load-data-of-a-user" class="nav-link" data-scroll-target="#load-data-of-a-user">Load data of a user</a></li>
+  <li><a href="#load-openings-database" id="toc-load-openings-database" class="nav-link" data-scroll-target="#load-openings-database">Load openings database</a></li>
+  <li><a href="#basic-postprocessing-extract-a-single-pgn-file" id="toc-basic-postprocessing-extract-a-single-pgn-file" class="nav-link" data-scroll-target="#basic-postprocessing-extract-a-single-pgn-file">Basic postprocessing: extract a single PGN file</a></li>
+  </ul></li>
+  <li><a href="#game-preprocessing" id="toc-game-preprocessing" class="nav-link" data-scroll-target="#game-preprocessing">Game preprocessing</a></li>
+  <li><a href="#move-classification" id="toc-move-classification" class="nav-link" data-scroll-target="#move-classification">Move classification</a>
+  <ul class="collapse">
+  <li><a href="#book-moves" id="toc-book-moves" class="nav-link" data-scroll-target="#book-moves">Book moves</a></li>
+  <li><a href="#engine-evaluation-of-the-moves" id="toc-engine-evaluation-of-the-moves" class="nav-link" data-scroll-target="#engine-evaluation-of-the-moves">Engine evaluation of the moves</a></li>
+  <li><a href="#best-moves" id="toc-best-moves" class="nav-link" data-scroll-target="#best-moves">Best moves</a></li>
+  </ul></li>
+  <li><a href="#win-probability-and-accuracy" id="toc-win-probability-and-accuracy" class="nav-link" data-scroll-target="#win-probability-and-accuracy">Win probability and accuracy</a></li>
+  <li><a href="#user-report" id="toc-user-report" class="nav-link" data-scroll-target="#user-report">User report</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Single game analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="e797d71b-9923-4ea8-8e07-6674dd91f0f8" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> chess</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> chess.pgn</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> io</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In this notebook we take the PGN string of a game and we unpack all the information that we can extract from it, then put the data in a dataframe.</p>
+<section id="load-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-data">Load data</h2>
+<section id="load-data-of-a-user" class="level3">
+<h3 class="anchored" data-anchor-id="load-data-of-a-user">Load data of a user</h3>
+<div id="0e2353df-685d-4c4c-b150-a8fffc0f8faa" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the name of the user we're looking at</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>username <span class="op">=</span> <span class="st">'rugitodoleao_returns'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="146b1038-f765-4263-a197-16e62302aaed" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or load results</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'../data/player_data/</span><span class="sc">{}</span><span class="st">.pkl'</span>.<span class="bu">format</span>(username), <span class="st">'rb'</span>) <span class="im">as</span> f:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    data_raw <span class="op">=</span> pickle.load(f)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="load-openings-database" class="level3">
+<h3 class="anchored" data-anchor-id="load-openings-database">Load openings database</h3>
+<div id="6d5b80eb-81b7-414c-8e10-3e07f6930886" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>openings <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> [<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>, <span class="st">'d'</span>, <span class="st">'e'</span>]:</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> pd.read_csv(<span class="st">'../data/chess-openings/dist/</span><span class="sc">{}</span><span class="st">.tsv'</span>.<span class="bu">format</span>(letter), sep<span class="op">=</span><span class="st">'</span><span class="ch">\t</span><span class="st">'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    openings <span class="op">=</span> pd.concat((openings, tmp))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="basic-postprocessing-extract-a-single-pgn-file" class="level3">
+<h3 class="anchored" data-anchor-id="basic-postprocessing-extract-a-single-pgn-file">Basic postprocessing: extract a single PGN file</h3>
+<div id="68cdae36-406f-40f5-8e72-b80b1db027b5" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look inside the list of results and see if there are no games or there was an error code</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> []</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> data_raw:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(d[<span class="st">'games'</span>]) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            data.append(d[<span class="st">'games'</span>])</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">KeyError</span>:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># this will typically happen if you asked for something weird such as the list of</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># games in the future</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># create master dataframe</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.concat([pd.DataFrame(d).set_index(<span class="st">'url'</span>) <span class="cf">for</span> d <span class="kw">in</span> data])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="114b75c9-31be-4501-8d8e-928aa6c63fe3" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data from the API</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>game_api <span class="op">=</span> df.iloc[<span class="dv">219</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="11ee627d-d8a0-43e1-bade-89d9bcdc0c2e" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pgn <span class="op">=</span> game_api.pgn</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pgn)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[Event "Live Chess"]
+[Site "Chess.com"]
+[Date "2022.08.19"]
+[Round "-"]
+[White "rugitodoleao_returns"]
+[Black "capedia"]
+[Result "0-1"]
+[CurrentPosition "8/8/8/5pk1/8/P1R2P2/6PP/6K1 w - -"]
+[Timezone "UTC"]
+[ECO "C60"]
+[ECOUrl "https://www.chess.com/openings/Ruy-Lopez-Opening-Nurnberg-Variation"]
+[UTCDate "2022.08.19"]
+[UTCTime "14:36:57"]
+[WhiteElo "789"]
+[BlackElo "801"]
+[TimeControl "60"]
+[Termination "capedia won on time"]
+[StartTime "14:36:57"]
+[EndDate "2022.08.19"]
+[EndTime "14:39:14"]
+[Link "https://www.chess.com/game/live/54658652899"]
+
+1. e4 {[%clk 0:01:00]} 1... e5 {[%clk 0:01:00]} 2. Nf3 {[%clk 0:00:58.6]} 2... Nc6 {[%clk 0:00:59.2]} 3. Bb5 {[%clk 0:00:56.9]} 3... f6 {[%clk 0:00:58.7]} 4. Nc3 {[%clk 0:00:55.2]} 4... Bc5 {[%clk 0:00:56.7]} 5. d4 {[%clk 0:00:53.9]} 5... exd4 {[%clk 0:00:55.5]} 6. Bxc6 {[%clk 0:00:51.5]} 6... bxc6 {[%clk 0:00:49.4]} 7. Nxd4 {[%clk 0:00:50.5]} 7... Bxd4 {[%clk 0:00:48.2]} 8. Qxd4 {[%clk 0:00:49.8]} 8... Ne7 {[%clk 0:00:46.7]} 9. O-O {[%clk 0:00:48.3]} 9... d5 {[%clk 0:00:44.5]} 10. exd5 {[%clk 0:00:45.9]} 10... cxd5 {[%clk 0:00:44.4]} 11. Re1 {[%clk 0:00:43.7]} 11... c6 {[%clk 0:00:40.6]} 12. Bf4 {[%clk 0:00:40.7]} 12... O-O {[%clk 0:00:38.2]} 13. a3 {[%clk 0:00:36.4]} 13... Bf5 {[%clk 0:00:33.4]} 14. Rac1 {[%clk 0:00:32.5]} 14... a5 {[%clk 0:00:27.4]} 15. Qc5 {[%clk 0:00:31.4]} 15... Re8 {[%clk 0:00:23.8]} 16. Bd6 {[%clk 0:00:29.4]} 16... Ng6 {[%clk 0:00:14.1]} 17. Rxe8+ {[%clk 0:00:23.5]} 17... Qxe8 {[%clk 0:00:12.8]} 18. Qxc6 {[%clk 0:00:18.2]} 18... Ne5 {[%clk 0:00:11.7]} 19. Qxe8+ {[%clk 0:00:17.1]} 19... Rxe8 {[%clk 0:00:10]} 20. Nxd5 {[%clk 0:00:14.8]} 20... Be4 {[%clk 0:00:08.3]} 21. Ne7+ {[%clk 0:00:12.4]} 21... Rxe7 {[%clk 0:00:07.4]} 22. Bxe7 {[%clk 0:00:11.4]} 22... Kf7 {[%clk 0:00:06.5]} 23. Bb4 {[%clk 0:00:09.9]} 23... Bxc2 {[%clk 0:00:05.2]} 24. Rxc2 {[%clk 0:00:08.5]} 24... Nd3 {[%clk 0:00:05.1]} 25. Rc7+ {[%clk 0:00:07]} 25... Kg6 {[%clk 0:00:03.4]} 26. Bxa5 {[%clk 0:00:06.9]} 26... Nxb2 {[%clk 0:00:03]} 27. Bc3 {[%clk 0:00:05.9]} 27... h6 {[%clk 0:00:02.8]} 28. Bxb2 {[%clk 0:00:05.1]} 28... f5 {[%clk 0:00:02.4]} 29. Bxg7 {[%clk 0:00:03.9]} 29... Kg5 {[%clk 0:00:02.3]} 30. Bxh6+ {[%clk 0:00:03.1]} 30... Kxh6 {[%clk 0:00:01.5]} 31. Rc6+ {[%clk 0:00:01.9]} 31... Kg5 {[%clk 0:00:01.4]} 32. Rc5 {[%clk 0:00:01.3]} 32... Kg4 {[%clk 0:00:01.2]} 33. Rc4+ {[%clk 0:00:00.8]} 33... Kg5 {[%clk 0:00:01]} 34. Rc3 {[%clk 0:00:00.5]} 34... Kg4 {[%clk 0:00:00.6]} 35. f3+ {[%clk 0:00:00.4]} 35... Kg5 {[%clk 0:00:00.5]} 0-1
+</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="game-preprocessing" class="level2">
+<h2 class="anchored" data-anchor-id="game-preprocessing">Game preprocessing</h2>
+<div id="dac82443-3501-4b89-8f86-59c4f5450655" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_usercolor(game, username):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># figure out the color of the user</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> color <span class="kw">in</span> [<span class="st">'white'</span>, <span class="st">'black'</span>]:</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> game.headers.get(color.capitalize()) <span class="op">==</span> username:</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> color</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="5210a137-0d4c-41a7-9aca-ea286ef045d0" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use this to extract all the information we need</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>game <span class="op">=</span> chess.pgn.read_game(io.StringIO(pgn))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get user color</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>usercolor <span class="op">=</span> get_usercolor(game, username)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># init game board</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>board <span class="op">=</span> game.board()</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate through the moves</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>game_data <span class="op">=</span> []</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, move <span class="kw">in</span> <span class="bu">enumerate</span>(game.mainline_moves()):</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get move number</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    move_number <span class="op">=</span> i<span class="op">//</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># black or white</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>        color <span class="op">=</span>  <span class="st">'white'</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>        color <span class="op">=</span> <span class="st">'black'</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get start square and end square and determine the piece that was moved</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    start_square, end_square <span class="op">=</span> move.uci()[:<span class="dv">2</span>], move.uci()[<span class="dv">2</span>:]</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    piece <span class="op">=</span> board.piece_at(chess.parse_square(start_square)).symbol().upper()</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get the move in SAN notation</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    san <span class="op">=</span> board.san(move)</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get move in UCI notation</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    uci <span class="op">=</span> board.uci(move)</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># push the move to the board</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    board.push(move)</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># put together all the data that we have</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>    this_move_data <span class="op">=</span> (i, move_number, color, piece, uci, san, board.epd(), board.fen())</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># append the data to this move</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>    game_data.append(this_move_data)</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>game_data <span class="op">=</span> pd.DataFrame(game_data, columns<span class="op">=</span>[<span class="st">'i'</span>, <span class="st">'move_number'</span>, <span class="st">'color'</span>, <span class="st">'piece'</span>, <span class="st">'uci'</span>, <span class="st">'san'</span>, <span class="st">'epd'</span>, <span class="st">'fen'</span>])</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a><span class="co"># init the classification column</span></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>game_data[<span class="st">'classification'</span>] <span class="op">=</span> <span class="st">'unknown'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="move-classification" class="level2">
+<h2 class="anchored" data-anchor-id="move-classification">Move classification</h2>
+<section id="book-moves" class="level3">
+<h3 class="anchored" data-anchor-id="book-moves">Book moves</h3>
+<div id="5cd707e0-801a-48b5-8481-9c9dbd546649" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the end of the book openings is defined as the last board position where we see that there</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># is a correspondance to a board position from the database</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>last_book_move <span class="op">=</span> game_data.merge(openings, on<span class="op">=</span><span class="st">'epd'</span>).tail(<span class="dv">1</span>).iloc[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="3f77175d-6248-42ae-b54a-f8db49d4af80" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set the book move classification info</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>game_data.loc[game_data.i <span class="op">&lt;=</span> last_book_move.i, <span class="st">'classification'</span>] <span class="op">=</span> <span class="st">'book'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="engine-evaluation-of-the-moves" class="level3">
+<h3 class="anchored" data-anchor-id="engine-evaluation-of-the-moves">Engine evaluation of the moves</h3>
+<p>To proceed in the classification of the moves, the first thing we do is we ask the engine to evaluate the positions.</p>
+<div id="bab51af1-95ec-407c-9c00-d40e96991519" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># init the engine</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> chess.engine.SimpleEngine.popen_uci(<span class="st">"/home/rcortini/soft/stockfish_15.1_linux_x64/src/stockfish"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="ff70c585-7c4b-4566-9b5d-2106cb7962f0" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_info(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    fen,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    engine,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    depth <span class="op">=</span> <span class="dv">10</span>):</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># set a chess.Board with the supplied FEN string</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> chess.Board(fen<span class="op">=</span>fen)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return the game analysis info</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    info <span class="op">=</span> engine.analyse(b, chess.engine.Limit(depth<span class="op">=</span>depth))</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> info</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="0b194658-6246-40de-b058-d297f0f1aaee" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># depth of the engine</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>depth <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate score: remember, this means that we are </span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># evaluating the score of the board AFTER the move.</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># For the classification of the move, we need to therefore</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the score BEFORE the current move. For the</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># first move there is no need to compute the score at</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># the beginning, because all the first moves are book moves.</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>game_data[<span class="st">'info'</span>] <span class="op">=</span> game_data.fen.<span class="bu">apply</span>(<span class="kw">lambda</span> fen : get_info(fen, engine, depth<span class="op">=</span>depth))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>CPU times: user 197 ms, sys: 13.7 ms, total: 210 ms
+Wall time: 1.47 s</code></pre>
+</div>
+</div>
+</section>
+<section id="best-moves" class="level3">
+<h3 class="anchored" data-anchor-id="best-moves">Best moves</h3>
+<p>We can now determine whether the moves of the user were the best moves or not. The <code>info</code> column of the dataframe contain the information on what was the best move in the position. To explain how we’re going to do that, let’s look first at the <code>game_data</code> dataframe:</p>
+<div id="5819230d-7632-4ba4-95ae-bd195b1a853f" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>game_data[<span class="st">'info'</span>].iloc[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>{'string': 'NNUE evaluation using nn-ad9b42354671.nnue enabled',
+ 'depth': 10,
+ 'seldepth': 13,
+ 'multipv': 1,
+ 'score': PovScore(Cp(-35), BLACK),
+ 'nodes': 39060,
+ 'nps': 406875,
+ 'hashfull': 12,
+ 'tbhits': 0,
+ 'time': 0.096,
+ 'pv': [Move.from_uci('c7c5'),
+  Move.from_uci('c2c3'),
+  Move.from_uci('g8f6'),
+  Move.from_uci('e4e5'),
+  Move.from_uci('f6d5'),
+  Move.from_uci('g1f3'),
+  Move.from_uci('e7e6')]}</code></pre>
+</div>
+</div>
+<div id="e5dc3883-47f3-42bf-8bfe-2e8de80397c9" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>game_data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">i</th>
+<th data-quarto-table-cell-role="th">move_number</th>
+<th data-quarto-table-cell-role="th">color</th>
+<th data-quarto-table-cell-role="th">piece</th>
+<th data-quarto-table-cell-role="th">uci</th>
+<th data-quarto-table-cell-role="th">san</th>
+<th data-quarto-table-cell-role="th">epd</th>
+<th data-quarto-table-cell-role="th">fen</th>
+<th data-quarto-table-cell-role="th">classification</th>
+<th data-quarto-table-cell-role="th">info</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>0</td>
+<td>1</td>
+<td>white</td>
+<td>P</td>
+<td>e2e4</td>
+<td>e4</td>
+<td>rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR ...</td>
+<td>rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR ...</td>
+<td>unknown</td>
+<td>{'string': 'NNUE evaluation using nn-ad9b42354...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+<td>1</td>
+<td>black</td>
+<td>P</td>
+<td>e7e5</td>
+<td>e5</td>
+<td>rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBN...</td>
+<td>rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBN...</td>
+<td>unknown</td>
+<td>{'string': 'NNUE evaluation using nn-ad9b42354...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2</td>
+<td>2</td>
+<td>white</td>
+<td>N</td>
+<td>g1f3</td>
+<td>Nf3</td>
+<td>rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQK...</td>
+<td>rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQK...</td>
+<td>unknown</td>
+<td>{'string': 'NNUE evaluation using nn-ad9b42354...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>3</td>
+<td>2</td>
+<td>black</td>
+<td>N</td>
+<td>b8c6</td>
+<td>Nc6</td>
+<td>r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNB...</td>
+<td>r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNB...</td>
+<td>unknown</td>
+<td>{'string': 'NNUE evaluation using nn-ad9b42354...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>4</td>
+<td>3</td>
+<td>white</td>
+<td>B</td>
+<td>f1b5</td>
+<td>Bb5</td>
+<td>r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/R...</td>
+<td>r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/R...</td>
+<td>unknown</td>
+<td>{'string': 'NNUE evaluation using nn-ad9b42354...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The columns of the <code>game_data</code> dataframe are the following represent:</p>
+<ul>
+<li><strong>i</strong>: the computer-friendly move number (i.e.&nbsp;the number of half-moves minus one - because it starts at zero.)</li>
+<li><strong>move_number</strong>: the move number in chess notation</li>
+<li><strong>piece</strong>: the symbol of the piece that was moved</li>
+<li><strong>color</strong>: the color of the user <em>that made the move</em></li>
+<li><strong>san</strong>: the move made, in SAN notation</li>
+<li><strong>epd</strong> and <strong>fen</strong>: the EPD and FEN strings of the position <em>after the move</em></li>
+<li><strong>info</strong>: the evaluation of the board <em>after the move</em></li>
+</ul>
+<p>If we want to evaluate the move in question, we must look at the <strong>line before</strong> the current one. In fact, the <code>info</code> of the line before contains the best moves of the next turn, which is the turn of the current line.</p>
+<div id="3dd60e22-8c60-47a5-90c8-9632bc87623a" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>game_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">i</th>
+<th data-quarto-table-cell-role="th">move_number</th>
+<th data-quarto-table-cell-role="th">color</th>
+<th data-quarto-table-cell-role="th">piece</th>
+<th data-quarto-table-cell-role="th">uci</th>
+<th data-quarto-table-cell-role="th">san</th>
+<th data-quarto-table-cell-role="th">epd</th>
+<th data-quarto-table-cell-role="th">fen</th>
+<th data-quarto-table-cell-role="th">classification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>0</td>
+<td>1</td>
+<td>white</td>
+<td>P</td>
+<td>e2e4</td>
+<td>e4</td>
+<td>rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR ...</td>
+<td>rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR ...</td>
+<td>unknown</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+<td>1</td>
+<td>black</td>
+<td>P</td>
+<td>e7e5</td>
+<td>e5</td>
+<td>rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBN...</td>
+<td>rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBN...</td>
+<td>unknown</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2</td>
+<td>2</td>
+<td>white</td>
+<td>N</td>
+<td>g1f3</td>
+<td>Nf3</td>
+<td>rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQK...</td>
+<td>rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQK...</td>
+<td>unknown</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>3</td>
+<td>2</td>
+<td>black</td>
+<td>N</td>
+<td>b8c6</td>
+<td>Nc6</td>
+<td>r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNB...</td>
+<td>r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNB...</td>
+<td>unknown</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>4</td>
+<td>3</td>
+<td>white</td>
+<td>B</td>
+<td>f1b5</td>
+<td>Bb5</td>
+<td>r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/R...</td>
+<td>r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/R...</td>
+<td>unknown</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">65</th>
+<td>65</td>
+<td>33</td>
+<td>black</td>
+<td>K</td>
+<td>g4g5</td>
+<td>Kg5</td>
+<td>8/8/8/5pk1/2R5/P7/5PPP/6K1 w - -</td>
+<td>8/8/8/5pk1/2R5/P7/5PPP/6K1 w - - 6 34</td>
+<td>unknown</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">66</th>
+<td>66</td>
+<td>34</td>
+<td>white</td>
+<td>R</td>
+<td>c4c3</td>
+<td>Rc3</td>
+<td>8/8/8/5pk1/8/P1R5/5PPP/6K1 b - -</td>
+<td>8/8/8/5pk1/8/P1R5/5PPP/6K1 b - - 7 34</td>
+<td>unknown</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">67</th>
+<td>67</td>
+<td>34</td>
+<td>black</td>
+<td>K</td>
+<td>g5g4</td>
+<td>Kg4</td>
+<td>8/8/8/5p2/6k1/P1R5/5PPP/6K1 w - -</td>
+<td>8/8/8/5p2/6k1/P1R5/5PPP/6K1 w - - 8 35</td>
+<td>unknown</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">68</th>
+<td>68</td>
+<td>35</td>
+<td>white</td>
+<td>P</td>
+<td>f2f3</td>
+<td>f3+</td>
+<td>8/8/8/5p2/6k1/P1R2P2/6PP/6K1 b - -</td>
+<td>8/8/8/5p2/6k1/P1R2P2/6PP/6K1 b - - 0 35</td>
+<td>unknown</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">69</th>
+<td>69</td>
+<td>35</td>
+<td>black</td>
+<td>K</td>
+<td>g4g5</td>
+<td>Kg5</td>
+<td>8/8/8/5pk1/8/P1R2P2/6PP/6K1 w - -</td>
+<td>8/8/8/5pk1/8/P1R2P2/6PP/6K1 w - - 1 36</td>
+<td>unknown</td>
+</tr>
+</tbody>
+</table>
+
+<p>70 rows × 9 columns</p>
+</div>
+</div>
+</div>
+<div id="8103b18c-4ce3-4643-9fdf-f6c77b043342" class="cell" data-tags="[]" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row, move <span class="kw">in</span> game_data.iterrows():</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># first, we must skip the book moves</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> move.classification <span class="op">==</span> <span class="st">'book'</span>:</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compare the UCI of the move to the best move of the </span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># position. That info is stored in the `ìnfo` in the `pv`</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># list. The first element of that list is the best move.</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The data structure returned is a chess.Move object, of</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># which we can access the `uci` function to get the move in</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># UCI notation</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> move.uci <span class="op">==</span> game_data.iloc[row<span class="op">-</span><span class="dv">1</span>][<span class="st">'info'</span>][<span class="st">'pv'</span>][<span class="dv">0</span>].uci():</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>        game_data.loc[game_data.i <span class="op">==</span> move.i, <span class="st">'classification'</span>] <span class="op">=</span> <span class="st">'best'</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>game_data.classification.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>unknown    43
+best       21
+book        6
+Name: classification, dtype: int64</code></pre>
+</div>
+</div>
+<p>To classify the other moves, we can use a combination of resources.</p>
+<p>First, according to the official website, there is a <a href="https://support.chess.com/article/2965-how-are-moves-classified-what-is-a-blunder-or-brilliant-and-etc">move classification table</a>, as follows:</p>
+<div id="099b02d6-fb06-45af-8f51-34a2091b6a70" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-tags="[]" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>classification_matrix_str <span class="op">=</span> <span class="op">\</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="st">"""Classification   Lower Limit Upper Limit</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="st">Best    0.00    0.00</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="st">Excellent   0.00    0.02</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="st">Good    0.02    0.05</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="st">Inaccuracy  0.05    0.10</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="st">Mistake 0.10    0.20</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="st">Blunder 0.20    1.00"""</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>tmp <span class="op">=</span> [r.split(<span class="st">'</span><span class="ch">\t</span><span class="st">'</span>) <span class="cf">for</span> r <span class="kw">in</span> classification_matrix_str.split(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)]</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>classification_matrix <span class="op">=</span> pd.DataFrame(tmp[<span class="dv">1</span>:], columns<span class="op">=</span>tmp[<span class="dv">0</span>]).set_index(<span class="st">'Classification'</span>).astype(<span class="bu">float</span>)<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>classification_matrix</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Lower Limit</th>
+<th data-quarto-table-cell-role="th">Upper Limit</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Classification</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Best</th>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Excellent</th>
+<td>0.0</td>
+<td>2.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Good</th>
+<td>2.0</td>
+<td>5.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Inaccuracy</th>
+<td>5.0</td>
+<td>10.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Mistake</th>
+<td>10.0</td>
+<td>20.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Blunder</th>
+<td>20.0</td>
+<td>100.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>This classification does not take into consideration special moves, classified as “brilliant”, “great move”, or “miss”. We won’t take those into consideration in a first round of analysis.</p>
+<p>We therefore first need to calculate the win probability and accuracy of each move.</p>
+</section>
+</section>
+<section id="win-probability-and-accuracy" class="level2">
+<h2 class="anchored" data-anchor-id="win-probability-and-accuracy">Win probability and accuracy</h2>
+<p>We use the idea from <a href="https://lichess.org/page/accuracy">Lichess’s page on the accuracy metric.</a></p>
+<p>First, we calculate the <code>win_pct</code> of the move: it represents the probability of winning the game, based on the value of the centipawns. This is represented by the following function:</p>
+<p><span class="math display">\[
+w_{\%} = 50 + 50\left(\frac{2}{1 + \exp{-\lambda C_p}} - 1\right)
+\]</span> where <span class="math inline">\(\lambda = 0.00368208\)</span>.</p>
+<p>The function looks like this:</p>
+<div id="c4730dea-3d86-4e14-9611-cc5d3e9529ca" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> win_pct_f(centipawns):</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">50</span> <span class="op">+</span> <span class="dv">50</span> <span class="op">*</span> (<span class="dv">2</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span><span class="fl">0.00368208</span><span class="op">*</span>centipawns)) <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="4f0db47c-c08b-499b-897b-8162c566d9f5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-tags="[]" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>centipawns <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">2000</span>, <span class="dv">2000</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>win_pct <span class="op">=</span> win_pct_f(centipawns)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>plt.plot(centipawns, win_pct)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Centipawns"</span>, fontsize<span class="op">=</span><span class="dv">18</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Win %"</span>, fontsize<span class="op">=</span><span class="dv">18</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>plt.axhline(y<span class="op">=</span><span class="dv">50</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="fl">0.75</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2-single_game_analysis_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As you can see, the curve represents the probability of winning the game based on the value of the centipawns. In this sense one can notice that there is a large difference of losing 500 centipawns when you’re close to zero, than when you’re very much winning or losing.</p>
+<div id="7924e856-e38a-4192-bbee-3e955831835b" class="cell" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_cp(</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    score : chess.engine.PovScore,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> score.relative.score(mate_score<span class="op">=</span><span class="dv">5000</span>)    </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co"># first, we calculate the centipawn score for each of the moves.</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember: the info represents the board AFTER the move, so the centipawn</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co"># value in this case will be relative to the color of the next turn</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>game_data[<span class="st">'cp'</span>] <span class="op">=</span> game_data[<span class="st">'info'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> info : calculate_cp(info[<span class="st">'score'</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Then we can evaluate the accuracy by calculating the following function:</p>
+<p><span class="math display">\[
+a = K_1 \exp{-\gamma (w_{b} - w_{a})} - K_2
+\]</span> where <span class="math inline">\(K_1 = 103.1668\)</span>, <span class="math inline">\(K_2 = 3.1669\)</span>, and <span class="math inline">\(\gamma = 0.04354\)</span>. The symbols represent:</p>
+<ul>
+<li><span class="math inline">\(a\)</span> is the accuracy</li>
+<li><span class="math inline">\(w_a\)</span> is the win percentage after the move</li>
+<li><span class="math inline">\(w_b\)</span> is the win percentage before the move.</li>
+</ul>
+<div id="b552a9f0-aef2-44a8-805b-fa8fddc32726" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> accuracy_f(</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    winPercentBefore,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    winPercentAfter</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>):  </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate the accuracy function</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    accuracy <span class="op">=</span> <span class="fl">103.1668</span> <span class="op">*</span> np.exp(<span class="op">-</span><span class="fl">0.04354</span> <span class="op">*</span> (winPercentBefore <span class="op">-</span> winPercentAfter)) <span class="op">-</span> <span class="fl">3.1669</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># first, check that the values make sense</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> accuracy <span class="op">&gt;</span> <span class="dv">100</span>:</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">100.</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> accuracy <span class="op">&lt;</span> <span class="fl">0.</span>:</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">0.</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># then return the value now bounded between [0, 100]</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> accuracy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The <code>accuracy</code> of the move then is calculated for each of the moves. We must pay a lot of attention with turns and signs: at every move, the <code>info</code> of the move represents the score after the move. Then, the score is represented from the point of view of the next player! Therefore, to calculate the win% after the move, we take that value and change sign to the centipawn evaluation. The win% before the move is represented by the win% value of the score corresponding to the line before the move.</p>
+<p>Since we now calculate the win% before and after the move, we can also classify the moves.</p>
+<div id="6b6ac3c7-c625-4e3b-8085-7665b18652a8" class="cell" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> pd.Series(index<span class="op">=</span>game_data.index, dtype<span class="op">=</span><span class="bu">float</span>, name<span class="op">=</span><span class="st">'accuracy'</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>move_classification <span class="op">=</span> pd.Series(index<span class="op">=</span>game_data.index, dtype<span class="op">=</span><span class="bu">str</span>, name<span class="op">=</span><span class="st">'classification_chess_lichess'</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>cp_loss <span class="op">=</span> pd.Series(index<span class="op">=</span>game_data.index, dtype<span class="op">=</span><span class="bu">float</span>, name<span class="op">=</span><span class="st">'cp_loss'</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(game_data)):</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># if it's the first move, assign a zero value to the centipawns</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>        cpBefore <span class="op">=</span> <span class="fl">0.</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>        cpBefore <span class="op">=</span> game_data.iloc[i<span class="op">-</span><span class="dv">1</span>].cp</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># change sign to the value corresponding to this move</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    cpAfter <span class="op">=</span> <span class="op">-</span>game_data.iloc[i].cp</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate accuracy: </span><span class="al">NOTE</span><span class="co"> here that we don't just</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># blindly calculate the win% before and after the move, because</span></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># otherwise this would mean that the moves done when the game is</span></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># practically won would almost always count as best or excellent moves,</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># with close to 100% accuracy</span></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> accuracy_f(<span class="fl">50.</span>, win_pct_f(cpAfter<span class="op">-</span>cpBefore))</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate the delta</span></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> win_pct_f(cpAfter)<span class="op">-</span>win_pct_f(cpBefore)</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># establish the move classes</span></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> d <span class="op">&gt;=</span> <span class="fl">0.</span>:</span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>        mc <span class="op">=</span> <span class="st">'best'</span></span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> d <span class="op">&lt;</span> <span class="fl">0.</span> <span class="kw">and</span> d <span class="op">&gt;</span> <span class="op">-</span><span class="fl">2.0</span>:</span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a>        mc <span class="op">=</span> <span class="st">'excellent'</span></span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> d <span class="op">&lt;</span> <span class="op">-</span><span class="fl">2.0</span> <span class="kw">and</span> d <span class="op">&gt;</span> <span class="op">-</span><span class="fl">5.0</span>:</span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a>        mc <span class="op">=</span> <span class="st">'good'</span></span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> d <span class="op">&lt;</span> <span class="op">-</span><span class="fl">5.0</span> <span class="kw">and</span> d <span class="op">&gt;</span> <span class="op">-</span><span class="fl">10.0</span>:</span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a>        mc <span class="op">=</span> <span class="st">'inaccuracy'</span></span>
+<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> d <span class="op">&lt;</span> <span class="op">-</span><span class="fl">10.0</span> <span class="kw">and</span> d <span class="op">&gt;</span> <span class="op">-</span><span class="fl">20.0</span>:</span>
+<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a>        mc <span class="op">=</span> <span class="st">'mistake'</span></span>
+<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a>        mc <span class="op">=</span> <span class="st">'blunder'</span></span>
+<span id="cb28-38"><a href="#cb28-38" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Move </span><span class="sc">{}</span><span class="st">: cpBefore = </span><span class="sc">{:.1f}</span><span class="st"> cpAfter = </span><span class="sc">{:.1f}</span><span class="st">,  d = </span><span class="sc">{:.2f}</span><span class="st">, a = </span><span class="sc">{:.2f}</span><span class="st">, </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(<span class="op">\</span></span>
+<span id="cb28-40"><a href="#cb28-40" aria-hidden="true" tabindex="-1"></a>          i, cpBefore, cpAfter, d, a, mc))</span>
+<span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-42"><a href="#cb28-42" aria-hidden="true" tabindex="-1"></a>    accuracy[i] <span class="op">=</span> a</span>
+<span id="cb28-43"><a href="#cb28-43" aria-hidden="true" tabindex="-1"></a>    move_classification[i] <span class="op">=</span> mc</span>
+<span id="cb28-44"><a href="#cb28-44" aria-hidden="true" tabindex="-1"></a>    cp_loss[i] <span class="op">=</span> cpAfter<span class="op">-</span>cpBefore</span>
+<span id="cb28-45"><a href="#cb28-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-46"><a href="#cb28-46" aria-hidden="true" tabindex="-1"></a><span class="co"># put in the info on the move classification</span></span>
+<span id="cb28-47"><a href="#cb28-47" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> (game_data.classification <span class="op">!=</span> <span class="st">'book'</span>) <span class="op">&amp;</span> (game_data.classification <span class="op">!=</span> <span class="st">'best'</span>)</span>
+<span id="cb28-48"><a href="#cb28-48" aria-hidden="true" tabindex="-1"></a>game_data.loc[mask, <span class="st">'classification'</span>] <span class="op">=</span> move_classification[mask]</span>
+<span id="cb28-49"><a href="#cb28-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-50"><a href="#cb28-50" aria-hidden="true" tabindex="-1"></a><span class="co"># put the info on the accuracy</span></span>
+<span id="cb28-51"><a href="#cb28-51" aria-hidden="true" tabindex="-1"></a>game_data[<span class="st">'accuracy'</span>] <span class="op">=</span> accuracy</span>
+<span id="cb28-52"><a href="#cb28-52" aria-hidden="true" tabindex="-1"></a>game_data[<span class="st">'cp_loss'</span>] <span class="op">=</span> cp_loss</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Move 0: cpBefore = 0.0 cpAfter = 40.0,  d = 3.68, a = 100.00, best
+Move 1: cpBefore = -40.0 cpAfter = -30.0,  d = 0.92, a = 100.00, best
+Move 2: cpBefore = 30.0 cpAfter = 24.0,  d = -0.55, a = 97.55, excellent
+Move 3: cpBefore = -24.0 cpAfter = -25.0,  d = -0.09, a = 99.59, excellent
+Move 4: cpBefore = 25.0 cpAfter = 33.0,  d = 0.73, a = 100.00, best
+Move 5: cpBefore = -33.0 cpAfter = -84.0,  d = -4.64, a = 80.98, good
+Move 6: cpBefore = 84.0 cpAfter = 67.0,  d = -1.53, a = 93.21, excellent
+Move 7: cpBefore = -67.0 cpAfter = -60.0,  d = 0.64, a = 100.00, best
+Move 8: cpBefore = 60.0 cpAfter = -40.0,  d = -9.18, a = 66.24, inaccuracy
+Move 9: cpBefore = 40.0 cpAfter = -36.0,  d = -6.98, a = 73.06, inaccuracy
+Move 10: cpBefore = 36.0 cpAfter = -86.0,  d = -11.16, a = 60.61, mistake
+Move 11: cpBefore = 86.0 cpAfter = -64.0,  d = -13.72, a = 54.23, mistake
+Move 12: cpBefore = 64.0 cpAfter = 60.0,  d = -0.36, a = 98.36, excellent
+Move 13: cpBefore = -60.0 cpAfter = -123.0,  d = -5.63, a = 77.07, inaccuracy
+Move 14: cpBefore = 123.0 cpAfter = 104.0,  d = -1.67, a = 92.44, excellent
+Move 15: cpBefore = -104.0 cpAfter = -101.0,  d = 0.27, a = 100.00, best
+Move 16: cpBefore = 101.0 cpAfter = 47.0,  d = -4.88, a = 79.98, good
+Move 17: cpBefore = -47.0 cpAfter = -148.0,  d = -8.98, a = 65.97, inaccuracy
+Move 18: cpBefore = 148.0 cpAfter = 90.0,  d = -5.09, a = 78.67, inaccuracy
+Move 19: cpBefore = -90.0 cpAfter = -90.0,  d = 0.00, a = 100.00, best
+Move 20: cpBefore = 90.0 cpAfter = 89.0,  d = -0.09, a = 99.59, excellent
+Move 21: cpBefore = -89.0 cpAfter = -102.0,  d = -1.16, a = 94.76, excellent
+Move 22: cpBefore = 102.0 cpAfter = 73.0,  d = -2.60, a = 88.69, good
+Move 23: cpBefore = -73.0 cpAfter = -77.0,  d = -0.36, a = 98.36, excellent
+Move 24: cpBefore = 77.0 cpAfter = 43.0,  d = -3.09, a = 86.87, good
+Move 25: cpBefore = -43.0 cpAfter = -60.0,  d = -1.55, a = 93.21, excellent
+Move 26: cpBefore = 60.0 cpAfter = 30.0,  d = -2.74, a = 88.32, good
+Move 27: cpBefore = -30.0 cpAfter = -106.0,  d = -6.88, a = 73.06, inaccuracy
+Move 28: cpBefore = 106.0 cpAfter = 120.0,  d = 1.23, a = 100.00, best
+Move 29: cpBefore = -120.0 cpAfter = -112.0,  d = 0.70, a = 100.00, best
+Move 30: cpBefore = 112.0 cpAfter = 115.0,  d = 0.26, a = 100.00, best
+Move 31: cpBefore = -115.0 cpAfter = -261.0,  d = -11.90, a = 55.09, mistake
+Move 32: cpBefore = 261.0 cpAfter = 19.0,  d = -20.58, a = 38.34, blunder
+Move 33: cpBefore = -19.0 cpAfter = -10.0,  d = 0.83, a = 100.00, best
+Move 34: cpBefore = 10.0 cpAfter = -700.0,  d = -43.86, a = 12.58, blunder
+Move 35: cpBefore = 700.0 cpAfter = -293.0,  d = -67.57, a = 9.89, blunder
+Move 36: cpBefore = 293.0 cpAfter = 291.0,  d = -0.14, a = 99.18, excellent
+Move 37: cpBefore = -291.0 cpAfter = -260.0,  d = 2.23, a = 100.00, best
+Move 38: cpBefore = 260.0 cpAfter = 268.0,  d = 0.59, a = 100.00, best
+Move 39: cpBefore = -268.0 cpAfter = -288.0,  d = -1.43, a = 92.06, excellent
+Move 40: cpBefore = 288.0 cpAfter = 205.0,  d = -6.25, a = 71.00, inaccuracy
+Move 41: cpBefore = -205.0 cpAfter = -570.0,  d = -21.06, a = 25.62, blunder
+Move 42: cpBefore = 570.0 cpAfter = 563.0,  d = -0.25, a = 97.15, excellent
+Move 43: cpBefore = -563.0 cpAfter = -575.0,  d = -0.43, a = 95.16, excellent
+Move 44: cpBefore = 575.0 cpAfter = 328.0,  d = -12.27, a = 37.66, mistake
+Move 45: cpBefore = -328.0 cpAfter = -626.0,  d = -13.94, a = 31.61, mistake
+Move 46: cpBefore = 626.0 cpAfter = 630.0,  d = 0.12, a = 100.00, best
+Move 47: cpBefore = -630.0 cpAfter = -753.0,  d = -3.07, a = 60.37, good
+Move 48: cpBefore = 753.0 cpAfter = 642.0,  d = -2.71, a = 63.36, good
+Move 49: cpBefore = -642.0 cpAfter = -652.0,  d = -0.28, a = 95.95, excellent
+Move 50: cpBefore = 652.0 cpAfter = 685.0,  d = 0.88, a = 100.00, best
+Move 51: cpBefore = -685.0 cpAfter = -711.0,  d = -0.63, a = 89.80, excellent
+Move 52: cpBefore = 711.0 cpAfter = 710.0,  d = -0.02, a = 99.59, excellent
+Move 53: cpBefore = -710.0 cpAfter = -1109.0,  d = -5.17, a = 23.25, inaccuracy
+Move 54: cpBefore = 1109.0 cpAfter = 3283.0,  d = 1.66, a = 100.00, best
+Move 55: cpBefore = -3283.0 cpAfter = -4996.0,  d = -0.00, a = 8.62, excellent
+Move 56: cpBefore = 4996.0 cpAfter = 3274.0,  d = -0.00, a = 8.62, excellent
+Move 57: cpBefore = -3274.0 cpAfter = -3313.0,  d = -0.00, a = 85.09, excellent
+Move 58: cpBefore = 3313.0 cpAfter = 2920.0,  d = -0.00, a = 23.64, excellent
+Move 59: cpBefore = -2920.0 cpAfter = -4964.0,  d = -0.00, a = 8.56, excellent
+Move 60: cpBefore = 4964.0 cpAfter = 3206.0,  d = -0.00, a = 8.61, excellent
+Move 61: cpBefore = -3206.0 cpAfter = -3206.0,  d = 0.00, a = 100.00, best
+Move 62: cpBefore = 3206.0 cpAfter = 3206.0,  d = 0.00, a = 100.00, best
+Move 63: cpBefore = -3206.0 cpAfter = -4960.0,  d = -0.00, a = 8.61, excellent
+Move 64: cpBefore = 4960.0 cpAfter = 4957.0,  d = -0.00, a = 98.77, excellent
+Move 65: cpBefore = -4957.0 cpAfter = -4957.0,  d = 0.00, a = 100.00, best
+Move 66: cpBefore = 4957.0 cpAfter = 4956.0,  d = -0.00, a = 99.59, excellent
+Move 67: cpBefore = -4956.0 cpAfter = -4956.0,  d = 0.00, a = 100.00, best
+Move 68: cpBefore = 4956.0 cpAfter = 1725.0,  d = -0.17, a = 8.53, excellent
+Move 69: cpBefore = -1725.0 cpAfter = -1725.0,  d = 0.00, a = 100.00, best</code></pre>
+</div>
+</div>
+</section>
+<section id="user-report" class="level2">
+<h2 class="anchored" data-anchor-id="user-report">User report</h2>
+<div id="7a421b53-3806-4a4a-b700-29e75a6c01f7" class="cell" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out the user data</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>user_game_data <span class="op">=</span> game_data.query(<span class="st">'color == @usercolor'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="1d8d8e80-0d66-4357-9e7b-9167c611fae0" class="cell" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>user_game_data[[<span class="st">'move_number'</span>, <span class="st">'piece'</span>, <span class="st">'san'</span>, <span class="st">'cp'</span>, <span class="st">'accuracy'</span>, <span class="st">'classification'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">move_number</th>
+<th data-quarto-table-cell-role="th">piece</th>
+<th data-quarto-table-cell-role="th">san</th>
+<th data-quarto-table-cell-role="th">cp</th>
+<th data-quarto-table-cell-role="th">accuracy</th>
+<th data-quarto-table-cell-role="th">classification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>P</td>
+<td>e4</td>
+<td>-40</td>
+<td>100.000000</td>
+<td>book</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2</td>
+<td>N</td>
+<td>Nf3</td>
+<td>-24</td>
+<td>97.548670</td>
+<td>book</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>3</td>
+<td>B</td>
+<td>Bb5</td>
+<td>-33</td>
+<td>100.000000</td>
+<td>book</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">6</th>
+<td>4</td>
+<td>N</td>
+<td>Nc3</td>
+<td>-67</td>
+<td>93.206891</td>
+<td>excellent</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>5</td>
+<td>P</td>
+<td>d4</td>
+<td>40</td>
+<td>66.242364</td>
+<td>inaccuracy</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">10</th>
+<td>6</td>
+<td>B</td>
+<td>Bxc6</td>
+<td>86</td>
+<td>60.612985</td>
+<td>mistake</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">12</th>
+<td>7</td>
+<td>N</td>
+<td>Nxd4</td>
+<td>-60</td>
+<td>98.359170</td>
+<td>best</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">14</th>
+<td>8</td>
+<td>Q</td>
+<td>Qxd4</td>
+<td>-104</td>
+<td>92.438299</td>
+<td>best</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">16</th>
+<td>9</td>
+<td>K</td>
+<td>O-O</td>
+<td>-47</td>
+<td>79.981614</td>
+<td>good</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">18</th>
+<td>10</td>
+<td>P</td>
+<td>exd5</td>
+<td>-90</td>
+<td>78.673077</td>
+<td>inaccuracy</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">20</th>
+<td>11</td>
+<td>R</td>
+<td>Re1</td>
+<td>-89</td>
+<td>99.587241</td>
+<td>best</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">22</th>
+<td>12</td>
+<td>B</td>
+<td>Bf4</td>
+<td>-73</td>
+<td>88.689550</td>
+<td>good</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">24</th>
+<td>13</td>
+<td>P</td>
+<td>a3</td>
+<td>-43</td>
+<td>86.873161</td>
+<td>good</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">26</th>
+<td>14</td>
+<td>R</td>
+<td>Rac1</td>
+<td>-30</td>
+<td>88.323211</td>
+<td>good</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">28</th>
+<td>15</td>
+<td>Q</td>
+<td>Qc5</td>
+<td>-120</td>
+<td>100.000000</td>
+<td>best</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">30</th>
+<td>16</td>
+<td>B</td>
+<td>Bd6</td>
+<td>-115</td>
+<td>100.000000</td>
+<td>best</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">32</th>
+<td>17</td>
+<td>R</td>
+<td>Rxe8+</td>
+<td>-19</td>
+<td>38.341012</td>
+<td>blunder</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">34</th>
+<td>18</td>
+<td>Q</td>
+<td>Qxc6</td>
+<td>700</td>
+<td>12.576161</td>
+<td>blunder</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">36</th>
+<td>19</td>
+<td>Q</td>
+<td>Qxe8+</td>
+<td>-291</td>
+<td>99.176236</td>
+<td>best</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">38</th>
+<td>20</td>
+<td>N</td>
+<td>Nxd5</td>
+<td>-268</td>
+<td>100.000000</td>
+<td>best</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">40</th>
+<td>21</td>
+<td>N</td>
+<td>Ne7+</td>
+<td>-205</td>
+<td>70.995179</td>
+<td>inaccuracy</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">42</th>
+<td>22</td>
+<td>B</td>
+<td>Bxe7</td>
+<td>-563</td>
+<td>97.145874</td>
+<td>best</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">44</th>
+<td>23</td>
+<td>B</td>
+<td>Bb4</td>
+<td>-328</td>
+<td>37.662945</td>
+<td>mistake</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">46</th>
+<td>24</td>
+<td>R</td>
+<td>Rxc2</td>
+<td>-630</td>
+<td>100.000000</td>
+<td>best</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">48</th>
+<td>25</td>
+<td>R</td>
+<td>Rc7+</td>
+<td>-642</td>
+<td>63.356682</td>
+<td>good</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">50</th>
+<td>26</td>
+<td>B</td>
+<td>Bxa5</td>
+<td>-685</td>
+<td>100.000000</td>
+<td>best</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">52</th>
+<td>27</td>
+<td>B</td>
+<td>Bc3</td>
+<td>-710</td>
+<td>99.587241</td>
+<td>best</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">54</th>
+<td>28</td>
+<td>B</td>
+<td>Bxb2</td>
+<td>-3283</td>
+<td>100.000000</td>
+<td>best</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">56</th>
+<td>29</td>
+<td>B</td>
+<td>Bxg7</td>
+<td>-3274</td>
+<td>8.620265</td>
+<td>excellent</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">58</th>
+<td>30</td>
+<td>B</td>
+<td>Bxh6+</td>
+<td>-2920</td>
+<td>23.638074</td>
+<td>excellent</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">60</th>
+<td>31</td>
+<td>R</td>
+<td>Rc6+</td>
+<td>-3206</td>
+<td>8.609072</td>
+<td>excellent</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">62</th>
+<td>32</td>
+<td>R</td>
+<td>Rc5</td>
+<td>-3206</td>
+<td>99.999900</td>
+<td>best</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">64</th>
+<td>33</td>
+<td>R</td>
+<td>Rc4+</td>
+<td>-4957</td>
+<td>98.766880</td>
+<td>best</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">66</th>
+<td>34</td>
+<td>R</td>
+<td>Rc3</td>
+<td>-4956</td>
+<td>99.587241</td>
+<td>best</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">68</th>
+<td>35</td>
+<td>P</td>
+<td>f3+</td>
+<td>-1725</td>
+<td>8.530619</td>
+<td>excellent</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="a9fbb20c-0a5b-41bc-a76a-ddcdbe772eae" class="cell" data-execution_count="38">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>user_game_data.classification.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>best          15
+excellent      5
+good           5
+book           3
+inaccuracy     3
+mistake        2
+blunder        2
+Name: classification, dtype: int64</code></pre>
+</div>
+</div>
+<div id="4c51ac9d-938a-4d87-bfaf-f8e5fe899075" class="cell" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>user_game_data.query(<span class="st">'classification != "book"'</span>).accuracy.mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>74.98690444022928</code></pre>
+</div>
+</div>
+<div id="89bb2ba4-057c-49d1-8b2c-d1d6021d7da7" class="cell" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>user_game_data.query(<span class="st">'classification != "book"'</span>).groupby(<span class="st">'piece'</span>).accuracy.mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>piece
+B    71.586694
+K    79.981614
+N    90.640310
+P    60.079718
+Q    76.047674
+R    77.388049
+Name: accuracy, dtype: float64</code></pre>
+</div>
+</div>
+<div id="3c648eac-3f6e-4241-8437-cf9c6caf243e" class="cell" data-execution_count="47">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>user_game_data.query(<span class="st">'classification != "book" &amp; piece == "B"'</span>)[[<span class="st">'i'</span>, <span class="st">'move_number'</span>, <span class="st">'san'</span>, <span class="st">'classification'</span>, <span class="st">'cp'</span>, <span class="st">'cp_loss'</span>, <span class="st">'accuracy'</span>, <span class="st">'info'</span>]].iloc[<span class="op">-</span><span class="dv">1</span>][<span class="st">'info'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>{'string': 'NNUE evaluation using nn-ad9b42354671.nnue enabled',
+ 'depth': 20,
+ 'seldepth': 20,
+ 'multipv': 1,
+ 'score': PovScore(Cp(-2920), BLACK),
+ 'nodes': 2130935,
+ 'nps': 1477763,
+ 'hashfull': 492,
+ 'tbhits': 0,
+ 'time': 1.442,
+ 'pv': [Move.from_uci('g5h6'),
+  Move.from_uci('a3a4'),
+  Move.from_uci('h6g5'),
+  Move.from_uci('a4a5'),
+  Move.from_uci('g5f4'),
+  Move.from_uci('a5a6'),
+  Move.from_uci('f4e4'),
+  Move.from_uci('h2h4'),
+  Move.from_uci('e4d3'),
+  Move.from_uci('a6a7'),
+  Move.from_uci('f5f4'),
+  Move.from_uci('h4h5'),
+  Move.from_uci('d3d2'),
+  Move.from_uci('h5h6'),
+  Move.from_uci('f4f3'),
+  Move.from_uci('g2g4'),
+  Move.from_uci('d2e2'),
+  Move.from_uci('h6h7'),
+  Move.from_uci('e2d2'),
+  Move.from_uci('g4g5')]}</code></pre>
+</div>
+</div>
+<div id="76b166ba-164c-431b-826a-99ed19f0868e" class="cell" data-execution_count="49">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>game_data.iloc[<span class="dv">57</span>][<span class="st">'info'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>{'string': 'NNUE evaluation using nn-ad9b42354671.nnue enabled',
+ 'depth': 20,
+ 'seldepth': 25,
+ 'multipv': 1,
+ 'score': PovScore(Cp(+3313), WHITE),
+ 'nodes': 97594,
+ 'nps': 1682655,
+ 'hashfull': 38,
+ 'tbhits': 0,
+ 'time': 0.058,
+ 'pv': [Move.from_uci('a3a4'),
+  Move.from_uci('g5g4'),
+  Move.from_uci('g7h6'),
+  Move.from_uci('g4h5'),
+  Move.from_uci('h6d2'),
+  Move.from_uci('h5g6'),
+  Move.from_uci('a4a5'),
+  Move.from_uci('g6f6'),
+  Move.from_uci('a5a6'),
+  Move.from_uci('f6e6'),
+  Move.from_uci('a6a7'),
+  Move.from_uci('e6e5'),
+  Move.from_uci('c7c5'),
+  Move.from_uci('e5e6'),
+  Move.from_uci('d2c3'),
+  Move.from_uci('f5f4'),
+  Move.from_uci('f2f3'),
+  Move.from_uci('e6e7'),
+  Move.from_uci('c3e5')]}</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
