@@ -19,4 +19,8 @@ This gallery showcases some pictures I took in different times and different pla
 ![The Cócora Valley in Colombia is well known for its luxurious vegetation and its coffee plantations. A stunning sunset blessed our visit to a lovely coffee farm.](../../assets/photography/Cocora.jpg){#fig-cocora .lightbox group="gallery"}
 
 ![The feminist march of March 8th 2018 in Barcelona marked a turning point in the public discourse around women's rights. "Prou" means "Enough" in Catalan.](../../assets/photography/Mani-8M-2018.jpg){#fig-mani .lightbox group="gallery"}
+
+!["Isola delle Femmine", an iconic landmark close to Palermo, Sicily. View from Capo Gallo at sunset.](../../assets/photography/Isola_Femmine.jpg){#fig-isola .lightbox group="gallery"}
+
+![Loading a camera roll on an old Leica analog camera can be genuinely challenging. However, this undesired effect is somewhat fascinating.](../../assets/photography/Leica.JPG){#fig-leica .lightbox group="gallery"}
 :::
